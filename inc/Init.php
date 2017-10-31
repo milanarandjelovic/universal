@@ -30,6 +30,7 @@ final class Init {
 	public static function get_services() {
 		return [
 			Core\Sidebar::class,
+			Custom\CustomStyling::class,
 			Custom\Extras::class,
 			Custom\PageLoader::class,
 			Plugins\UniversalJetpack::class,

@@ -71,7 +71,7 @@ $args = array(
 		),
 	),
 	'output'                => true,
-	'output_tag'            => true,
+	'output_tag'            => false, // Disable to print dynamic CSS on page head. See CustomStyling class, method universal_custom_styling.
 	'settings_api'          => true,
 	'cdn_check_time'        => '1440',
 	'compiler'              => true,
@@ -190,7 +190,7 @@ Redux::setSection( $opt_name, array(
 
 		// Choose background color for page pre-loader.
 		array(
-			'id'                    => 'universal_opt-page-pre-loader-bg',
+			'id'                    => 'universal__opt-page-pre-loader-bg',
 			'type'                  => 'background',
 			'output'                => array( '.page-pre-loader' ),
 			'title'                 => esc_html__( 'Page pre-loader background', 'universal' ),
