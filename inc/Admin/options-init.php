@@ -71,7 +71,8 @@ $args = array(
 		),
 	),
 	'output'                => true,
-	'output_tag'            => false, // Disable to print dynamic CSS on page head. See CustomStyling class, method universal_custom_styling.
+	'output_tag'            => false,
+	// Disable to print dynamic CSS on page head. See CustomStyling class, method universal_custom_styling.
 	'settings_api'          => true,
 	'cdn_check_time'        => '1440',
 	'compiler'              => true,
@@ -113,6 +114,7 @@ Redux::setArgs( $opt_name, $args );
  * 15. Under Construction Page Options
  * 16. Social Media Options
  * 17. Custom CSS
+ * 18. Theme Information
  ********************************************************************************* */
 
 /*********************************************************************************
@@ -271,6 +273,44 @@ Redux::setSection( $opt_name, array(
 /*********************************************************************************
  * 17. Custom CSS
  ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'     => 'universal__section-custom-css',
+	'title'  => esc_html__( 'Custom CSS', 'universal' ),
+	'icon'   => 'el el-css',
+	'fields' => array(
+
+		// Custom CSS code.
+		array(
+			'id'       => 'universal__opt-custom-css',
+			'title'    => esc_html__( 'CSS code', 'universal' ),
+			'subtitle' => esc_html__( 'Paste your custom CSS code here.', 'universal' ),
+			'desc'     => esc_html__( 'Any custom CSS can be added here, it will override the theme CSS.' ),
+			'type'     => 'ace_editor',
+			'mode'     => 'css',
+			'theme'    => 'monokai',
+			'default'  => '',
+		),
+	),
+) );
+
+/*********************************************************************************
+ * 18. Theme Information
+ ******************************************************************************** */
+if ( file_exists( get_template_directory() . '/readme.txt' ) ) {
+	Redux::setSection( $opt_name, array(
+		'id'     => 'universal-readme',
+		'icon'   => 'el-icon-list-alt',
+		'title'  => esc_html__( 'Theme Information', 'universal' ),
+		'fields' => array(
+			array(
+				'id'       => 'universal-readme-description',
+				'type'     => 'raw',
+				'markdown' => true,
+				'content'  => file_get_contents( get_template_directory() . '/readme.txt' ),
+			),
+		),
+	) );
+}
 
 /***********************************************************************************
  *
