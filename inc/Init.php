@@ -31,6 +31,7 @@ final class Init {
 		return [
 			Core\Sidebar::class,
 			Custom\Extras::class,
+			Custom\PageLoader::class,
 			Plugins\UniversalJetpack::class,
 			Setup\Enqueue::class,
 			Setup\Setup::class,

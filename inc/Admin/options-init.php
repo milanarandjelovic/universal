@@ -158,6 +158,95 @@ Redux::setArgs( $opt_name, $args );
 /*********************************************************************************
  * 11. Page Pre-Loader Options
  ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'title'  => esc_html__( 'Page Pre-Loader', 'universal' ),
+	'id'     => 'universal__section-page-pre-loader',
+	'icon'   => 'el el-repeat',
+	'fields' => array(
+
+		// Show or hide page pre-loader.
+		array(
+			'id'       => 'universal__opt-page-pre-loader',
+			'type'     => 'switch',
+			'title'    => esc_html__( 'Use Page Pre-Loader', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to use page pre-loader.', 'universal' ),
+			'desc'     => esc_html__( 'If turn on you will see spinner before content will be shown.' ),
+			'default'  => 1,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'of'       => esc_html__( 'No', 'universal' ),
+		),
+
+		// Enable or disable styling for page pre-loader.
+		array(
+			'id'       => 'universal__opt-custom-page-pre-loader',
+			'type'     => 'switch',
+			'title'    => esc_html__( 'Enable styling for page pre-loader', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to change colors for page pre-loader.', 'universal' ),
+			'default'  => false,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'of'       => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__opt-page-pre-loader', '=', '1' ),
+		),
+
+		// Choose background color for page pre-loader.
+		array(
+			'id'                    => 'universal_opt-page-pre-loader-bg',
+			'type'                  => 'background',
+			'output'                => array( '.page-pre-loader' ),
+			'title'                 => esc_html__( 'Page pre-loader background', 'universal' ),
+			'subtitle'              => esc_html__( 'Choose background color for page pre-loader screen.', 'universal' ),
+			'preview'               => false,
+			'background-size'       => false,
+			'background-repeat'     => false,
+			'background-attachment' => false,
+			'background-position'   => false,
+			'background-image'      => false,
+			'transparent'           => false,
+			'default'               => array(
+				'background-color' => '#fefefe',
+			),
+			'required'              => array(
+				array( 'universal__opt-page-pre-loader', '=', 1 ),
+				array( 'universal__opt-custom-page-pre-loader', '=', 1 ),
+			),
+		),
+
+		// Choose color for spinning bar.
+		array(
+			'id'          => 'universal__opt-page-pre-loader-bar-color1',
+			'type'        => 'color',
+			'title'       => esc_html__( 'Spinning Bar Color Primary', 'universal' ),
+			'subtitle'    => esc_html__( 'Choose color for spinning bar.', 'universal' ),
+			'default'     => '#99c24d',
+			'transparent' => false,
+			'required'    => array(
+				array( 'universal__opt-page-pre-loader', '=', 1 ),
+				array( 'universal__opt-custom-page-pre-loader', '=', 1 ),
+			),
+		),
+
+		// Choose dimension for spinning bar.
+		array(
+			'id'            => 'universal__opt-page-pre-loader-spinner-size',
+			'type'          => 'dimensions',
+			'units'         => array( 'px' ),
+			'output'        => array( '.page-pre-loader .pre-loader' ),
+			'unit_extended' => false,
+			'title'         => esc_html__( 'Spinner Size', 'universal' ),
+			'subtitle'      => esc_html__( 'Setup spinner size.', 'universal' ),
+			'desc'          => esc_html__( 'Spinner size can be set in px.', 'universal' ),
+			'height'        => false,
+			'default'       => array(
+				'width' => 60,
+			),
+			'required'      => array(
+				array( 'universal__opt-page-pre-loader', '=', 1 ),
+				array( 'universal__opt-custom-page-pre-loader', '=', 1 ),
+			),
+		),
+
+	),
+) );
 
 /*********************************************************************************
  * 12. 404 Page Options
