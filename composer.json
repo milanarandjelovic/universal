@@ -15,6 +15,9 @@
     "psr-4": {
       "Inc\\": "./inc"
     },
-    "files": ["./inc/universal-functions.php"]
+    "files": [
+      "./inc/universal-functions.php",
+      "./inc/Admin/admin-init.php"
+    ]
   }
 }
