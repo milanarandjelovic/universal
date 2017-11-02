@@ -17,3 +17,16 @@
   -moz-backface-visibility: $visibility;
   backface-visibility: $visibility;
 }
+
+@mixin translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+  -ms-transform: translate($x, $y); // IE9 only
+  -o-transform: translate($x, $y);
+  transform: translate($x, $y);
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}

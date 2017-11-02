@@ -47,7 +47,6 @@ class CustomStyling {
 			$page_pre_loader_size   = str_replace( 'px', '', $universal_data['universal__opt-page-pre-loader-spinner-size']['width'] );
 			$page_pre_loader_h_size = $page_pre_loader_size / 2;
 
-
 			$output .= '.page-pre-loader {';
 			$output .= 'background: ' . $page_pre_loader_bg;
 			$output .= '}';

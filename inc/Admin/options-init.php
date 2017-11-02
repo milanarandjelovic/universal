@@ -34,7 +34,7 @@ $args = array(
 	'page_slug'             => 'universal',
 	'page_title'            => esc_html__( 'Theme Options', 'universal' ),
 	'update_notice'         => true,
-	'intro_text'            => esc_html__( 'Universal Theme options', 'universal' ),
+	'intro_text'            => esc_html__( 'Universal Theme Options', 'universal' ),
 	'admin_bar'             => true,
 	'menu_type'             => 'menu',
 	'menu_title'            => esc_html__( 'Universal', 'universal' ),
@@ -120,10 +120,79 @@ Redux::setArgs( $opt_name, $args );
 /*********************************************************************************
  * 1. General Settings
  ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'     => 'universal__section-general',
+	'title'  => esc_html__( 'General Settings', 'universal' ),
+	'icon'   => 'el el-folder-open',
+	'fields' => array(
+
+		// Custom logo.
+		array(
+			'id'       => 'universal__opt-custom-logo',
+			'type'     => 'media',
+			'title'    => esc_html__( 'Logo Image', 'universal' ),
+			'desc'     => esc_html__( 'Upload your image or remove image if you want to use text logo.', 'universal' ),
+			'url'      => true,
+			'compiler' => true,
+			'default'  => array(
+				'url' => '',
+			),
+			'width'    => '',
+			'height'   => '',
+		),
+
+		// Logo width.
+		array(
+			'id'             => 'universal__opt-custom-logo-width',
+			'title'          => esc_html__( 'Logo With', 'universal' ),
+			'subtitle'       => esc_html__( 'Set your logo width.', 'universal' ),
+			'desc'           => esc_html__( 'Logo width can be set in px. Height will automatically calculated.', 'universal' ),
+			'type'           => 'dimensions',
+			'units'          => array( 'px' ),
+			'units_extended' => 'false',
+			'height'         => false,
+			'default'        => array(
+				'width' => 100,
+			),
+		),
+		// Logo width on mobile.
+		array(
+			'id'             => 'universal__opt-custom-logo-width-mobile',
+			'title'          => esc_html__( 'Logo With', 'universal' ),
+			'subtitle'       => esc_html__( 'Set your logo width on mobile.', 'universal' ),
+			'desc'           => esc_html__( 'Logo width can be set in px. Height will automatically calculated.', 'universal' ),
+			'type'           => 'dimensions',
+			'units'          => array( 'px' ),
+			'units_extended' => 'false',
+			'height'         => false,
+			'default'        => array(
+				'width' => 80,
+			),
+		),
+	),
+) );
 
 /*********************************************************************************
  * 2. Header Settings
  ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'     => 'universal__section-header',
+	'title'  => esc_html__( 'Header', 'universal' ),
+	'icon'   => 'el el-arrow-up',
+	'fields' => array(
+
+		// Sticky Header.
+		array(
+			'id'       => 'universal__opt-sticky-header',
+			'type'     => 'switch',
+			'title'    => esc_html__( 'Enable Sticky header', 'universal' ),
+			'subtitle' => esc_html__( 'The header will remain in view at the top.', 'universal' ),
+			'default'  => 1,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+	),
+) );
 
 /*********************************************************************************
  * 3. Search Form Settings
