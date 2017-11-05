@@ -1,9 +1,10 @@
 import 'jquery';
 import tether from 'tether';
 import 'bootstrap';
-import affix from './affix';
+import affix from './plugins/affix';
 
 import stickyHeader from './sticky-header';
+import primaryMenu from './primary-menu';
 
 window.Tether = tether;
 window.affix = affix;
@@ -17,4 +18,5 @@ $(window).load(() => {
 
 $(document).ready(() => {
   stickyHeader();
+  primaryMenu();
 });

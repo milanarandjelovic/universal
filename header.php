@@ -1,6 +1,6 @@
 <?php
 /**
- * The header for our theme
+ * The header for our theme.
  *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
@@ -43,14 +43,13 @@ $body_classes = '1' === $sticky_header ? ' sticky-header' : '';
 <div id="page" class="site">
 
 	<div class="top-wrapper">
-		<div id="header-top-bar">
-			Header top bar
-		</div>
+
+		<?php get_template_part( 'template-parts/header/header-top-bar' ); ?>
 
 		<div id="header-wrapper">
 			<header id="header" class="header">
 
-				<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+				<nav class="navbar navbar-toggleable-md navbar-light">
 
 					<div class="container">
 						<button
@@ -69,7 +68,7 @@ $body_classes = '1' === $sticky_header ? ' sticky-header' : '';
 								<?php if ( '' !== $universal_logo_url ) : ?>
 									<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="navbar-brand">
 										<img src="<?php echo esc_url( $universal_logo_url ); ?>"
-										     alt="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>"
+											alt="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>"
 										>
 									</a>
 								<?php else : ?>

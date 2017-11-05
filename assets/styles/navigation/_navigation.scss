@@ -1,40 +1,244 @@
 @import '../mixins/mixins';
+@import '../variables/variables';
 
 .top-wrapper {
-  .header {
-    z-index: 99;
-    width: 100%;
-    background-color: transparent;
-    position: relative;
+  #header-top-bar {
+    background-color: #96c346;
+    color: #fff;
+    border-bottom: 1px solid #d2d3d4;
+    padding: 3px 0;
 
-    @include transition(none);
+    .header-top-bar_item {
+      display: inline-block;
+      padding: 0 5px;
+      margin: 4px 0;
+      line-height: 1.4em;
 
-    // Fixed header
-    &.affix {
+      //&__phone {} // .header-top-bar_item__phone
+      &__email {
+        a {
+          text-decoration: none;
+          color: #fff;
+        }
+      } // .header-top-bar_item__email
+      //&__custom-text {} // .header-top-bar_item__custom-text
+    } // .header-top-bar_item
+  } // #header-top-bar
+
+  #header-wrapper {
+    background-color: rgba(255, 255, 255, 1);
+    color: #747474;
+
+    .header {
+      z-index: 99;
       width: 100%;
-      left: 0;
-      position: fixed;
-      top: -30px;
+      background-color: rgba(255, 255, 255, 1);
+      position: relative;
 
-      @include translate(0, 30px);
-      @include transition(transform .35s cubic-bezier(.3, .1, .55, 1));
+      @include transition(none);
 
-      //background-color: rgba(red(#fff), green(#fff), blue(#fff), .95);
+      // Fixed header
+      &.affix {
+        background-color: rgba(255, 255, 255, .987);
+        box-shadow: rgba(0, 0, 0, .117647) 0 1px 3px;
+        width: 100%;
+        left: 0;
+        position: fixed;
+        top: -30px;
 
-      // If Admin Bar is enabled (user logged in) change Sticky Header position
-      body.admin-bar &.affix {
-        @media (min-width: 601px) {
-          top: 0;
+        @include translate(0, 30px);
+        @include transition(transform .35s cubic-bezier(.3, .1, .55, 1));
 
-          @include translate(0, 46px);
+        // If Admin Bar is enabled (user logged in) change Sticky Header position
+        body.admin-bar &.affix {
+          @media (min-width: 601px) {
+            top: 0;
+
+            @include translate(0, 46px);
+          }
+
+          @media (min-width: 768px) {
+            top: 0;
+
+            @include translate(0, 32px);
+          }
         }
+      } // .affix
 
-        @media (min-width: 768px) {
-          top: 0;
+      nav.navbar {
+        min-height: 86px;
+        border-bottom: 1px solid #d2d3d4;
+        padding-top: 0;
+        padding-bottom: 0;
 
-          @include translate(0, 32px);
-        }
-      }
+        #main-nav {
+          ul#universal-primary-menu {
+            .nav-link,
+            .dropdown-item {
+              color: #333;
+            }
+
+            li.nav-item {
+              .nav-link {
+                height: 86px;
+                line-height: 66px;
+                border-top: 3px solid transparent;
+
+                &:hover {
+                  border-color: #a0ce4e;
+                  color: #a0ce4e;
+                }
+              } // .nav-link
+            } // .nav-item
+
+            li.active {
+              a.active {
+                border-color: #a0ce4e;
+                color: #a0ce4e;
+              }
+            }
+
+            .dropdown-menu {
+              margin: 0;
+              border-radius: 0;
+              border-top: 3px solid #a0ce4e;
+
+              .dropdown-item {
+                &:hover {
+                  color: #a0ce4e;
+                }
+              } // .dropdown-item
+
+              .dropdown-item.active,
+              .dropdown-item:active {
+                color: #a0ce4e;
+                background-color: transparent;
+              }
+
+              .dropdown-toggle {
+                &::after {
+                  border: 0 !important;
+                }
+              } // .dropdown-toggle
+            } // .dropdown
+          } // #universal-primary-menu
+        } // #main-nav
+      } // .navbar
+    } // .header
+  } // #header-wrapper
+} // .top-wrapper
+
+@media (max-width: $screen-sm-max) {
+  nav.navbar {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0 !important;
+
+    .container {
+      width: 100%;
     }
-  }
+
+    .navbar-header {
+      padding-left: 16px;
+      padding-right: 16px;
+    } // .navbar-header
+
+    .navbar-toggler {
+      margin-top: 20px;
+    }
+
+    .navbar-brand {
+      margin-top: 30px;
+    }
+
+    #main-nav {
+      ul#universal-primary-menu {
+        li.nav-item {
+          .nav-link {
+            color: #333;
+            font-size: 13px;
+            height: 40px !important;
+            line-height: 25px !important;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #dadada !important;
+            border-top: 0 !important;
+
+            &:hover {
+              color: #333 !important;
+            }
+
+            span.menu-text {
+              padding-left: 16px;
+              padding-right: 16px;
+            } // .menu-text
+          } // .nav-link
+
+          &:first-child {
+            .nav-link {
+              border-bottom: 1px solid #dadada !important;
+              border-top: 1px solid #dadada !important;
+            }
+          }
+
+          &:last-child {
+            .nav-link {
+              border-bottom: 0 !important;
+            }
+          }
+        } // .nav-item
+
+        li.active {
+          a.active {
+            background-color: #f6f6f6;
+            border-top-color: transparent !important;
+          }
+        } // .active
+
+        li.dropdown {
+          .dropdown-menu {
+            padding-top: 0;
+            padding-bottom: 0;
+            border-radius: 0;
+            border: none !important;
+
+            .dropdown-item {
+              color: #333;
+              font-size: 13px;
+              padding-top: 0;
+              padding-bottom: 0;
+              background-color: #f9f9f9;
+              height: 40px !important;
+              line-height: 35px !important;
+              border-bottom: 1px solid #dadada !important;
+
+              &:first-child {
+                border-top: 1px solid #dadada !important;
+              }
+
+              &:last-child {
+                border-bottom: 0 !important;
+              }
+            } // .dropdown-item
+          } // .dropdown-menu
+
+          .dropdown-toggle {
+            &::after {
+              display: block;
+              float: right;
+              margin: .9em 1.2em 0 0;
+            }
+          } // .dropdown-toggle
+        } // .dropdown
+      } // #universal-primary-menu
+    } // #main-nav
+  } // .navbar
+}
+
+@media (max-width: $screen-xs-max) {
+  .navbar {
+    .container {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  } // .navbar
 }

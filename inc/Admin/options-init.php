@@ -99,22 +99,23 @@ Redux::setArgs( $opt_name, $args );
  *
  * 1. General Settings
  * 2. Header Settings
- * 3. Search Form Settings
- * 4. Footer Settings
- * 5. Footer Widgets Settings
- * 6. Footer Copyright Settings
- * 7. Blog Options
- * 8. Single Post Settings
- * 9. Team Options
- * 10. WooCommerce Options
- * 11. Page Pre-Loader Options
- * 12. 404 Page Options
- * 13. 404 Page Styling
- * 14. Coming Soon Page Options
- * 15. Under Construction Page Options
- * 16. Social Media Options
- * 17. Custom CSS
- * 18. Theme Information
+ * 3. Header Top Bar Settings
+ * 4. Search Form Settings
+ * 5. Footer Settings
+ * 6. Footer Widgets Settings
+ * 7. Footer Copyright Settings
+ * 8. Blog Options
+ * 9. Single Post Settings
+ * 10. Team Options
+ * 11. WooCommerce Options
+ * 12. Page Pre-Loader Options
+ * 13. 404 Page Options
+ * 14. 404 Page Styling
+ * 15. Coming Soon Page Options
+ * 16. Under Construction Page Options
+ * 17. Social Media Options
+ * 18. Custom CSS
+ * 19. Theme Information
  ********************************************************************************* */
 
 /*********************************************************************************
@@ -195,39 +196,136 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 3. Search Form Settings
+ * 3. Header Top Bar Settings
+ ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'         => 'universal__subsection-header-top-bar',
+	'title'      => esc_html__( 'Header Top Bar', 'universal' ),
+	'subsection' => true,
+	'fields'     => array(
+
+		array(
+			'id'       => 'universal__section-header-top-bar-content-start',
+			'type'     => 'section',
+			'title'    => __( 'Layout Options', 'universal' ),
+			'subtitle' => __( 'In section you can organize elements in the Header Top Bar.', 'universal' ),
+			'indent'   => true,
+		),
+
+		// Show or hide header top bar.
+		array(
+			'id'       => 'universal__opt-header-top-bar',
+			'title'    => esc_html__( 'Show Header Top Bar', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show Top Bar in the top of the Header.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => 1,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide phone number.
+		array(
+			'id'       => 'universal__opt-header-top-bar-phone',
+			'title'    => esc_html__( 'Display phone number', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to display phone number in header top bar.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => 1,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__opt-header-top-bar', '=', '1' ),
+		),
+
+		// Phone number.
+		array(
+			'id'       => 'universal__opt-header-top-bar-phone-number',
+			'title'    => esc_html__( 'Phone number', 'universal' ),
+			'subtitle' => esc_html__( 'Number to display next to the phone icon.', 'universal' ),
+			'type'     => 'text',
+			'default'  => esc_html__( '+1-325-148-910', 'universal' ),
+			'required' => array( 'universal__opt-header-top-bar-phone', '=', '1' ),
+		),
+
+		// Show or hide email address.
+		array(
+			'id'       => 'universal__opt-header-top-bar-email',
+			'title'    => esc_html__( 'Display email', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to display the email address in header top bar.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => 1,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__opt-header-top-bar', '=', '1' ),
+		),
+
+		// Email address.
+		array(
+			'id'       => 'universal__opt-header-top-bar-email-address',
+			'title'    => esc_html__( 'Email address', 'universal' ),
+			'subtitle' => esc_html__( 'Email address to display next to the envelope icon.', 'universal' ),
+			'type'     => 'text',
+			'default'  => esc_html__( 'example@email.com', 'universal' ),
+			'required' => array( 'universal__opt-header-top-bar-email', '=', '1' ),
+		),
+
+		// Switch for custom text.
+		array(
+			'id'       => 'universal__opt-header-top-bar-custom-text-switch',
+			'title'    => esc_html__( 'Display custom text', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to display custom icon in the top header bar.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => 0,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__opt-header-top-bar', '=', '1' ),
+		),
+
+		// Custom text in top header bar.
+		array(
+			'id'       => 'universal__opt-header-top-bar-custom-text',
+			'title'    => esc_html__( 'Custom text', 'universal' ),
+			'subtitle' => esc_html__( 'Enter your custom text or link.', 'universal' ),
+			'desc'     => esc_html__( 'HTML tags are allowed.', 'universal' ),
+			'type'     => 'text',
+			'default'  => esc_html__( 'Your custom text here', 'universal' ),
+			'required' => array( 'universal__opt-header-top-bar-custom-text-switch', '=', '1' ),
+		),
+	),
+) );
+
+/*********************************************************************************
+ * 4. Search Form Settings
  ******************************************************************************** */
 
 /*********************************************************************************
- * 4. Footer Settings
+ * 5. Footer Settings
  ******************************************************************************** */
 
 /*********************************************************************************
- * 5. Footer Widgets Settings
+ * 6. Footer Widgets Settings
  ******************************************************************************** */
 
 /*********************************************************************************
- * 6. Footer Copyright Settings
+ * 7. Footer Copyright Settings
  ******************************************************************************** */
 
 /*********************************************************************************
- * 7. Blog Options
+ * 8. Blog Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 8. Single Post Settings
+ * 9. Single Post Settings
  ******************************************************************************** */
 
 /*********************************************************************************
- * 9. Team Options
+ * 10. Team Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 10. WooCommerce Options
+ * 11. WooCommerce Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 11. Page Pre-Loader Options
+ * 12. Page Pre-Loader Options
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'title'  => esc_html__( 'Page Pre-Loader', 'universal' ),
@@ -320,27 +418,27 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 12. 404 Page Options
+ * 13. 404 Page Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 13. 404 Page Styling
+ * 14. 404 Page Styling
  ******************************************************************************** */
 
 /*********************************************************************************
- * 14. Coming Soon Page Options
+ * 15. Coming Soon Page Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 15. Under Construction Page Options
+ * 16. Under Construction Page Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 16. Social Media Options
+ * 17. Social Media Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 17. Custom CSS
+ * 18. Custom CSS
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'     => 'universal__section-custom-css',
@@ -363,7 +461,7 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 18. Theme Information
+ * 19. Theme Information
  ******************************************************************************** */
 if ( file_exists( get_template_directory() . '/readme.txt' ) ) {
 	Redux::setSection( $opt_name, array(

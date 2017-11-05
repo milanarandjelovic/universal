@@ -146,7 +146,13 @@ class MenuWalker extends \Walker_Nav_Menu {
 		if ( in_array( 'menu-item-has-children', $classes, true ) ) {
 			$class_names .= ' dropdown';
 		}
+
 		if ( in_array( 'current-menu-item', $classes, true ) ) {
+			$class_names .= ' active';
+		}
+
+		// Add active call on li element.
+		if ( is_home() ) {
 			$class_names .= ' active';
 		}
 
@@ -165,7 +171,7 @@ class MenuWalker extends \Walker_Nav_Menu {
 		 */
 		$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
 		$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-		// New
+
 		if ( 0 === $depth ) {
 			$output .= $indent . '<li' . $id . $class_names . '>';
 		}
@@ -227,7 +233,9 @@ class MenuWalker extends \Walker_Nav_Menu {
 
 		$item_output .= '<a' . $attributes . '>';
 		/** This filter is documented in wp-includes/post-template.php */
+		$item_output .= '<span class="menu-text">';
 		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+		$item_output .= '</span>';
 		$item_output .= '</a>';
 		$item_output .= $args->after;
 
