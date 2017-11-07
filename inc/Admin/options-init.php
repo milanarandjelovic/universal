@@ -156,6 +156,7 @@ Redux::setSection( $opt_name, array(
 				'width' => 100,
 			),
 		),
+
 		// Logo width on mobile.
 		array(
 			'id'             => 'universal__opt-custom-logo-width-mobile',
@@ -200,15 +201,15 @@ Redux::setSection( $opt_name, array(
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'         => 'universal__subsection-header-top-bar',
-	'title'      => esc_html__( 'Header Top Bar', 'universal' ),
+	'title'      => esc_html__( 'Top Bar', 'universal' ),
 	'subsection' => true,
 	'fields'     => array(
 
 		array(
 			'id'       => 'universal__section-header-top-bar-content-start',
 			'type'     => 'section',
-			'title'    => __( 'Layout Options', 'universal' ),
-			'subtitle' => __( 'In section you can organize elements in the Header Top Bar.', 'universal' ),
+			'title'    => esc_html__( 'Layout Options', 'universal' ),
+			'subtitle' => esc_html__( 'In section you can organize elements in the Header Top Bar.', 'universal' ),
 			'indent'   => true,
 		),
 
@@ -299,14 +300,139 @@ Redux::setSection( $opt_name, array(
 /*********************************************************************************
  * 5. Footer Settings
  ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'     => 'universal__section-footer',
+	'title'  => esc_html__( 'Footer', 'universal' ),
+	'icon'   => 'el el-arrow-down',
+	'fields' => array(
+
+		// Show or hide social links in footer.
+		array(
+			'id'       => 'universal__opt-footer-social-in-footer',
+			'title'    => esc_html__( 'Show Social Media Links', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show social media links.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => 1,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+	),
+) );
 
 /*********************************************************************************
  * 6. Footer Widgets Settings
  ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'         => 'universal__subsection-footer-widgets',
+	'title'      => esc_html__( 'Widgets', 'universal' ),
+	'subsection' => true,
+	'fields'     => array(
+
+		// Show or hide footer widgets.
+		array(
+			'id'       => 'universal__opt-footer-widgets',
+			'title'    => esc_html__( 'Show Footer Widgets', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show Footer Widgets.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => 1,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Footer widgets layout.
+		array(
+			'id'       => 'universal__opt-footer-widgets-layout',
+			'title'    => esc_html__( 'Footer Widgets Layout', 'universal' ),
+			'subtitle' => esc_html__( 'Select footer widgets layout.', 'universal' ),
+			'type'     => 'image_select',
+			'compiler' => true,
+			'default'  => '1',
+			'options'  => array(
+				'1' => array(
+					'alt' => esc_html__( '4 equals column', 'universal' ),
+					'img' => UNIVERSAL_ADMIN_IMAGES_URI . 'footer/footer-widgets-4-col-equal.png',
+				),
+				'2' => array(
+					'alt' => esc_html__( '3 equals column', 'universal' ),
+					'img' => UNIVERSAL_ADMIN_IMAGES_URI . 'footer/footer-widgets-3-col-equal.png',
+				),
+				'3' => array(
+					'alt' => esc_html__( '2 column left wider', 'universal' ),
+					'img' => UNIVERSAL_ADMIN_IMAGES_URI . 'footer/footer-widgets-2-col-left-wider.png',
+				),
+				'4' => array(
+					'alt' => esc_html__( '2 column right wider', 'universal' ),
+					'img' => UNIVERSAL_ADMIN_IMAGES_URI . 'footer/footer-widgets-2-col-right-wider.png',
+				),
+			),
+			'required' => array( 'universal__opt-footer-widgets', '=', '1' ),
+		),
+	),
+) );
 
 /*********************************************************************************
  * 7. Footer Copyright Settings
  ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'         => 'universal__subsection-footer-copyright',
+	'title'      => esc_html__( 'Copyright', 'universal' ),
+	'subsection' => true,
+	'fields'     => array(
+
+		// Show or hide footer copyright.
+		array(
+			'id'       => 'universal__opt-footer-copyright',
+			'title'    => esc_html__( 'Show Footer Copyright', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show footer copyright.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => 1,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Columns number in footer copyright.
+		array(
+			'id'       => 'universal__opt-footer-copyright-col-num',
+			'title'    => esc_html__( 'Copyright columns number', 'universal' ),
+			'subtitle' => esc_html__( 'Select number of column for copyright.', 'universal' ),
+			'type'     => 'select',
+			'required' => array( 'universal__opt-footer-copyright', '=', 1 ),
+			'default'  => '3',
+			'options'  => array(
+				'1' => esc_html__( '1 column', 'universal' ),
+				'2' => esc_html__( '2 columns', 'universal' ),
+				'3' => esc_html__( '3 columns', 'universal' ),
+			),
+		),
+
+		// Copyright text column 1.
+		array(
+			'id'       => 'universal__opt-footer-copyright-col-1-text',
+			'title'    => esc_html__( 'Copyright text column 1', 'universal' ),
+			'type'     => 'textarea',
+			'default'  => '&copy; Copyright 2016 - ' . date( 'Y' ),
+			'required' => array( 'universal__opt-footer-copyright', '=', 1 ),
+		),
+
+		// Copyright text column 2.
+		array(
+			'id'       => 'universal__opt-footer-copyright-col-2-text',
+			'title'    => esc_html__( 'Copyright text column 2', 'universal' ),
+			'type'     => 'textarea',
+			'default'  => 'Universal Theme by <a href="https://github.com/milanarandjelovic">Milan Arandjelovic</a>',
+			'required' => array( 'universal__opt-footer-copyright', '=', 1 ),
+		),
+
+		// Copyright text column 3.
+		array(
+			'id'       => 'universal__opt-footer-copyright-col-3-text',
+			'title'    => esc_html__( 'Copyright text column 3', 'universal' ),
+			'type'     => 'textarea',
+			'default'  => 'All Rights Reserved',
+			'required' => array( 'universal__opt-footer-copyright', '=', 1 ),
+		),
+	),
+) );
 
 /*********************************************************************************
  * 8. Blog Options
@@ -436,6 +562,58 @@ Redux::setSection( $opt_name, array(
 /*********************************************************************************
  * 17. Social Media Options
  ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'     => 'universal__section-footer-social-media',
+	'title'  => esc_html__( 'Social Media', 'universal' ),
+	'icon'   => 'el el-globe',
+	'fields' => array(
+
+		// Social media links.
+		array(
+			'id'       => 'universal__opt-social-media',
+			'title'    => esc_html__( 'Social Media Links', 'universal' ),
+			'subtitle' => esc_html__( 'Add your social links.', 'universal' ),
+			'desc'     => esc_html__( 'Leave empty field if you don\'t want to display particular social media links.' ),
+			'type'     => 'sortable',
+			'label'    => true,
+			'mode'     => 'text',
+			'options'  => array(
+				esc_html__( 'Facebook URL', 'universal' )  => '',
+				esc_html__( 'Google+ URL', 'universal' )   => '',
+				esc_html__( 'Twitter URL', 'universal' )   => '',
+				esc_html__( 'Youtube URL', 'universal' )   => '',
+				esc_html__( 'LinkedIn URL', 'universal' )  => '',
+				esc_html__( 'Github URL', 'universal' )    => '',
+				esc_html__( 'Bitbucket URL', 'universal' ) => '',
+				esc_html__( 'Instagram URL', 'universal' ) => '',
+				esc_html__( 'Pinterest URL', 'universal' ) => '',
+				esc_html__( 'VK URL', 'universal' )        => '',
+				esc_html__( 'Tumblr URL', 'universal' )    => '',
+				esc_html__( 'Vimeo URL', 'universal' )     => '',
+				esc_html__( 'Dribbble URL', 'universal' )  => '',
+				esc_html__( 'Flickr URL', 'universal' )    => '',
+				esc_html__( 'Yelp URL', 'universal' )      => '',
+			),
+			'default'  => array(
+				esc_html__( 'Facebook URL', 'universal' )  => '#',
+				esc_html__( 'Google+ URL', 'universal' )   => '#',
+				esc_html__( 'Twitter URL', 'universal' )   => '#',
+				esc_html__( 'Youtube URL', 'universal' )   => '#',
+				esc_html__( 'Instagram URL', 'universal' ) => '',
+				esc_html__( 'Github URL', 'universal' )    => '#',
+				esc_html__( 'Bitbucket URL', 'universal' ) => '',
+				esc_html__( 'LinkedIn URL', 'universal' )  => '',
+				esc_html__( 'Pinterest URL', 'universal' ) => '',
+				esc_html__( 'VK URL', 'universal' )        => '',
+				esc_html__( 'Tumblr URL', 'universal' )    => '',
+				esc_html__( 'Vimeo URL', 'universal' )     => '',
+				esc_html__( 'Dribbble URL', 'universal' )  => '',
+				esc_html__( 'Flickr URL', 'universal' )    => '',
+				esc_html__( 'Yelp URL', 'universal' )      => '',
+			),
+		),
+	),
+) );
 
 /*********************************************************************************
  * 18. Custom CSS
