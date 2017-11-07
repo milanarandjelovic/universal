@@ -36,7 +36,9 @@ class Sidebar {
 	 * @since  1.0.0
 	 */
 	public function universal_widgets_init() {
-		// Main sidebar.
+		/*********************************************************************************
+		 * Main widget area.
+		 ******************************************************************************** */
 		register_sidebar( array(
 			'name'          => esc_html__( 'Sidebar', 'universal' ),
 			'id'            => 'sidebar-1',
@@ -47,6 +49,21 @@ class Sidebar {
 			'after_title'   => '</h2>',
 		) );
 
-		// Register other sidebars here.
+		/*********************************************************************************
+		 * Footer widget areas.
+		 ******************************************************************************** */
+		$footer_widget_columns = 4;
+
+		for ( $i = 1; $i <= $footer_widget_columns; $i ++ ) {
+			register_sidebar( array(
+				'name'          => sprintf( 'Footer Widget %s', $i ),
+				'id'            => 'universal-footer-sidebar-' . $i,
+				'description'   => sprintf( 'Add footer widgets %s here.', $i ),
+				'before_widget' => '<section id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h2 class="widget-title">',
+				'after_title'   => '</h2>',
+			) );
+		}
 	}
 }
