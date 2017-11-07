@@ -18,29 +18,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</div> <!-- /#content -->
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'universal' ) ); ?>">
-				<?php
-				printf(
-					/* translators: %s: CMS name, i.e. WordPress. */
-					esc_html__( 'Proudly powered by %s', 'universal' ),
-					'WordPress'
-				);
-				?>
-			</a>
-			<span class="sep"> | </span>
-			<?php
-				printf(
-					/* translators: 1: Theme name, 2: Theme author. */
-					esc_html__(
-						'Theme: %1$s by %2$s.', 'universal'
-					),
-					'universal', '<a href="https://github.com/milanarandjelovic">Milan Arandjelovic</a>'
-				);
-			?>
-		</div> <!-- /.site-info -->
-	</footer> <!-- /#colophon -->
+	<footer class="site-footer">
+
+		<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
+
+		<?php get_template_part( 'template-parts/footer/footer-social-links' ); ?>
+
+		<?php get_template_part( 'template-parts/footer/footer-copyright' ); ?>
+
+	</footer> <!-- /.site-footer -->
+
 </div> <!-- /#page -->
 
 <?php wp_footer(); ?>
