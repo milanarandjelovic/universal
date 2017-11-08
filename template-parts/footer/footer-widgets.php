@@ -53,7 +53,7 @@ switch ( $footer_widgets_layout ) {
 					<?php dynamic_sidebar( 'universal-footer-sidebar-2' ); ?>
 				</div> <!-- /.<?php echo esc_attr( $footer_widget_2_class ); ?> -->
 
-				<?php if ( '2' === $footer_widgets_layout ) : ?>
+				<?php if ( '1' === $footer_widgets_layout || '2' === $footer_widgets_layout ) : ?>
 					<div class="<?php echo esc_attr( $footer_widget_3_class ); ?>">
 						<?php dynamic_sidebar( 'universal-footer-sidebar-3' ); ?>
 					</div> <!-- /.<?php echo esc_attr( $footer_widget_3_class ); ?> -->

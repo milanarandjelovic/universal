@@ -1,0 +1,116 @@
+@import '../variables/variables';
+@import '../mixins/mixins';
+
+.footer {
+  &__widget {
+    background-color: #363839;
+    padding: 50px 0;
+
+    .widget {
+      color: #ccc;
+
+      .widget-title {
+        font-size: 13px;
+        text-transform: uppercase;
+        color: #ccc;
+      }
+
+      ul {
+        padding: 0;
+
+        li {
+          list-style: none;
+        }
+      }
+
+      a {
+        color: #999;
+        text-decoration: none;
+
+        &:hover {
+          color: #a0ce4e;
+        }
+      }
+    }
+
+    @media (max-width: $screen-md-min) {
+      text-align: center;
+    }
+  } // .footer__widget
+
+  &__social {
+    background-color: #363839;
+
+    &-links {
+      list-style: none;
+      padding: 24px 0;
+
+      > li {
+        display: inline-block;
+
+        @media (max-width: $screen-xs-min) {
+          padding: 10px;
+        }
+
+        @media (max-width: $screen-sm-min) {
+          padding: 10px;
+        }
+
+        @media (min-width: $screen-sm-min) {
+          padding: 10px;
+        }
+
+        @media (min-width: $screen-md-min) {
+          padding: 15px;
+        }
+
+        > a {
+          display: block;
+          width: 40px;
+          height: 40px;
+          text-decoration: none;
+          font-size: 14px;
+          line-height: 38px;
+          color: #999;
+          border: 1px solid #999;
+          border-radius: 50%;
+
+          @include transition(all .25s cubic-bezier(.3, .1, .55, 1));
+
+          &:hover {
+            color: #fff;
+            background-color: #a0ce4e;
+            border-color: #a0ce4e;
+          }
+
+          > .fa {
+            display: block;
+            text-align: center;
+            line-height: inherit;
+          }
+        }
+      }
+    } // .footer__social-links
+  } // .footer__social
+
+  &__copyright {
+    background-color: #333;
+    color: #ccc;
+    font-size: 12px;
+    line-height: 28px;
+    padding: 10px 0;
+
+    a {
+      color: #999;
+      text-decoration: none;
+
+      &:hover {
+        color: #a0ce4e;
+      }
+    }
+
+    @media (max-width: $screen-md-min) {
+      text-align: center;
+    }
+  } // .footer__copyright
+} // .footer

@@ -18,15 +18,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</div> <!-- /#content -->
 
-	<footer class="site-footer">
+	<footer class="footer">
 
-		<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
+			<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
 
-		<?php get_template_part( 'template-parts/footer/footer-social-links' ); ?>
+			<?php get_template_part( 'template-parts/footer/footer-social-links' ); ?>
 
-		<?php get_template_part( 'template-parts/footer/footer-copyright' ); ?>
+			<?php get_template_part( 'template-parts/footer/footer-copyright' ); ?>
 
-	</footer> <!-- /.site-footer -->
+	</footer> <!-- /.footer -->
 
 </div> <!-- /#page -->
 
