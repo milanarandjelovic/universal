@@ -3,16 +3,16 @@
 
 .footer {
   &__widget {
-    background-color: #363839;
+    background-color: $footer-widget-bg-color;
     padding: 50px 0;
 
     .widget {
-      color: #ccc;
+      color: $footer-widget-color;
 
       .widget-title {
         font-size: 13px;
         text-transform: uppercase;
-        color: #ccc;
+        color: $footer-widget-color;
       }
 
       ul {
@@ -24,11 +24,11 @@
       }
 
       a {
-        color: #999;
+        color: $footer-widget-link-color;
         text-decoration: none;
 
         &:hover {
-          color: #a0ce4e;
+          color: $footer-widget-link-hover-color;
         }
       }
     }
@@ -39,7 +39,7 @@
   } // .footer__widget
 
   &__social {
-    background-color: #363839;
+    background-color: $footer-widget-bg-color;
 
     &-links {
       list-style: none;
@@ -71,16 +71,16 @@
           text-decoration: none;
           font-size: 14px;
           line-height: 38px;
-          color: #999;
-          border: 1px solid #999;
+          color: $footer-widget-link-color;
+          border: 1px solid $footer-widget-link-color;
           border-radius: 50%;
 
           @include transition(all .25s cubic-bezier(.3, .1, .55, 1));
 
           &:hover {
-            color: #fff;
-            background-color: #a0ce4e;
-            border-color: #a0ce4e;
+            color: $white;
+            background-color: $footer-widget-link-hover-color;
+            border-color: $footer-widget-link-hover-color;
           }
 
           > .fa {
@@ -94,18 +94,18 @@
   } // .footer__social
 
   &__copyright {
-    background-color: #333;
-    color: #ccc;
+    background-color: $footer-copyright-bg-color;
+    color: $footer-widget-color;
     font-size: 12px;
     line-height: 28px;
     padding: 10px 0;
 
     a {
-      color: #999;
+      color: $footer-widget-link-color;
       text-decoration: none;
 
       &:hover {
-        color: #a0ce4e;
+        color: $footer-widget-link-hover-color;
       }
     }
 

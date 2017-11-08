@@ -3,9 +3,9 @@
 
 .top-wrapper {
   #header-top-bar {
-    background-color: #96c346;
-    color: #fff;
-    border-bottom: 1px solid #d2d3d4;
+    background-color: $header-top-bar-bg-color;
+    color: $header-top-bar-color;
+    border-bottom: 1px solid $header-border-bottom-color;
     padding: 3px 0;
 
     .header-top-bar_item {
@@ -14,25 +14,35 @@
       margin: 4px 0;
       line-height: 1.4em;
 
-      //&__phone {} // .header-top-bar_item__phone
+      &__phone {
+        color: $header-top-bar-color;
+      } // .header-top-bar_item__phone
+
       &__email {
         a {
+          color: $navigation-link-color;
           text-decoration: none;
-          color: #fff;
+
+          &:hover {
+            color: $navigation-link-hover-color;
+          }
         }
       } // .header-top-bar_item__email
-      //&__custom-text {} // .header-top-bar_item__custom-text
+
+      &__custom-text {
+        color: $header-top-bar-color;
+      } // .header-top-bar_item__custom-text
     } // .header-top-bar_item
   } // #header-top-bar
 
   #header-wrapper {
-    background-color: rgba(255, 255, 255, 1);
-    color: #747474;
+    background-color: $white;
+    color: $header-wrapper-color;
 
     .header {
       z-index: 99;
       width: 100%;
-      background-color: rgba(255, 255, 255, 1);
+      background-color: $white;
       position: relative;
 
       @include transition(none);
@@ -67,7 +77,7 @@
 
       nav.navbar {
         min-height: 86px;
-        border-bottom: 1px solid #d2d3d4;
+        border-bottom: 1px solid $header-border-bottom-color;
         padding-top: 0;
         padding-bottom: 0;
 
@@ -75,7 +85,7 @@
           ul#universal-primary-menu {
             .nav-link,
             .dropdown-item {
-              color: #333;
+              color: $dropdown-item-color;
             }
 
             li.nav-item {
@@ -85,33 +95,33 @@
                 border-top: 3px solid transparent;
 
                 &:hover {
-                  border-color: #a0ce4e;
-                  color: #a0ce4e;
+                  border-color: $navigation-link-hover-color;
+                  color: $navigation-link-hover-color;
                 }
               } // .nav-link
             } // .nav-item
 
             li.active {
               a.active {
-                border-color: #a0ce4e;
-                color: #a0ce4e;
+                border-color: $navigation-link-hover-color;
+                color: $navigation-link-hover-color;
               }
             }
 
             .dropdown-menu {
               margin: 0;
               border-radius: 0;
-              border-top: 3px solid #a0ce4e;
+              border-top: 3px solid $navigation-link-hover-color;
 
               .dropdown-item {
                 &:hover {
-                  color: #a0ce4e;
+                  color: $navigation-link-hover-color;
                 }
               } // .dropdown-item
 
               .dropdown-item.active,
               .dropdown-item:active {
-                color: #a0ce4e;
+                color: $navigation-link-hover-color;
                 background-color: transparent;
               }
 
@@ -160,7 +170,7 @@
             height: 40px !important;
             line-height: 25px !important;
             background-color: #f9f9f9;
-            border-bottom: 1px solid #dadada !important;
+            border-bottom: 1px solid $navigation-border-color !important;
             border-top: 0 !important;
 
             &:hover {
@@ -175,8 +185,8 @@
 
           &:first-child {
             .nav-link {
-              border-bottom: 1px solid #dadada !important;
-              border-top: 1px solid #dadada !important;
+              border-bottom: 1px solid $navigation-border-color !important;
+              border-top: 1px solid $navigation-border-color !important;
             }
           }
 
@@ -202,17 +212,17 @@
             border: none !important;
 
             .dropdown-item {
-              color: #333;
+              color: $dropdown-item-color;
               font-size: 13px;
               padding-top: 0;
               padding-bottom: 0;
-              background-color: #f9f9f9;
+              background-color: $dropdown-item-bg-color;
               height: 40px !important;
               line-height: 35px !important;
-              border-bottom: 1px solid #dadada !important;
+              border-bottom: 1px solid $navigation-border-color !important;
 
               &:first-child {
-                border-top: 1px solid #dadada !important;
+                border-top: 1px solid $navigation-border-color !important;
               }
 
               &:last-child {
