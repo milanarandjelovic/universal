@@ -37,9 +37,11 @@ $args = array(
 	'intro_text'            => esc_html__( 'Universal Theme Options', 'universal' ),
 	'admin_bar'             => true,
 	'menu_type'             => 'menu',
+	'menu_icon'             => UNIVERSAL_ADMIN_IMAGES_URI . 'logo/universal-logo.png',
 	'menu_title'            => esc_html__( 'Universal', 'universal' ),
 	'allow_sub_menu'        => true,
 	'page_parent_post_type' => 'your_post_type',
+	'page_priority'         => 1,
 	'customizer'            => true,
 	'default_mark'          => '*',
 	'class'                 => 'universal',
@@ -105,17 +107,18 @@ Redux::setArgs( $opt_name, $args );
  * 6. Footer Widgets Settings
  * 7. Footer Copyright Settings
  * 8. Blog Options
- * 9. Single Post Settings
- * 10. Team Options
- * 11. WooCommerce Options
- * 12. Page Pre-Loader Options
- * 13. 404 Page Options
- * 14. 404 Page Styling
- * 15. Coming Soon Page Options
- * 16. Under Construction Page Options
- * 17. Social Media Options
- * 18. Custom CSS
- * 19. Theme Information
+ * 9. Blog Styling
+ * 10. Single Post Settings
+ * 11. Team Options
+ * 12. WooCommerce Options
+ * 13. Page Pre-Loader Options
+ * 14. 404 Page Options
+ * 15. 404 Page Styling
+ * 16. Coming Soon Page Options
+ * 17. Under Construction Page Options
+ * 18. Social Media Options
+ * 19. Custom CSS
+ * 20. Theme Information
  ********************************************************************************* */
 
 /*********************************************************************************
@@ -437,21 +440,499 @@ Redux::setSection( $opt_name, array(
 /*********************************************************************************
  * 8. Blog Options
  ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'     => 'universal__section-blog',
+	'title'  => esc_html__( 'Blog', 'universal' ),
+	'icon'   => 'el el-list',
+	'fields' => array(
+
+		// Blog title.
+		array(
+			'id'          => 'universal__opt-blog-title',
+			'title'       => esc_html__( 'Blog Page Title', 'universal' ),
+			'subtitle'    => esc_html__( 'This title used in blog page.', 'universal' ),
+			'description' => esc_html__( 'Enter your blog title used on blog page.', 'universal' ),
+			'type'        => 'text',
+			'default'     => esc_html__( 'Blog', 'universal' ),
+		),
+
+		// Blog sidebar position.
+		array(
+			'id'          => 'universal__opt-blog-sidebar',
+			'title'       => esc_html__( 'Sidebar Position', 'universal' ),
+			'subtitle'    => esc_html__( 'Blog sidebar position.', 'universal' ),
+			'description' => esc_html__( 'Select sidebar position for blog.', 'universal' ),
+			'type'        => 'image_select',
+			'compiler'    => true,
+			'default'     => '1',
+			'options'     => array(
+				'1' => array(
+					'alt' => 'Right sidebar',
+					'img' => UNIVERSAL_ADMIN_IMAGES_URI . '2cr.png',
+				),
+				'2' => array(
+					'alt' => 'Left sidebar',
+					'img' => UNIVERSAL_ADMIN_IMAGES_URI . '2cl.png',
+				),
+			),
+		),
+
+		// Sidebar width.
+		array(
+			'id'       => 'universal__opt-blog-sidebar-width',
+			'title'    => esc_html__( 'Sidebar Width', 'universal' ),
+			'subtitle' => esc_html__( 'Select the width for sidebar.', 'universal' ),
+			'type'     => 'select',
+			'default'  => '1',
+			'options'  => array(
+				'1' => '25%',
+				'2' => '33%',
+			),
+		),
+
+		// Read more text.
+		array(
+			'id'       => 'universal__opt-blog-read-more-text',
+			'title'    => esc_html__( 'Read More Text', 'universal' ),
+			'desc'     => __( 'Enter text for \'Read More\' post. Example <em>\'Read More\'</em>.', 'universal' ),
+			'type'     => 'text',
+			'validate' => 'not_empty',
+			'msg'      => esc_html__( 'Fill read more button text', 'universal' ),
+			'default'  => esc_html__( 'Read More', 'universal' ),
+		),
+	),
+) );
 
 /*********************************************************************************
- * 9. Single Post Settings
+ * 9. Blog Styling
+ ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'         => 'universal__subsection-blog-styling',
+	'title'      => esc_html__( 'Styling', 'universal' ),
+	'subsection' => true,
+	'fields'     => array(
+
+		// Enable or disable advanced post styling.
+		array(
+			'id'       => 'universal__option-blog-styling',
+			'title'    => esc_html__( 'Enable advanced post styling', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to change appearance for post.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '0',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Custom color for link regular, hover and active.
+		array(
+			'id'       => 'universal__option-blog-footer-link-color',
+			'title'    => esc_html__( 'Link Color', 'universal' ),
+			'subtitle' => esc_html__( 'Color option for link.', 'universal' ),
+			'type'     => 'link_color',
+			'default'  => array(
+				'regular' => '#999',
+				'hover'   => '#a0ce4e',
+				'active'  => '#a0ce4e',
+			),
+			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+		),
+
+		// Custom background color for post.
+		array(
+			'id'                    => 'universal__option-blog-styling-post-bg',
+			'title'                 => esc_html__( 'Post Background Color', 'universal' ),
+			'subtitle'              => esc_html__( 'Background color for post.', 'universal' ),
+			'type'                  => 'background',
+			'output'                => array( 'article.post' ),
+			'preview'               => false,
+			'background-size'       => false,
+			'background-repeat'     => false,
+			'background-attachment' => false,
+			'background-position'   => false,
+			'background-image'      => false,
+			'default'               => array(
+				'background-color' => '#f8f9fa',
+			),
+			'required'              => array( 'universal__option-blog-styling', '=', '1' ),
+		),
+
+		// Custom color for blog border.
+		array(
+			'id'       => 'universal__option-blog-styling-post-border',
+			'title'    => esc_html__( 'Post Border', 'universal' ),
+			'subtitle' => esc_html__( 'Border options for post.', 'universal' ),
+			'type'     => 'border',
+			'output'   => array( 'article.post' ),
+			'default'  => array(
+				'border-color'  => '#d2d2dd',
+				'border-style'  => 'solid',
+				'border-top'    => '1px',
+				'border-left'   => '1px',
+				'border-right'  => '1px',
+				'border-bottom' => '1px',
+			),
+			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+		),
+
+		// Custom color for blog title border.
+		array(
+			'id'       => 'universal__option-blog-styling-post--title-border',
+			'title'    => esc_html__( 'Post Title Border', 'universal' ),
+			'subtitle' => esc_html__( 'Border title options for post.', 'universal' ),
+			'desc'     => esc_html__( 'Options for post title pn blog page. Border bottom is set by default 1px.', 'universal' ),
+			'type'     => 'border',
+			'output'   => array( '.entry-header .title-bordered' ),
+			'all'      => false,
+			'top'      => false,
+			'left'     => false,
+			'right'    => false,
+			'default'  => array(
+				'border-color'  => '#d9d9d9',
+				'border-style'  => 'solid',
+				'border-bottom' => '1px',
+			),
+			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+		),
+
+		// Show or hide post date.
+		array(
+			'id'       => 'universal__option-blog-post-date',
+			'title'    => esc_html__( 'Show Post Date', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show or hide post date.', 'universal' ),
+			'desc'     => esc_html__( 'Post date disabled by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+		),
+
+		// Custom background color for post date.
+		array(
+			'id'                    => 'universal__option-blog-post-date-bg-color',
+			'title'                 => esc_html__( 'Post Date Background Color', 'universal' ),
+			'subtitle'              => esc_html__( 'Background color for post date.', 'universal' ),
+			'type'                  => 'background',
+			'output'                => array( 'article.post .entry-date' ),
+			'preview'               => false,
+			'background-size'       => false,
+			'background-repeat'     => false,
+			'background-attachment' => false,
+			'background-position'   => false,
+			'background-image'      => false,
+			'default'               => array(
+				'background-color' => '#a0ce4e',
+			),
+			'required'              => array(
+				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__option-blog-post-date', '=', '1' ),
+			),
+		),
+
+		// Custom color for post date.
+		array(
+			'id'          => 'universal__option-blog-post-date-color',
+			'title'       => esc_html__( 'Post Date Text Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Color for post date (day and month).', 'universal' ),
+			'type'        => 'color',
+			'output'      => array( 'article.post .entry-date' ),
+			'default'     => '#fff',
+			'transparent' => false,
+			'required'    => array(
+				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__option-blog-post-date', '=', '1' ),
+			),
+		),
+
+		// Custom color excerpt.
+		array(
+			'id'          => 'universal__option-blog-post-excerpt-color',
+			'title'       => esc_html__( 'Excerpt Text Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Color for excerpt.', 'universal' ),
+			'type'        => 'color',
+			'output'      => array( 'article.post .entry-body .entry-excerpt' ),
+			'default'     => '#656269',
+			'transparent' => false,
+			'required'    => array( 'universal__option-blog-styling', '=', '1' ),
+		),
+
+		// Show or hide post footer.
+		array(
+			'id'       => 'universal__option-blog-footer',
+			'title'    => esc_html__( 'Show Post Footer', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show post footer.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+		),
+
+		// Custom background color for post footer.
+		array(
+			'id'                    => 'universal__option-blog-footer-bg',
+			'title'                 => esc_html__( 'Post Footer Background Color', 'universal' ),
+			'subtitle'              => esc_html__( 'Background color for post footer.', 'universal' ),
+			'type'                  => 'background',
+			'output'                => array( 'article.post .entry-footer' ),
+			'preview'               => false,
+			'background-size'       => false,
+			'background-repeat'     => false,
+			'background-attachment' => false,
+			'background-position'   => false,
+			'background-image'      => false,
+			'default'               => array(
+				'background-color' => '#f1f2f4',
+			),
+			'required'              => array(
+				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__option-blog-footer', '=', '1' ),
+			),
+		),
+
+		// Custom color for post footer.
+		array(
+			'id'          => 'universal__option-blog-footer-color',
+			'title'       => esc_html__( 'Post Footer Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Color for post footer.', 'universal' ),
+			'type'        => 'color',
+			'transparent' => false,
+			'default'     => '#656269',
+			'required'    => array(
+				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__option-blog-footer', '=', '1' ),
+			),
+		),
+
+		// Custom top border color for post footer.
+		array(
+			'id'       => 'universal__option-blog-footer-border-color',
+			'title'    => esc_html__( 'Post Footer Top Border Color', 'universal' ),
+			'subtitle' => esc_html__( 'Top border options for post footer.', 'universal' ),
+			'desc'     => esc_html__( 'Top border is set by default 1px.', 'universal' ),
+			'type'     => 'border',
+			'all'      => false,
+			'bottom'   => false,
+			'left'     => false,
+			'right'    => false,
+			'output'   => array( 'article.post .entry-footer' ),
+			'default'  => array(
+				'border-color' => '#d2d2dd',
+				'border-style' => 'dashed',
+				'border-top'   => '1px',
+			),
+			'required' => array(
+				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__option-blog-footer', '=', '1' ),
+			),
+		),
+
+		// Show or hide author in post footer.
+		array(
+			'id'       => 'universal__option-blog-footer-author',
+			'title'    => esc_html__( 'Show Author Name?', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show author name.', 'universal' ),
+			'desc'     => __( '<em>\'Posted by author\'</em> text displayed by default in post footer.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array(
+				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__option-blog-footer', '=', '1' ),
+			),
+		),
+
+		// Custom color for read more link.
+		array(
+			'id'       => 'universal__option-blog-footer-read-more',
+			'title'    => esc_html__( 'Read More Color', 'universal' ),
+			'subtitle' => esc_html__( 'Color option for read more link.', 'universal' ),
+			'type'     => 'link_color',
+			'default'  => array(
+				'regular' => '#999',
+				'hover'   => '#a0ce4e',
+				'active'  => '#a0ce4e',
+			),
+			'required' => array(
+				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__option-blog-footer', '=', '1' ),
+			),
+		),
+
+		// Show or hide post footer.
+		array(
+			'id'       => 'universal__option-blog-categories',
+			'title'    => esc_html__( 'Show Post Categories?', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show post categories.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+		),
+
+		// Custom background color for categories.
+		array(
+			'id'                    => 'universal__option-blog-categories-bg-color',
+			'title'                 => esc_html__( 'Background Color For Post Categories', 'universal' ),
+			'type'                  => 'background',
+			'preview'               => false,
+			'background-size'       => false,
+			'background-repeat'     => false,
+			'background-attachment' => false,
+			'background-position'   => false,
+			'background-image'      => false,
+			'default'               => array(
+				'background-color' => '#a0ce4e',
+			),
+			'required'              => array(
+				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__option-blog-categories', '=', '1' ),
+			),
+		),
+
+		// Custom color for categories.
+		array(
+			'id'          => 'universal__option-blog-categories-color',
+			'title'       => esc_html__( 'Color For Post Categories', 'universal' ),
+			'subtitle'    => esc_html__( 'Link color for post categories', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#fff',
+			'transparent' => false,
+			'required'    => array(
+				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__option-blog-categories', '=', '1' ),
+			),
+		),
+	),
+) );
+
+/*********************************************************************************
+ * 10. Single Post Settings
+ ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'         => 'universal__subsection-blog-sp',
+	'title'      => esc_html__( 'Single Post', 'universal' ),
+	'subsection' => true,
+	'fields'     => array(
+
+		// Show or hide single post title.
+		array(
+			'id'       => 'universal__opt-blog-sp-title',
+			'title'    => esc_html__( 'Show Single Post Title', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post title.', 'universal' ),
+			'desc'     => esc_html__( 'You can find single post title under the feature image.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide post thumbnail.
+		array(
+			'id'       => 'universal__opt-blog-sp-thumbnail',
+			'title'    => esc_html__( 'Show Featured Image', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show feature image.', 'universal' ),
+			'desc'     => esc_html__( 'This option enable or disable feature image visibility only on single post page.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide post navigation.
+		array(
+			'id'       => 'universal__opt-blog-sp-navigation',
+			'title'    => esc_html__( 'Show Single Post navigation', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post navigation.', 'universal' ),
+			'desc'     => esc_html__( 'Post navigation displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide post social share button.
+		array(
+			'id'       => 'universal__opt-blog-sp-social-btn',
+			'title'    => esc_html__( 'Show Social Sharing Button', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show social sharing buttons.', 'universal' ),
+			'desc'     => esc_html__( 'Social sharing button displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Sort social share button.
+		array(
+			'id'       => 'universal__opt-blog-sp-social-sorter',
+			'title'    => esc_html__( 'Social Sharing Sorter', 'universal' ),
+			'subtitle' => esc_html__( 'Sort social sharing buttons.', 'universal' ),
+			'desc'     => esc_html__( 'Drag and drop social sharing button from \'Disable\' to \'Enable\'.', 'universal' ),
+			'type'     => 'sorter',
+			'options'  => array(
+				'enabled'  => array(
+					'social_facebook'    => esc_html__( 'Facebook', 'universal' ),
+					'social_twitter'     => esc_html__( 'Twitter', 'universal' ),
+					'social_google_plus' => esc_html__( 'Google+', 'universal' ),
+				),
+				'disabled' => array(
+					'social_linkedin' => esc_html__( 'LinkedIn', 'universal' ),
+				),
+			),
+			'required' => array( 'universal__opt-blog-sp-social-btn', '=', '1' ),
+		),
+
+		// Show or hide single post date.
+		array(
+			'id'       => 'universal__opt-blog-sp-date',
+			'title'    => esc_html__( 'Show Date', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post date.', 'universal' ),
+			'desc'     => esc_html__( 'Single post date displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide single post tags.
+		array(
+			'id'       => 'universal__opt-blog-sp-tags',
+			'title'    => esc_html__( 'Show Single Post Tags', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post tags.', 'universal' ),
+			'desc'     => esc_html__( 'Single post tags displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide single post footer.
+		array(
+			'id'       => 'universal__opt-blog-sp-footer',
+			'title'    => esc_html__( 'Show Single Post Footer', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post footer.', 'universal' ),
+			'desc'     => esc_html__( 'Single post footer displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+	),
+) );
+
+/*********************************************************************************
+ * 11. Team Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 10. Team Options
+ * 12. WooCommerce Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 11. WooCommerce Options
- ******************************************************************************** */
-
-/*********************************************************************************
- * 12. Page Pre-Loader Options
+ * 13. Page Pre-Loader Options
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'title'  => esc_html__( 'Page Pre-Loader', 'universal' ),
@@ -544,23 +1025,23 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 13. 404 Page Options
+ * 14. 404 Page Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 14. 404 Page Styling
+ * 15. 404 Page Styling
  ******************************************************************************** */
 
 /*********************************************************************************
- * 15. Coming Soon Page Options
+ * 16. Coming Soon Page Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 16. Under Construction Page Options
+ * 17. Under Construction Page Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 17. Social Media Options
+ * 18. Social Media Options
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'     => 'universal__section-footer-social-media',
@@ -616,7 +1097,7 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 18. Custom CSS
+ * 19. Custom CSS
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'     => 'universal__section-custom-css',
@@ -639,7 +1120,7 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 19. Theme Information
+ * 20. Theme Information
  ******************************************************************************** */
 if ( file_exists( get_template_directory() . '/readme.txt' ) ) {
 	Redux::setSection( $opt_name, array(
