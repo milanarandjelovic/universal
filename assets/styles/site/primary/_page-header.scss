@@ -1,0 +1,21 @@
+.page__title {
+  border-bottom: 1px solid #d2d3d4;
+  background-color: #f6f6f6;
+  height: 90px;
+
+  .section__title-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    .section__title {
+      color: #333;
+      font-size: 18px;
+      line-height: 1.45;
+      margin: 0;
+      padding-left: 15px;
+    }
+  }
+} // .page__title

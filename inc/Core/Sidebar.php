@@ -40,8 +40,8 @@ class Sidebar {
 		 * Main widget area.
 		 ******************************************************************************** */
 		register_sidebar( array(
-			'name'          => esc_html__( 'Sidebar', 'universal' ),
-			'id'            => 'sidebar-1',
+			'name'          => esc_html__( 'Main Sidebar', 'universal' ),
+			'id'            => 'universal-sidebar',
 			'description'   => esc_html__( 'Add widgets here.', 'universal' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',

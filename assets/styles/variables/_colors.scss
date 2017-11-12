@@ -2,6 +2,8 @@
 * General
 ******************************************************************************** */
 $white: #fff;
+$link-color: #999;
+$link-hover-color: #a0ce4e;
 
 /*********************************************************************************
 * Pre Loader
@@ -25,6 +27,18 @@ $header-top-bar-bg-color: #f6f6f6;
 $header-top-bar-color: #333;
 $header-border-bottom-color: #d2d3d4;
 $header-wrapper-color: #747474;
+
+/*********************************************************************************
+* Blog
+******************************************************************************** */
+$blog-posted-on-bg-color: #a0ce4e;
+$blog-categories-bg-color: #a0ce4e;
+$blog-article-bg-color: #f8f9fa;
+$blog-article-border-color: #d2d2dd;
+$blog-title-border-color: #d9d9d9;
+$blog-excerpt-color: #656269;
+$blog-article-footer-bg-color: #f1f2f4;
+$blog-footer-color: #656269;
 
 /*********************************************************************************
 * Footer

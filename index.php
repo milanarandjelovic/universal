@@ -18,50 +18,95 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'Direct script access denied.' );
 }
 
-get_header(); ?>
+get_header();
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+$universal_data = get_option( 'universal_data' );
 
-			<?php
-			if ( have_posts() ) :
+$blog_title = $universal_data['universal__opt-blog-title'];
 
-				if ( is_home() && ! is_front_page() ) :
-					?>
-					<header>
-						<h1 class="page-title screen-reader-text">
-							<?php single_post_title(); ?>
-						</h1>
-					</header>
+$sidebar_position = $universal_data['universal__opt-blog-sidebar'];
+$sidebar_width = $universal_data['universal__opt-blog-sidebar-width'];
 
-					<?php
-				endif;
+if ( '2' === $sidebar_width ) {
+	$sidebar_class = '4';
+	$content_class = '8';
+} else {
+	$sidebar_class = '3';
+	$content_class = '9';
+}
 
-				/* Start the Loop */
-				while ( have_posts() ) :
-					the_post();
+// Right sidebar by default.
+$page_layout_content = 'col-md-' . $content_class;
+$page_layout_sidebar = 'col-md-' . $sidebar_class;
 
-					/*
-					 * Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'template-parts/content', get_post_format() );
+if ( '2' === $sidebar_position ) {
+	// Left sidebar.
+	$page_layout_content = 'col-md-' . $content_class . ' push-md-' . $sidebar_class;
+	$page_layout_sidebar = 'col-md-' . $sidebar_class . ' pull-md-' . $content_class;
+}
+?>
 
-				endwhile;
+	<header class="page__title">
+		<div class="section__title-wrapper">
+			<div class="container">
+				<div class="row">
+					<h1 class="section__title">
+						<?php
+						if ( '' === $blog_title ) {
+							esc_html_e( 'Blog', 'universal' );
+						} else {
+							echo esc_html( $blog_title );
+						}
+						?>
+					</h1>
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.section__title-wrapper -->
+	</header> <!-- /.page__title -->
 
-				the_posts_navigation();
+	<div class="page__section">
+		<div class="container">
+			<div class="row">
+					<main id="primary" class="site-main <?php echo esc_attr( $page_layout_content ); ?>">
 
-			else :
+						<?php
+						if ( have_posts() ) :
 
-				get_template_part( 'template-parts/content', 'none' );
+							/* Start the Loop */
+							while ( have_posts() ) :
+								the_post();
 
-			endif;
-			?>
+								/*
+								 * Include the Post-Format-specific template for the content.
+								 * If you want to override this in a child theme, then include a file
+								 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+								 */
+								get_template_part( 'template-parts/content', get_post_format() );
 
-		</main> <!-- /#main -->
-	</div> <!-- /#primary -->
+							endwhile;
+
+							the_posts_navigation();
+
+						else :
+
+							get_template_part( 'template-parts/content', 'none' );
+
+						endif;
+						?>
+
+					</main> <!-- /#primary -->
+
+					<aside id="secondary" class="sidebar <?php echo esc_attr( $page_layout_sidebar ); ?>">
+						<?php
+						if ( is_active_sidebar( 'universal-sidebar' ) ) {
+							dynamic_sidebar( 'universal-sidebar' );
+						}
+						?>
+					</aside> <!-- /#secondary -->
+
+			</div> <!-- /.row -->
+		</div> <!-- /.container -->
+	</div> <!-- /.page__section -->
 
 <?php
-get_sidebar();
 get_footer();

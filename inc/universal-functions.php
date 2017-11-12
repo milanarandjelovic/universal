@@ -12,116 +12,128 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'Direct script access denied.' );
 }
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function universal_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'universal_content_width', 640 );
-}
-
-add_action( 'after_setup_theme', 'universal_content_width', 0 );
-
 /*********************************************************************************
  * Template Tags
  ******************************************************************************** */
 if ( ! function_exists( 'universal_posted_on' ) ) {
 	/**
 	 * Prints HTML with meta information for the current post-date/time and author.
+	 *
+	 * @since 1.0.0
 	 */
 	function universal_posted_on() {
-		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+		?>
+		<div class="universal__date-box">
+			<span class="entry-day"><?php the_time( 'j' ); ?></span>
+			<span class="entry-month"><?php the_time( 'M' ); ?></span>
+		</div> <!-- /.universal__date-box -->
+		<?php
+	}
+}
+
+if ( ! function_exists( 'universal_entry_categories' ) ) {
+	/**
+	 * Prints HTML with meta information for the categories.
+	 *
+	 * @since 1.0.0
+	 */
+	function universal_entry_categories() {
+		// Hide category and tag text for pages.
+		if ( 'post' === get_post_type() ) {
+			/* translators: used between list items, there is a space after the comma */
+			$categories_list = get_the_category_list();
+
+			if ( $categories_list && universal_categorized_blog() ) {
+				printf( $categories_list ); // WPCS: XSS OK.
+			}
 		}
-
-		$time_string = sprintf( $time_string,
-			esc_attr( get_the_date( 'c' ) ),
-			esc_html( get_the_date() ),
-			esc_attr( get_the_modified_date( 'c' ) ),
-			esc_html( get_the_modified_date() )
-		);
-
-		$posted_on = sprintf(
-			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'universal' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-		);
-
-		$byline = sprintf(
-			/* translators: %s: post author. */
-			esc_html_x( 'by %s', 'post author', 'universal' ),
-			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-		);
-
-		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
-
 	}
 }
 
 if ( ! function_exists( 'universal_entry_footer' ) ) {
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
+	 *
+	 * @since 1.0.0
 	 */
 	function universal_entry_footer() {
-		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
-			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'universal' ) );
-			if ( $categories_list ) {
-				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'universal' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-			}
+			$author = sprintf(
+				/* translators: %s: post author. */
+				esc_html_x( 'Posted by %s', 'post_author', 'universal' ),
+				'<span class="author"><a href="'
+				. esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
+				. '" class="author-link">' . esc_html( get_the_author() ) . '</a>'
+			);
 
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'universal' ) );
-			if ( $tags_list ) {
-				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'universal' ) . '</span>', $tags_list ); // WPCS: XSS OK.
-			}
-		}
-
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
-			comments_popup_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: post title */
-						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'universal' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
+			echo wp_kses(
+				$author,
+				array(
+					'span' => array(
+						'class' => array(),
 					),
-					get_the_title()
+					'a'    => array(
+						'href'  => array(),
+						'class' => array(),
+					),
 				)
 			);
-			echo '</span>';
-		}
 
-		edit_post_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'universal' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
+			edit_post_link(
+				esc_html__( 'Edit', 'universal' ),
+				'<span class="edit-link">',
+				'</span>'
+			);
+		}
 	}
 }
 
 /*********************************************************************************
  * Custom Universal functions
  ******************************************************************************** */
+if ( ! function_exists( 'universal_categorized_blog' ) ) {
+	/**
+	 * Return true if blog has more than 1 category.
+	 *
+	 * @since 1.0.0
+	 * @return bool
+	 */
+	function universal_categorized_blog() {
+		$all_the_col_cats = get_transient( 'universal_categories' );
+
+		if ( false === $all_the_col_cats ) {
+			$all_the_col_cats = get_categories( array(
+				'fields'     => 'ids',
+				'hide_empty' => 1,
+				'number'     => 2,
+			) );
+
+			$all_the_col_cats = count( $all_the_col_cats );
+
+			set_transient( 'universal_categories', $all_the_col_cats );
+		}
+
+		if ( 1 < $all_the_col_cats ) {
+			// Post has more than 1 category so universal_categorized_blog() should return true.
+			return true;
+		} else {
+			// Post has only 1 category so universal_categorized_blog() should return false.
+			return false;
+		}
+	}
+}
+
+if ( ! function_exists( 'universal_category_transient_flusher' ) ) {
+	/**
+	 * Flush out the transients used in universal_categorized_blog().
+	 *
+	 * @since 1.0.0
+	 */
+	function universal_category_transient_flusher() {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		delete_transient( 'universal_categories' );
+	}
+}

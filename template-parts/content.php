@@ -8,51 +8,87 @@
  * @subpackage Templates
  */
 
+// Do not allow directly accessing this file.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'Direct script access denied.' );
+}
+
+$universal_data = get_option( 'universal_data' );
+$post_format    = get_post_format();
+
+$post_date   = $universal_data['universal__option-blog-post-date'];
+$post_footer = $universal_data['universal__option-blog-footer'];
+$post_author = $universal_data['universal__option-blog-footer-author'];
+$post_read_more_txt = $universal_data['universal__opt-blog-read-more-text'];
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
 
-		if ( 'post' === get_post_type() ) :
-		?>
-			<div class="entry-meta">
+	<?php if ( has_post_thumbnail() ) : ?>
+		<figure class="entry-thumbnail">
+			<a href="<?php the_permalink(); ?>">
+				<?php the_post_thumbnail(); ?>
+			</a>
+		</figure> <!-- /.entry-thumbnail -->
+	<?php endif; ?>
+
+	<div class="entry-body">
+
+		<?php if ( '1' === $post_date ) : ?>
+			<div class="entry-date">
 				<?php universal_posted_on(); ?>
-			</div> <!-- /.entry-meta -->
+			</div> <!-- /.entry-date -->
+		<?php endif; ?>
+
+		<header class="entry-header">
 			<?php
-		endif;
-		?>
-	</header> <!-- /.entry-header -->
+			the_title(
+				sprintf(
+					'<div class="title-bordered"><h4 class="entry-title"><a href="%s" rel="bookmark">',
+					esc_url( get_permalink() )
+				),
+				'</a></h4></div>'
+			);
+			?>
+		</header> <!-- /.entry-header -->
 
-	<div class="entry-content">
-		<?php
-		the_content( sprintf(
-			wp_kses(
-				/* translators: %s: Name of current post. Only visible to screen readers */
-				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'universal' ),
-				array(
-					'span' => array(
-						'class' => array(),
-					),
-				)
-			),
-			get_the_title()
-		) );
+		<div class="entry-excerpt">
+			<?php if ( 'audio' === $post_format || 'video' === $post_format || 'link' === $post_format || 'quote' === $post_format || 'chat' === $post_format ) : ?>
+				<?php the_content(); ?>
+			<?php else : ?>
+				<?php the_excerpt(); ?>
+			<?php endif; ?>
+			<?php
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'universal' ),
+				'after'  => '</div>',
+			) );
+			?>
+		</div> <!-- /.entry-excerpt -->
 
-		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'universal' ),
-			'after'  => '</div>',
-		) );
-		?>
-	</div> <!-- /.entry-content -->
+		<?php universal_entry_categories(); ?>
 
-	<footer class="entry-footer">
-		<?php universal_entry_footer(); ?>
-	</footer> <!-- /.entry-footer -->
+	</div> <!-- /.entry-body -->
+
+	<?php if ( '1' === $post_footer ) : ?>
+		<footer class="entry-footer">
+
+			<?php if ( '1' === $post_author ) : ?>
+				<div class="pull-left">
+					<?php universal_entry_footer(); ?>
+				</div>
+			<?php endif; ?>
+
+			<div class="pull-right">
+				<a href="<?php the_permalink(); ?>" class="read-more">
+				<span>
+					<?php echo esc_html( $post_read_more_txt ); ?>
+					<i class="fa fa-long-arrow-right"></i>
+				</span>
+				</a>
+			</div>
+
+		</footer> <!-- /.entry-footer -->
+	<?php endif; ?>
 
 </article> <!-- /#post-<?php the_ID(); ?> -->
