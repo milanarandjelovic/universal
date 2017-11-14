@@ -1,0 +1,34 @@
+@import '../variables/variables';
+
+.universal-pagination-holder {
+  .page-item {
+    padding: 0 5px;
+
+    &.active .page-link {
+      background-color: $pagination-color;
+      border-color: $pagination-color;
+      color: $white;
+    }
+
+    .page-link {
+      color: $pagination-link-color;
+
+      &:focus,
+      &:hover {
+        background-color: $pagination-color;
+        border-color: $pagination-color;
+        color: $white;
+      }
+    } // .page-link
+
+    &:first-child .page-link {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+    &:last-child .page-link {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+  } // .page-item
+}

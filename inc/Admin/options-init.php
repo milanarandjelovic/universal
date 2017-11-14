@@ -41,7 +41,7 @@ $args = array(
 	'menu_title'            => esc_html__( 'Universal', 'universal' ),
 	'allow_sub_menu'        => true,
 	'page_parent_post_type' => 'your_post_type',
-	'page_priority'         => 1,
+	'page_priority'         => 3,
 	'customizer'            => true,
 	'default_mark'          => '*',
 	'class'                 => 'universal',
@@ -89,37 +89,38 @@ $args = array(
 
 Redux::setArgs( $opt_name, $args );
 
-/***********************************************************************************
- *
- * END ARGUMENTS
- *
- ********************************************************************************* */
-
 /**********************************************************************************
  *
  * START SECTIONS
  *
  * 1. General Settings
  * 2. Header Settings
- * 3. Header Top Bar Settings
- * 4. Search Form Settings
- * 5. Footer Settings
- * 6. Footer Widgets Settings
- * 7. Footer Copyright Settings
- * 8. Blog Options
- * 9. Blog Styling
- * 10. Single Post Settings
- * 11. Team Options
- * 12. WooCommerce Options
- * 13. Page Pre-Loader Options
- * 14. 404 Page Options
- * 15. 404 Page Styling
- * 16. Coming Soon Page Options
- * 17. Under Construction Page Options
- * 18. Social Media Options
- * 19. Custom CSS
- * 20. Theme Information
+ *      2.1. Header Top Bar Settings
+ * 3. Search Form Settings
+ * 4. Footer Settings
+ *      4.1. Footer Widgets Settings
+ *      4.2. Footer Copyright Settings
+ * 5. Blog Options
+ *      5.1. Single Post Settings
+ *      5.2. Blog Styling
+ * 6. Team Options
+ * 7. WooCommerce Options
+ * 8. Page Pre-Loader Options
+ * 9. 404 Page Options
+ *      9.1. 404 Page Styling
+ * 10. Coming Soon Page Options
+ * 11. Under Construction Page Options
+ * 12. Social Media Options
+ *      12.1. Social Sharing Box
+ * 13. Custom CSS
+ * 14. Theme Information
  ********************************************************************************* */
+/***********************************************************************************
+ *
+ * END ARGUMENTS
+ *
+ ********************************************************************************* */
+
 
 /*********************************************************************************
  * 1. General Settings
@@ -200,7 +201,7 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 3. Header Top Bar Settings
+ * 2.1. Header Top Bar Settings
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'         => 'universal__subsection-header-top-bar',
@@ -208,6 +209,7 @@ Redux::setSection( $opt_name, array(
 	'subsection' => true,
 	'fields'     => array(
 
+		// Section for layout options.
 		array(
 			'id'       => 'universal__section-header-top-bar-content-start',
 			'type'     => 'section',
@@ -297,11 +299,11 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 4. Search Form Settings
+ * 3. Search Form Settings
  ******************************************************************************** */
 
 /*********************************************************************************
- * 5. Footer Settings
+ * 4. Footer Settings
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'     => 'universal__section-footer',
@@ -323,7 +325,7 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 6. Footer Widgets Settings
+ * 4.1. Footer Widgets Settings
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'         => 'universal__subsection-footer-widgets',
@@ -374,7 +376,7 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 7. Footer Copyright Settings
+ * 4.2. Footer Copyright Settings
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'         => 'universal__subsection-footer-copyright',
@@ -438,13 +440,22 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 8. Blog Options
+ * 5. Blog Options
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'     => 'universal__section-blog',
 	'title'  => esc_html__( 'Blog', 'universal' ),
 	'icon'   => 'el el-list',
 	'fields' => array(
+
+		// Section for blog page styling.
+		array(
+			'id'       => 'universal__section-blog-general-section',
+			'type'     => 'section',
+			'title'    => esc_html__( 'General Blog', 'universal' ),
+			'subtitle' => esc_html__( 'General settings for blog page.', 'universal' ),
+			'indent'   => true,
+		),
 
 		// Blog title.
 		array(
@@ -500,11 +511,168 @@ Redux::setSection( $opt_name, array(
 			'msg'      => esc_html__( 'Fill read more button text', 'universal' ),
 			'default'  => esc_html__( 'Read More', 'universal' ),
 		),
+
+		// Pagination type.
+		array(
+			'id'       => 'universal__opt-blog-pagination-type',
+			'title'    => esc_html__( 'Pagination Type', 'universal' ),
+			'subtitle' => esc_html__( 'Controls the pagination type for the assigned blog page in "settings->reading" or blog archive pages.', 'universal' ),
+			'type'     => 'button_set',
+			'default'  => 'pagination',
+			'options'  => array(
+				'pagination'       => esc_html__( 'Pagination', 'universal' ),
+				'infinite_scroll'  => esc_html__( 'Infinite Scroll', 'universal' ),
+				'load_more_button' => esc_html__( 'Load More Button', 'universal' ),
+			),
+		),
+
+		// Change pagination position (left|center|right).
+		array(
+			'id'       => 'universal__opt-blog-pagination-position',
+			'title'    => esc_html__( 'Pagination Position', 'universal' ),
+			'subtitle' => esc_html__( 'Controls the pagination position.', 'universal' ),
+			'type'     => 'select',
+			'validate' => 'not_empty',
+			'options'  => array(
+				'start'  => 'left',
+				'center' => 'center',
+				'end'    => 'right',
+			),
+			'default'  => 'center',
+			'required' => array( 'universal__opt-blog-pagination-type', '=', 'pagination' ),
+		),
+
+		// Load more text.
+		array(
+			'id'       => 'universal__opt-blog-load-more-text',
+			'title'    => esc_html__( 'Read More Text', 'universal' ),
+			'desc'     => __( 'Enter text for \'Load More Posts\' post. Example <em>\'Load More Posts\'</em>.', 'universal' ),
+			'type'     => 'text',
+			'validate' => 'not_empty',
+			'msg'      => esc_html__( 'Fill read more button text', 'universal' ),
+			'default'  => esc_html__( 'Load More Posts', 'universal' ),
+			'required' => array( 'universal__opt-blog-pagination-type', '=', 'load_more_button' ),
+		),
 	),
 ) );
 
 /*********************************************************************************
- * 9. Blog Styling
+ * 5.1. Single Post Settings
+ ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'         => 'universal__subsection-blog-sp',
+	'title'      => esc_html__( 'Single Post', 'universal' ),
+	'subsection' => true,
+	'fields'     => array(
+
+		// Show or hide single post title.
+		array(
+			'id'       => 'universal__opt-blog-sp-title',
+			'title'    => esc_html__( 'Show Single Post Title', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post title.', 'universal' ),
+			'desc'     => esc_html__( 'You can find single post title under the feature image.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide post thumbnail.
+		array(
+			'id'       => 'universal__opt-blog-sp-thumbnail',
+			'title'    => esc_html__( 'Show Featured Image', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show feature image.', 'universal' ),
+			'desc'     => esc_html__( 'This option enable or disable feature image visibility only on single post page.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide post navigation.
+		array(
+			'id'       => 'universal__opt-blog-sp-navigation',
+			'title'    => esc_html__( 'Show Single Post navigation', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post navigation.', 'universal' ),
+			'desc'     => esc_html__( 'Post navigation displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide post social share button.
+		array(
+			'id'       => 'universal__opt-blog-sp-social-btn',
+			'title'    => esc_html__( 'Show Social Sharing Button', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show social sharing buttons.', 'universal' ),
+			'desc'     => esc_html__( 'Social sharing button displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Sort social share button.
+		array(
+			'id'       => 'universal__opt-blog-sp-social-sorter',
+			'title'    => esc_html__( 'Social Sharing Sorter', 'universal' ),
+			'subtitle' => esc_html__( 'Sort social sharing buttons.', 'universal' ),
+			'desc'     => esc_html__( 'Drag and drop social sharing button from \'Disable\' to \'Enable\'.', 'universal' ),
+			'type'     => 'sorter',
+			'options'  => array(
+				'enabled'  => array(
+					'social_facebook'    => esc_html__( 'Facebook', 'universal' ),
+					'social_twitter'     => esc_html__( 'Twitter', 'universal' ),
+					'social_google_plus' => esc_html__( 'Google+', 'universal' ),
+				),
+				'disabled' => array(
+					'social_linkedin' => esc_html__( 'LinkedIn', 'universal' ),
+				),
+			),
+			'required' => array( 'universal__opt-blog-sp-social-btn', '=', '1' ),
+		),
+
+		// Show or hide single post date.
+		array(
+			'id'       => 'universal__opt-blog-sp-date',
+			'title'    => esc_html__( 'Show Date', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post date.', 'universal' ),
+			'desc'     => esc_html__( 'Single post date displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide single post tags.
+		array(
+			'id'       => 'universal__opt-blog-sp-tags',
+			'title'    => esc_html__( 'Show Single Post Tags', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post tags.', 'universal' ),
+			'desc'     => esc_html__( 'Single post tags displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide single post footer.
+		array(
+			'id'       => 'universal__opt-blog-sp-footer',
+			'title'    => esc_html__( 'Show Single Post Footer', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post footer.', 'universal' ),
+			'desc'     => esc_html__( 'Single post footer displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+	),
+) );
+
+/*********************************************************************************
+ * 5.2. Blog Styling
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'         => 'universal__subsection-blog-styling',
@@ -521,6 +689,16 @@ Redux::setSection( $opt_name, array(
 			'default'  => '0',
 			'on'       => esc_html__( 'Yes', 'universal' ),
 			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Section for blog page styling.
+		array(
+			'id'       => 'universal__section-blog-styling-blog-page',
+			'type'     => 'section',
+			'title'    => esc_html__( 'Blog Page Styling', 'universal' ),
+			'subtitle' => esc_html__( 'All styling for blog page.', 'universal' ),
+			'indent'   => true,
+			'required' => array( 'universal__option-blog-styling', '=', '1' ),
 		),
 
 		// Custom color for link regular, hover and active.
@@ -805,134 +983,29 @@ Redux::setSection( $opt_name, array(
 				array( 'universal__option-blog-categories', '=', '1' ),
 			),
 		),
-	),
-) );
 
-/*********************************************************************************
- * 10. Single Post Settings
- ******************************************************************************** */
-Redux::setSection( $opt_name, array(
-	'id'         => 'universal__subsection-blog-sp',
-	'title'      => esc_html__( 'Single Post', 'universal' ),
-	'subsection' => true,
-	'fields'     => array(
-
-		// Show or hide single post title.
+		// Section for single post styling.
 		array(
-			'id'       => 'universal__opt-blog-sp-title',
-			'title'    => esc_html__( 'Show Single Post Title', 'universal' ),
-			'subtitle' => esc_html__( 'Turn on to show single post title.', 'universal' ),
-			'desc'     => esc_html__( 'You can find single post title under the feature image.', 'universal' ),
-			'type'     => 'switch',
-			'default'  => '1',
-			'on'       => esc_html__( 'Yes', 'universal' ),
-			'off'      => esc_html__( 'No', 'universal' ),
-		),
-
-		// Show or hide post thumbnail.
-		array(
-			'id'       => 'universal__opt-blog-sp-thumbnail',
-			'title'    => esc_html__( 'Show Featured Image', 'universal' ),
-			'subtitle' => esc_html__( 'Turn on to show feature image.', 'universal' ),
-			'desc'     => esc_html__( 'This option enable or disable feature image visibility only on single post page.', 'universal' ),
-			'type'     => 'switch',
-			'default'  => '1',
-			'on'       => esc_html__( 'Yes', 'universal' ),
-			'off'      => esc_html__( 'No', 'universal' ),
-		),
-
-		// Show or hide post navigation.
-		array(
-			'id'       => 'universal__opt-blog-sp-navigation',
-			'title'    => esc_html__( 'Show Single Post navigation', 'universal' ),
-			'subtitle' => esc_html__( 'Turn on to show single post navigation.', 'universal' ),
-			'desc'     => esc_html__( 'Post navigation displayed by default.', 'universal' ),
-			'type'     => 'switch',
-			'default'  => '1',
-			'on'       => esc_html__( 'Yes', 'universal' ),
-			'off'      => esc_html__( 'No', 'universal' ),
-		),
-
-		// Show or hide post social share button.
-		array(
-			'id'       => 'universal__opt-blog-sp-social-btn',
-			'title'    => esc_html__( 'Show Social Sharing Button', 'universal' ),
-			'subtitle' => esc_html__( 'Turn on to show social sharing buttons.', 'universal' ),
-			'desc'     => esc_html__( 'Social sharing button displayed by default.', 'universal' ),
-			'type'     => 'switch',
-			'default'  => '1',
-			'on'       => esc_html__( 'Yes', 'universal' ),
-			'off'      => esc_html__( 'No', 'universal' ),
-		),
-
-		// Sort social share button.
-		array(
-			'id'       => 'universal__opt-blog-sp-social-sorter',
-			'title'    => esc_html__( 'Social Sharing Sorter', 'universal' ),
-			'subtitle' => esc_html__( 'Sort social sharing buttons.', 'universal' ),
-			'desc'     => esc_html__( 'Drag and drop social sharing button from \'Disable\' to \'Enable\'.', 'universal' ),
-			'type'     => 'sorter',
-			'options'  => array(
-				'enabled'  => array(
-					'social_facebook'    => esc_html__( 'Facebook', 'universal' ),
-					'social_twitter'     => esc_html__( 'Twitter', 'universal' ),
-					'social_google_plus' => esc_html__( 'Google+', 'universal' ),
-				),
-				'disabled' => array(
-					'social_linkedin' => esc_html__( 'LinkedIn', 'universal' ),
-				),
-			),
-			'required' => array( 'universal__opt-blog-sp-social-btn', '=', '1' ),
-		),
-
-		// Show or hide single post date.
-		array(
-			'id'       => 'universal__opt-blog-sp-date',
-			'title'    => esc_html__( 'Show Date', 'universal' ),
-			'subtitle' => esc_html__( 'Turn on to show single post date.', 'universal' ),
-			'desc'     => esc_html__( 'Single post date displayed by default.', 'universal' ),
-			'type'     => 'switch',
-			'default'  => '1',
-			'on'       => esc_html__( 'Yes', 'universal' ),
-			'off'      => esc_html__( 'No', 'universal' ),
-		),
-
-		// Show or hide single post tags.
-		array(
-			'id'       => 'universal__opt-blog-sp-tags',
-			'title'    => esc_html__( 'Show Single Post Tags', 'universal' ),
-			'subtitle' => esc_html__( 'Turn on to show single post tags.', 'universal' ),
-			'desc'     => esc_html__( 'Single post tags displayed by default.', 'universal' ),
-			'type'     => 'switch',
-			'default'  => '1',
-			'on'       => esc_html__( 'Yes', 'universal' ),
-			'off'      => esc_html__( 'No', 'universal' ),
-		),
-
-		// Show or hide single post footer.
-		array(
-			'id'       => 'universal__opt-blog-sp-footer',
-			'title'    => esc_html__( 'Show Single Post Footer', 'universal' ),
-			'subtitle' => esc_html__( 'Turn on to show single post footer.', 'universal' ),
-			'desc'     => esc_html__( 'Single post footer displayed by default.', 'universal' ),
-			'type'     => 'switch',
-			'default'  => '1',
-			'on'       => esc_html__( 'Yes', 'universal' ),
-			'off'      => esc_html__( 'No', 'universal' ),
+			'id'       => 'universal__section-blog-styling-single-post',
+			'type'     => 'section',
+			'title'    => esc_html__( 'Single Post Styling', 'universal' ),
+			'subtitle' => esc_html__( 'All styling for single post.', 'universal' ),
+			'indent'   => true,
+			'required' => array( 'universal__option-blog-styling', '=', '1' ),
 		),
 	),
 ) );
 
 /*********************************************************************************
- * 11. Team Options
+ * 6. Team Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 12. WooCommerce Options
+ * 7. WooCommerce Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 13. Page Pre-Loader Options
+ * 8. Page Pre-Loader Options
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'title'  => esc_html__( 'Page Pre-Loader', 'universal' ),
@@ -1025,23 +1098,23 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 14. 404 Page Options
+ * 9. 404 Page Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 15. 404 Page Styling
+ * 9.1. 404 Page Styling
  ******************************************************************************** */
 
 /*********************************************************************************
- * 16. Coming Soon Page Options
+ * 10. Coming Soon Page Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 17. Under Construction Page Options
+ * 11. Under Construction Page Options
  ******************************************************************************** */
 
 /*********************************************************************************
- * 18. Social Media Options
+ * 12. Social Media Options
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'     => 'universal__section-footer-social-media',
@@ -1097,7 +1170,11 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 19. Custom CSS
+ * 12.1. Social Sharing Box
+ ******************************************************************************** */
+
+/*********************************************************************************
+ * 13. Custom CSS
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'     => 'universal__section-custom-css',
@@ -1120,7 +1197,7 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 20. Theme Information
+ * 14. Theme Information
  ******************************************************************************** */
 if ( file_exists( get_template_directory() . '/readme.txt' ) ) {
 	Redux::setSection( $opt_name, array(

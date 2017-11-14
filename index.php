@@ -85,7 +85,7 @@ if ( '2' === $sidebar_position ) {
 
 							endwhile;
 
-							the_posts_navigation();
+							universal_pagination();
 
 						else :
 

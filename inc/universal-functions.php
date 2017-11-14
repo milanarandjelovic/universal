@@ -59,7 +59,7 @@ if ( ! function_exists( 'universal_entry_footer' ) ) {
 	function universal_entry_footer() {
 		if ( 'post' === get_post_type() ) {
 			$author = sprintf(
-				/* translators: %s: post author. */
+			/* translators: %s: post author. */
 				esc_html_x( 'Posted by %s', 'post_author', 'universal' ),
 				'<span class="author"><a href="'
 				. esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
@@ -135,5 +135,117 @@ if ( ! function_exists( 'universal_category_transient_flusher' ) ) {
 		}
 
 		delete_transient( 'universal_categories' );
+	}
+}
+
+if ( ! function_exists( 'universal_pagination' ) ) {
+	/**
+	 * Prints universal pagination.
+	 *
+	 * @param string $pages           Maximum number of page.
+	 * @param int    $range           Our range.
+	 * @param string $current_query   The current query.
+	 * @param bool   $infinite_scroll Whether we want infinite scroll or note.
+	 */
+	function universal_pagination( $pages = '', $range = 2, $current_query = '', $infinite_scroll = false ) {
+		$universal_data       = get_option( 'universal_data' );
+		$blog_pagination_type = $universal_data['universal__opt-blog-pagination-type'];
+		$blog_load_more_txt   = $universal_data['universal__opt-blog-load-more-text'];
+		$pagination_position  = $universal_data['universal__opt-blog-pagination-position'];
+
+		global $wp_query;
+		$number_of_pages = $wp_query->max_num_pages; // Number of pages for load more button.
+
+		$show_items = ( $range * 2 ) + 1;
+
+		if ( '' === $current_query ) {
+			global $paged;
+
+			if ( empty( $paged ) ) {
+				$paged = 1;
+			}
+		} else {
+			$paged = $current_query->query_vars['paged'];
+		}
+
+		if ( '' === $pages ) {
+			if ( '' === $current_query ) {
+				global $wp_query;
+				$pages = $wp_query->max_num_pages;
+
+				if ( ! pages ) {
+					$pages = 1;
+				}
+			} else {
+				$pages = $current_query->max_num_pages;
+			}
+		}
+		?>
+
+		<?php if ( 1 !== $pages ) : ?>
+
+			<?php if ( $infinite_scroll || ( 'pagination' !== $blog_pagination_type && ( is_home() || is_search() || ( 'post' === get_post_type() && ( is_author() || is_archive() ) ) ) ) ) : ?>
+				<div class="universal-infinite-scroll-trigger"></div>
+				<div class='pagination infinite-scroll clearfix' style="display:none;">
+			<?php else : ?>
+				<div class='pagination universal-pagination-holder justify-content-<?php echo esc_attr( $pagination_position ); ?> clearfix'>
+			<?php endif; ?>
+
+			<?php if ( 1 < $paged ) : ?>
+				<li class="page-item">
+					<a class="page-link"
+					   href="<?php echo esc_url_raw( get_pagenum_link( $paged - 1 ) ); ?>"
+					   aria-label="Previous"
+					>
+						<span>
+							<?php esc_html_e( 'Previous', 'universal' ); ?>
+						</span>
+					</a>
+				</li>
+			<?php endif; ?>
+
+			<?php for ( $i = 1; $i <= $pages; $i ++ ) : ?>
+				<?php if ( 1 !== $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $show_items ) ) : ?>
+					<?php if ( $paged === $i ) : ?>
+						<?php // Active pagination. ?>
+						<li class="page-item active">
+							<a href="#" class="page-link active">
+								<?php echo (int) $i; ?>
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+					<?php else : ?>
+						<li class="page-item">
+							<a href="<?php echo esc_url_raw( get_pagenum_link( $i ) ); ?>"
+							   class="page-link"
+							>
+								<?php echo (int) $i; ?>
+							</a>
+						</li>
+					<?php endif; ?>
+				<?php endif; ?>
+			<?php endfor; ?>
+
+			<?php if ( $paged < $pages ) : ?>
+				<li class="page-item">
+					<a class="page-link"
+					   href="<?php echo esc_url_raw( get_pagenum_link( $paged + 1 ) ); ?>"
+					>
+						<span>
+							<?php esc_html_e( 'Next', 'universal' ); ?>
+						</span>
+					</a>
+				</li>
+			<?php endif; ?>
+			</div>
+		<?php endif; ?>
+
+		<?php if ( 'load_more_button' === $blog_pagination_type ) : ?>
+			<div class="universal-load-more-button">
+				<?php echo esc_html( $blog_load_more_txt ); ?>
+			</div> <!-- /.universal-load-more-button -->
+		<?php endif; ?>
+
+		<?php
 	}
 }
