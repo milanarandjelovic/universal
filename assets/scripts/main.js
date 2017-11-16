@@ -3,8 +3,9 @@ import tether from 'tether';
 import 'bootstrap';
 import affix from './plugins/affix';
 
-import stickyHeader from './sticky-header';
-import primaryMenu from './primary-menu';
+import stickyHeader from './custom/sticky-header';
+import primaryMenu from './custom/primary-menu';
+import loadMorePosts from './custom/load-more-posts';
 
 window.Tether = tether;
 window.affix = affix;
@@ -19,4 +20,5 @@ $(window).load(() => {
 $(document).ready(() => {
   stickyHeader();
   primaryMenu();
+  loadMorePosts();
 });
