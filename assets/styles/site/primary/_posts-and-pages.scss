@@ -1,6 +1,19 @@
 @import '../../variables/variables';
 @import '../../mixins/mixins';
 
+.universal-loading-container,
+.universal-loading-container-load-message,
+#infscr-loading {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.universal-loading-container > .fa {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 article.post {
   position: relative;
   margin-bottom: 40px;

@@ -1,7 +1,9 @@
 import 'jquery';
 import tether from 'tether';
 import 'bootstrap';
+
 import affix from './plugins/affix';
+require('./plugins/jquery.infinitescroll');
 
 import stickyHeader from './custom/sticky-header';
 import primaryMenu from './custom/primary-menu';
@@ -9,7 +11,6 @@ import loadMorePosts from './custom/load-more-posts';
 
 window.Tether = tether;
 window.affix = affix;
-
 
 // Page Pre-Loader
 $(window).load(() => {
