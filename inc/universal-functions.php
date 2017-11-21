@@ -193,7 +193,7 @@ if ( ! function_exists( 'universal_pagination' ) ) {
 
 			<?php if ( 1 < $paged ) : ?>
 				<li class="page-item">
-					<a class="page-link"
+					<a class="page-link universal-pagination-previous"
 					   href="<?php echo esc_url_raw( get_pagenum_link( $paged - 1 ) ); ?>"
 					   aria-label="Previous"
 					>
@@ -228,7 +228,7 @@ if ( ! function_exists( 'universal_pagination' ) ) {
 
 			<?php if ( $paged < $pages ) : ?>
 				<li class="page-item">
-					<a class="page-link"
+					<a class="page-link universal-pagination-next"
 					   href="<?php echo esc_url_raw( get_pagenum_link( $paged + 1 ) ); ?>"
 					>
 						<span>
@@ -238,12 +238,18 @@ if ( ! function_exists( 'universal_pagination' ) ) {
 				</li>
 			<?php endif; ?>
 			</div>
+			<?php
+			// Needed for Theme check.
+			ob_start();
+			posts_nav_link();
+			ob_get_clean();
+			?>
 		<?php endif; ?>
 
-		<?php if ( 'load_more_button' === $blog_pagination_type ) : ?>
-			<div class="universal-load-more-button">
+		<?php if ( 'load_more_button' === $blog_pagination_type && 1 < $number_of_pages ) : ?>
+			<button class="btn btn-block universal-load-more-button">
 				<?php echo esc_html( $blog_load_more_txt ); ?>
-			</div> <!-- /.universal-load-more-button -->
+			</button> <!-- /#universal-load-more-button -->
 		<?php endif; ?>
 
 		<?php

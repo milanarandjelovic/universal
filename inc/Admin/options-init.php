@@ -73,8 +73,8 @@ $args = array(
 		),
 	),
 	'output'                => true,
-	'output_tag'            => false,
 	// Disable to print dynamic CSS on page head. See CustomStyling class, method universal_custom_styling.
+	'output_tag'            => false,
 	'settings_api'          => true,
 	'cdn_check_time'        => '1440',
 	'compiler'              => true,
