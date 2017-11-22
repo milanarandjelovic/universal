@@ -984,6 +984,34 @@ Redux::setSection( $opt_name, array(
 			),
 		),
 
+		// Custom background color for infinite scroll load more button.
+		array(
+			'id'          => 'universal__option-blog-load-more-button-bg-color',
+			'title'       => esc_html__( 'Background Color For Load More Button', 'universal' ),
+			'subtitle'    => esc_html__( 'Background color for infinite scroll load more button.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#f1f2f4',
+			'transparent' => false,
+			'required'    => array(
+				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-pagination-type', '=', 'load_more_button' ),
+			),
+		),
+
+		// Custom color for infinite scroll load more button.
+		array(
+			'id'          => 'universal__option-blog-load-more-button-color',
+			'title'       => esc_html__( 'Color For Load More Button', 'universal' ),
+			'subtitle'    => esc_html__( 'Color for infinite scroll load more button.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#656269',
+			'transparent' => false,
+			'required'    => array(
+				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-pagination-type', '=', 'load_more_button' ),
+			),
+		),
+
 		// Section for single post styling.
 		array(
 			'id'       => 'universal__section-blog-styling-single-post',

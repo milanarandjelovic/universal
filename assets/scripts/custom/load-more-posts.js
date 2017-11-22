@@ -11,8 +11,7 @@ const loadMorePosts = () => {
       itemSelector: 'article.post',
       loading: {
         finishedMsg: '<div class="universal-loading-container-finished-message">No more posts</div>',
-        // msgText: '<div class="universal-loading-container-load-message">Loading Posts</div>',
-        msg: jQuery('<div class="universal-loading-container"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><div class="universal-loading-msg">Loading Posts</div></div>'),
+        msgText: '<div class="universal-loading-container"><div class="universal-loading-msg">Loading Posts</div></div>',
       },
       maxPage: g.data('pages') ? g.data('pages') : void 0,
     }, function (data, options) {

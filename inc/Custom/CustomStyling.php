@@ -44,6 +44,10 @@ class CustomStyling {
 		 ******************************************************************************** */
 		$post_styling = $universal_data['universal__option-blog-styling'];
 		$post_footer  = $universal_data['universal__option-blog-footer'];
+		$blog_pagination_type = $universal_data['universal__opt-blog-pagination-type'];
+		echo "<pre>";
+		var_dump($blog_pagination_type);
+		echo "</pre>";
 
 		if ( $post_styling ) {
 			$post_border          = $universal_data['universal__option-blog-styling-post-border'];
@@ -157,6 +161,19 @@ class CustomStyling {
 			// Active color.
 			$output .= ' article.post .entry-footer .read-more:active {';
 			$output .= ' color: ' . $post_footer_read_more_link['active'] . ';';
+			$output .= ' }';
+		}
+
+		// Blog pagination.
+		if ( 'pagination' === $blog_pagination_type ) {
+
+		}
+
+		// Infinite scroll load more button.
+		if ( 'load_more_button' === $blog_pagination_type ) {
+			$output .= ' .universal-load-more-button {';
+			$output .= ' color: ' . $universal_data['universal__option-blog-load-more-button-color'] . ';';
+			$output .= ' background-color: ' . $universal_data['universal__option-blog-load-more-button-bg-color'] . ';';
 			$output .= ' }';
 		}
 
