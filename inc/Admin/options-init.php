@@ -579,6 +579,20 @@ Redux::setSection( $opt_name, array(
 			'off'      => esc_html__( 'No', 'universal' ),
 		),
 
+		// Single post title position.
+		array(
+			'id'       => 'universal__opt-blog-sp-title-position',
+			'title'    => esc_html__( 'Position For Single Post Title', 'universal' ),
+			'subtitle' => esc_html__( 'Control position for single post type.', 'universal' ),
+			'type'     => 'button_set',
+			'default'  => 'above',
+			'options'  => array(
+				'above'  => esc_html__( 'Above', 'universal' ),
+				'bellow' => esc_html__( 'Bellow', 'universal' ),
+			),
+			'required' => array( 'universal__opt-blog-sp-title', '=', '1' ),
+		),
+
 		// Show or hide post thumbnail.
 		array(
 			'id'       => 'universal__opt-blog-sp-thumbnail',
@@ -595,8 +609,8 @@ Redux::setSection( $opt_name, array(
 		array(
 			'id'       => 'universal__opt-blog-sp-navigation',
 			'title'    => esc_html__( 'Show Single Post navigation', 'universal' ),
-			'subtitle' => esc_html__( 'Turn on to show single post navigation.', 'universal' ),
-			'desc'     => esc_html__( 'Post navigation displayed by default.', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show previous/next post navigation.', 'universal' ),
+			'desc'     => esc_html__( 'Display the previous/next post navigation for single blog post.', 'universal' ),
 			'type'     => 'switch',
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
@@ -615,24 +629,29 @@ Redux::setSection( $opt_name, array(
 			'off'      => esc_html__( 'No', 'universal' ),
 		),
 
-		// Sort social share button.
+		// Single post title position.
 		array(
-			'id'       => 'universal__opt-blog-sp-social-sorter',
-			'title'    => esc_html__( 'Social Sharing Sorter', 'universal' ),
-			'subtitle' => esc_html__( 'Sort social sharing buttons.', 'universal' ),
-			'desc'     => esc_html__( 'Drag and drop social sharing button from \'Disable\' to \'Enable\'.', 'universal' ),
-			'type'     => 'sorter',
+			'id'       => 'universal__opt-blog-sp-meta-data-position',
+			'title'    => esc_html__( 'Meta Data Position', 'universal' ),
+			'subtitle' => esc_html__( 'Chose where meta data is positioned.', 'universal' ),
+			'type'     => 'button_set',
+			'default'  => 'above',
 			'options'  => array(
-				'enabled'  => array(
-					'social_facebook'    => esc_html__( 'Facebook', 'universal' ),
-					'social_twitter'     => esc_html__( 'Twitter', 'universal' ),
-					'social_google_plus' => esc_html__( 'Google+', 'universal' ),
-				),
-				'disabled' => array(
-					'social_linkedin' => esc_html__( 'LinkedIn', 'universal' ),
-				),
+				'above'  => esc_html__( 'Above article', 'universal' ),
+				'bellow' => esc_html__( 'Bellow article', 'universal' ),
 			),
-			'required' => array( 'universal__opt-blog-sp-social-btn', '=', '1' ),
+		),
+
+		// Show or hide single post publisher.
+		array(
+			'id'       => 'universal__opt-blog-sp-publisher',
+			'title'    => esc_html__( 'Show Post Publisher', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post publisher.', 'universal' ),
+			'desc'     => esc_html__( 'Post publisher displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
 		),
 
 		// Show or hide single post date.
@@ -641,6 +660,18 @@ Redux::setSection( $opt_name, array(
 			'title'    => esc_html__( 'Show Date', 'universal' ),
 			'subtitle' => esc_html__( 'Turn on to show single post date.', 'universal' ),
 			'desc'     => esc_html__( 'Single post date displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide single post categories.
+		array(
+			'id'       => 'universal__opt-blog-sp-categories',
+			'title'    => esc_html__( 'Show Single Post Categories', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post categories.', 'universal' ),
+			'desc'     => esc_html__( 'Single post categories displayed by default.', 'universal' ),
 			'type'     => 'switch',
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
@@ -659,12 +690,36 @@ Redux::setSection( $opt_name, array(
 			'off'      => esc_html__( 'No', 'universal' ),
 		),
 
+		// Show or hide single post comment number.
+		array(
+			'id'       => 'universal__opt-blog-sp-comment-num',
+			'title'    => esc_html__( 'Show Single Post Comment Number', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post comment number.', 'universal' ),
+			'desc'     => esc_html__( 'Single post comment number displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Show or hide related posts.
+		array(
+			'id'       => 'universal__opt-blog-sp-related-posts',
+			'title'    => esc_html__( 'Show Related Posts', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show related posts.', 'universal' ),
+			'desc'     => esc_html__( 'Related posts displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
 		// Show or hide single post footer.
 		array(
-			'id'       => 'universal__opt-blog-sp-footer',
-			'title'    => esc_html__( 'Show Single Post Footer', 'universal' ),
-			'subtitle' => esc_html__( 'Turn on to show single post footer.', 'universal' ),
-			'desc'     => esc_html__( 'Single post footer displayed by default.', 'universal' ),
+			'id'       => 'universal__opt-blog-sp-comments',
+			'title'    => esc_html__( 'Show Single Post Comments', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show single post comments.', 'universal' ),
+			'desc'     => esc_html__( 'Comments displayed by default.', 'universal' ),
 			'type'     => 'switch',
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
@@ -1058,9 +1113,9 @@ Redux::setSection( $opt_name, array(
 		// Enable or disable styling for page pre-loader.
 		array(
 			'id'       => 'universal__opt-custom-page-pre-loader',
-			'type'     => 'switch',
 			'title'    => esc_html__( 'Enable styling for page pre-loader', 'universal' ),
 			'subtitle' => esc_html__( 'Turn on to change colors for page pre-loader.', 'universal' ),
+			'type'     => 'switch',
 			'default'  => false,
 			'on'       => esc_html__( 'Yes', 'universal' ),
 			'of'       => esc_html__( 'No', 'universal' ),
@@ -1202,6 +1257,160 @@ Redux::setSection( $opt_name, array(
 /*********************************************************************************
  * 12.1. Social Sharing Box
  ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'         => 'universal__subsection-sharing-box',
+	'title'      => esc_html__( 'Social Sharing Box', 'universal' ),
+	'subsection' => true,
+	'fields'     => array(
+
+		// Sharing box tag line.
+		array(
+			'id'       => 'universal__opt-sharing-box-tag-line',
+			'title'    => esc_html__( 'Sharing  Box Tagline', 'universal' ),
+			'subtitle' => esc_html__( 'Insert a tagline for the social sharing boxes.', 'universal' ),
+			'type'     => 'text',
+			'default'  => esc_html__( 'Share Post', 'universal' ),
+		),
+
+		// Custom background color for social sharing box.
+		array(
+			'id'          => 'universal__opt-sharing-box-bg-color',
+			'title'       => esc_html__( 'Background Color For Social Sharing Box', 'universal' ),
+			'subtitle'    => esc_html__( 'Choose background color for social sharing box.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#f1f2f4',
+			'transparent' => false,
+		),
+
+		// Custom text color for social sharing box.
+		array(
+			'id'          => 'universal__opt-sharing-box-color',
+			'title'       => esc_html__( 'Text Color For Social Sharing Box', 'universal' ),
+			'subtitle'    => esc_html__( 'Choose text color for social sharing box.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#656269',
+			'transparent' => false,
+		),
+
+		// Section for social sharing box styling.
+		array(
+			'id'     => 'universal__section-sharing-box-styling',
+			'type'   => 'section',
+			'title'  => esc_html__( 'Social Sharing Box Styling', 'universal' ),
+			'indent' => true,
+		),
+
+		// Sharing box icon size.
+		array(
+			'id'       => 'universal__opt-sharing-box-icon-size',
+			'title'    => esc_html__( 'Sharing  Box Icon Size', 'universal' ),
+			'subtitle' => esc_html__( 'Controls the font size of the social icons in the social sharing boxes.', 'universal' ),
+			'type'     => 'text',
+			'default'  => esc_html__( '16px', 'universal' ),
+		),
+
+		// Sharing box icon tooltip position.
+		array(
+			'id'       => 'universal__opt-sharing-box-icon-tooltip-position',
+			'title'    => esc_html__( 'Sharing Box Icon Tooltip Position', 'universal' ),
+			'subtitle' => esc_html__( 'Chose sharing box icon tooltip position.', 'universal' ),
+			'type'     => 'button_set',
+			'default'  => 'top',
+			'options'  => array(
+				'top'    => esc_html__( 'Top', 'universal' ),
+				'right'  => esc_html__( 'Right', 'universal' ),
+				'bottom' => esc_html__( 'Bottom', 'universal' ),
+				'left'   => esc_html__( 'Left', 'universal' ),
+				'none'   => esc_html__( 'None', 'universal' ),
+			),
+		),
+
+		// Sharing box icon and boxes styling.
+		array(
+			'id'       => 'universal__opt-sharing-box-styling',
+			'title'    => esc_html__( 'Enable Sharing Box Styling', 'universal' ),
+			'subtitle' => esc_html__( 'Enable custom sharing box icon and boxes styling.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => 0,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Custom sharing icon color.
+		array(
+			'id'          => 'universal__opt-sharing-box-icon-color',
+			'title'       => esc_html__( 'Social Box Icon Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Controls the color of the social icon in the social sharing box.', 'universal' ),
+			'desc'        => esc_html__( 'This color will be used for all social icon.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#656269',
+			'transparent' => false,
+			'required'    => array( 'universal__opt-sharing-box-styling', '=', '1' ),
+		),
+
+		// Custom sharing box icon color.
+		array(
+			'id'          => 'universal__opt-sharing-box-icon-box-color',
+			'title'       => esc_html__( 'Social Box Icon Box Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Controls the color of the social icon box.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#656269',
+			'transparent' => false,
+			'required'    => array( 'universal__opt-sharing-box-styling', '=', '1' ),
+		),
+
+		// Sharing box icon boxed radius.
+		array(
+			'id'       => 'universal__opt-sharing-box-icon-boxed-radius',
+			'title'    => esc_html__( 'Sharing  Box Icon Boxed Radius', 'universal' ),
+			'subtitle' => esc_html__( 'Controls the box radius of the social icon box.', 'universal' ),
+			'type'     => 'text',
+			'default'  => esc_html__( '4px', 'universal' ),
+			'required'    => array( 'universal__opt-sharing-box-styling', '=', '1' ),
+		),
+
+		// Sharing box icon boxed padding.
+		array(
+			'id'       => 'universal__opt-sharing-box-icon-boxed-padding',
+			'title'    => esc_html__( 'Sharing  Box Icon Boxed Padding', 'universal' ),
+			'subtitle' => esc_html__( 'Controls the padding of the social icon box.', 'universal' ),
+			'type'     => 'text',
+			'default'  => esc_html__( '4px', 'universal' ),
+			'required'    => array( 'universal__opt-sharing-box-styling', '=', '1' ),
+		),
+
+		// Section for social sharing links.
+		array(
+			'id'     => 'universal__section-sharing-box-links',
+			'type'   => 'section',
+			'title'  => esc_html__( 'Social Sharing Links', 'universal' ),
+			'indent' => true,
+		),
+
+		// Sort social share button.
+		array(
+			'id'       => 'universal__opt-blog-sharing-box-social-sorter',
+			'title'    => esc_html__( 'Social Sharing Sorter', 'universal' ),
+			'subtitle' => esc_html__( 'Sort social sharing buttons.', 'universal' ),
+			'desc'     => esc_html__( 'Drag and drop social sharing button from \'Disable\' to \'Enable\'.', 'universal' ),
+			'type'     => 'sorter',
+			'options'  => array(
+				'enabled'  => array(
+					'social_facebook'    => esc_html__( 'Facebook', 'universal' ),
+					'social_twitter'     => esc_html__( 'Twitter', 'universal' ),
+					'social_google_plus' => esc_html__( 'Google+', 'universal' ),
+					'social_reddit'      => esc_html__( 'Reddit', 'universal' ),
+					'social_email'       => esc_html__( 'Email', 'universal' ),
+
+				),
+				'disabled' => array(
+					'social_linkedin' => esc_html__( 'LinkedIn', 'universal' ),
+					'social_vk'       => esc_html__( 'VK', 'universal' ),
+				),
+			),
+		),
+	),
+) );
 
 /*********************************************************************************
  * 13. Extra Options
@@ -1245,7 +1454,7 @@ Redux::setSection( $opt_name, array(
 
 		// Custom background color for pagination.
 		array(
-			'id'          => 'universal__option-pagination-bg-color',
+			'id'          => 'universal__opt-pagination-bg-color',
 			'title'       => esc_html__( 'Pagination Background Color', 'universal' ),
 			'subtitle'    => esc_html__( 'Background color for pagination.', 'universal' ),
 			'type'        => 'color',
@@ -1256,7 +1465,7 @@ Redux::setSection( $opt_name, array(
 
 		// Custom hover background color for pagination.
 		array(
-			'id'          => 'universal__option-pagination-bg-color-hover',
+			'id'          => 'universal__opt-pagination-bg-color-hover',
 			'title'       => esc_html__( 'Pagination Hover Background Color', 'universal' ),
 			'subtitle'    => esc_html__( 'Background color for hover pagination.', 'universal' ),
 			'type'        => 'color',
@@ -1267,7 +1476,7 @@ Redux::setSection( $opt_name, array(
 
 		// Custom background color (active) for pagination.
 		array(
-			'id'          => 'universal__option-pagination-bg-color-active',
+			'id'          => 'universal__opt-pagination-bg-color-active',
 			'title'       => esc_html__( 'Pagination Active Background Color', 'universal' ),
 			'subtitle'    => esc_html__( 'Background color for active pagination.', 'universal' ),
 			'type'        => 'color',
@@ -1278,7 +1487,7 @@ Redux::setSection( $opt_name, array(
 
 		// Custom border color for pagination.
 		array(
-			'id'          => 'universal__option-pagination-border-color',
+			'id'          => 'universal__opt-pagination-border-color',
 			'title'       => esc_html__( 'Pagination Border Color', 'universal' ),
 			'subtitle'    => esc_html__( 'Border color for pagination.', 'universal' ),
 			'type'        => 'color',
@@ -1289,7 +1498,7 @@ Redux::setSection( $opt_name, array(
 
 		// Custom hover border color for pagination.
 		array(
-			'id'          => 'universal__option-pagination-border-color-hover',
+			'id'          => 'universal__opt-pagination-border-color-hover',
 			'title'       => esc_html__( 'Pagination Hover Border Color', 'universal' ),
 			'subtitle'    => esc_html__( 'Border color for hover pagination.', 'universal' ),
 			'type'        => 'color',
@@ -1300,7 +1509,7 @@ Redux::setSection( $opt_name, array(
 
 		// Custom border color (active) for pagination.
 		array(
-			'id'          => 'universal__option-pagination-border-color-active',
+			'id'          => 'universal__opt-pagination-border-color-active',
 			'title'       => esc_html__( 'Pagination Active Border Color', 'universal' ),
 			'subtitle'    => esc_html__( 'Border color for active pagination.', 'universal' ),
 			'type'        => 'color',
@@ -1311,7 +1520,7 @@ Redux::setSection( $opt_name, array(
 
 		// Custom color for pagination.
 		array(
-			'id'          => 'universal__option-pagination-color',
+			'id'          => 'universal__opt-pagination-color',
 			'title'       => esc_html__( 'Pagination Text Color', 'universal' ),
 			'subtitle'    => esc_html__( 'Text color for pagination.', 'universal' ),
 			'type'        => 'color',
@@ -1322,7 +1531,7 @@ Redux::setSection( $opt_name, array(
 
 		// Custom hover color for pagination.
 		array(
-			'id'          => 'universal__option-pagination-color-hover',
+			'id'          => 'universal__opt-pagination-color-hover',
 			'title'       => esc_html__( 'Pagination Text Hover Color', 'universal' ),
 			'subtitle'    => esc_html__( 'Color for hover pagination.', 'universal' ),
 			'type'        => 'color',
