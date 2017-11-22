@@ -112,8 +112,10 @@ Redux::setArgs( $opt_name, $args );
  * 11. Under Construction Page Options
  * 12. Social Media Options
  *      12.1. Social Sharing Box
- * 13. Custom CSS
- * 14. Theme Information
+ * 13. Extra Options
+ *      13.1. Pagination
+ * 14. Custom CSS
+ * 15. Theme Information
  ********************************************************************************* */
 /***********************************************************************************
  *
@@ -1202,7 +1204,137 @@ Redux::setSection( $opt_name, array(
  ******************************************************************************** */
 
 /*********************************************************************************
- * 13. Custom CSS
+ * 13. Extra Options
+ ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'     => 'universal__section-extra',
+	'title'  => esc_html__( 'Extra Options', 'universal' ),
+	'icon'   => 'el el-cogs',
+	'fields' => array(),
+) );
+
+/*********************************************************************************
+ * 13.1. Pagination
+ ******************************************************************************** */
+Redux::setSection( $opt_name, array(
+	'id'         => 'universal__subsection-pagination',
+	'title'      => esc_html__( 'Pagination', 'universal' ),
+	'subsection' => true,
+	'fields'     => array(
+
+		// Pagination styling.
+		array(
+			'id'       => 'universal__opt-pagination',
+			'type'     => 'switch',
+			'title'    => esc_html__( 'Enable Custom Pagination Styling', 'universal' ),
+			'subtitle' => esc_html__( 'Enable custom pagination styling (blog, ...).', 'universal' ),
+			'default'  => 0,
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Section for pagination styling.
+		array(
+			'id'       => 'universal__section-extra-pagination',
+			'type'     => 'section',
+			'title'    => esc_html__( 'Pagination Styling', 'universal' ),
+			'subtitle' => esc_html__( 'All styling for pagination.', 'universal' ),
+			'indent'   => true,
+			'required' => array( 'universal__opt-pagination', '=', '1' ),
+		),
+
+		// Custom background color for pagination.
+		array(
+			'id'          => 'universal__option-pagination-bg-color',
+			'title'       => esc_html__( 'Pagination Background Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Background color for pagination.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#fff',
+			'transparent' => false,
+			'required'    => array( 'universal__opt-pagination', '=', '1' ),
+		),
+
+		// Custom hover background color for pagination.
+		array(
+			'id'          => 'universal__option-pagination-bg-color-hover',
+			'title'       => esc_html__( 'Pagination Hover Background Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Background color for hover pagination.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#99c24d',
+			'transparent' => false,
+			'required'    => array( 'universal__opt-pagination', '=', '1' ),
+		),
+
+		// Custom background color (active) for pagination.
+		array(
+			'id'          => 'universal__option-pagination-bg-color-active',
+			'title'       => esc_html__( 'Pagination Active Background Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Background color for active pagination.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#99c24d',
+			'transparent' => false,
+			'required'    => array( 'universal__opt-pagination', '=', '1' ),
+		),
+
+		// Custom border color for pagination.
+		array(
+			'id'          => 'universal__option-pagination-border-color',
+			'title'       => esc_html__( 'Pagination Border Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Border color for pagination.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#99c24d',
+			'transparent' => false,
+			'required'    => array( 'universal__opt-pagination', '=', '1' ),
+		),
+
+		// Custom hover border color for pagination.
+		array(
+			'id'          => 'universal__option-pagination-border-color-hover',
+			'title'       => esc_html__( 'Pagination Hover Border Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Border color for hover pagination.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#99c24d',
+			'transparent' => false,
+			'required'    => array( 'universal__opt-pagination', '=', '1' ),
+		),
+
+		// Custom border color (active) for pagination.
+		array(
+			'id'          => 'universal__option-pagination-border-color-active',
+			'title'       => esc_html__( 'Pagination Active Border Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Border color for active pagination.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#99c24d',
+			'transparent' => false,
+			'required'    => array( 'universal__opt-pagination', '=', '1' ),
+		),
+
+		// Custom color for pagination.
+		array(
+			'id'          => 'universal__option-pagination-color',
+			'title'       => esc_html__( 'Pagination Text Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Text color for pagination.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#747474',
+			'transparent' => false,
+			'required'    => array( 'universal__opt-pagination', '=', '1' ),
+		),
+
+		// Custom hover color for pagination.
+		array(
+			'id'          => 'universal__option-pagination-color-hover',
+			'title'       => esc_html__( 'Pagination Text Hover Color', 'universal' ),
+			'subtitle'    => esc_html__( 'Color for hover pagination.', 'universal' ),
+			'type'        => 'color',
+			'default'     => '#fff',
+			'transparent' => false,
+			'required'    => array( 'universal__opt-pagination', '=', '1' ),
+		),
+	),
+) );
+
+/*********************************************************************************
+ * 14. Custom CSS
  ******************************************************************************** */
 Redux::setSection( $opt_name, array(
 	'id'     => 'universal__section-custom-css',
@@ -1225,7 +1357,7 @@ Redux::setSection( $opt_name, array(
 ) );
 
 /*********************************************************************************
- * 14. Theme Information
+ * 15. Theme Information
  ******************************************************************************** */
 if ( file_exists( get_template_directory() . '/readme.txt' ) ) {
 	Redux::setSection( $opt_name, array(
@@ -1248,3 +1380,4 @@ if ( file_exists( get_template_directory() . '/readme.txt' ) ) {
  * END SECTIONS
  *
  ********************************************************************************** */
+

@@ -42,12 +42,9 @@ class CustomStyling {
 		/*********************************************************************************
 		 * Blog Styling.
 		 ******************************************************************************** */
-		$post_styling = $universal_data['universal__option-blog-styling'];
-		$post_footer  = $universal_data['universal__option-blog-footer'];
+		$post_styling         = $universal_data['universal__option-blog-styling'];
+		$post_footer          = $universal_data['universal__option-blog-footer'];
 		$blog_pagination_type = $universal_data['universal__opt-blog-pagination-type'];
-		echo "<pre>";
-		var_dump($blog_pagination_type);
-		echo "</pre>";
 
 		if ( $post_styling ) {
 			$post_border          = $universal_data['universal__option-blog-styling-post-border'];
@@ -164,11 +161,6 @@ class CustomStyling {
 			$output .= ' }';
 		}
 
-		// Blog pagination.
-		if ( 'pagination' === $blog_pagination_type ) {
-
-		}
-
 		// Infinite scroll load more button.
 		if ( 'load_more_button' === $blog_pagination_type ) {
 			$output .= ' .universal-load-more-button {';
@@ -210,6 +202,46 @@ class CustomStyling {
 			$output .= ' height: ' . $page_pre_loader_size . 'px;';
 			$output .= ' width: ' . $page_pre_loader_size . 'px;';
 			$output .= ' margin: -' . $page_pre_loader_h_size . 'px 0 0 -' . $page_pre_loader_h_size . 'px;';
+			$output .= ' }';
+		}
+
+		/*********************************************************************************
+		 * Extra Options.
+		 ******************************************************************************** */
+		$pagination_styling_enable = $universal_data['universal__opt-pagination'];
+
+		// Pagination styling.
+		if ( '1' === $pagination_styling_enable ) {
+			$pagination_bg_color            = $universal_data['universal__option-pagination-bg-color'];
+			$pagination_bg_color_active     = $universal_data['universal__option-pagination-bg-color-active'];
+			$pagination_bg_color_hover      = $universal_data['universal__option-pagination-bg-color-hover'];
+			$pagination_color_hover         = $universal_data['universal__option-pagination-color-hover'];
+			$pagination_color               = $universal_data['universal__option-pagination-color'];
+			$pagination_border_color        = $universal_data['universal__option-pagination-border-color'];
+			$pagination_border_color_hover  = $universal_data['universal__option-pagination-border-color-hover'];
+			$pagination_border_color_active = $universal_data['universal__option-pagination-border-color-active'];
+
+			$output .= ' .universal-pagination-holder > .page-item .page-link {';
+			$output .= ' background-color: ' . $pagination_bg_color . ';';
+			$output .= ' border-color: ' . $pagination_border_color . ';';
+			$output .= ' color: ' . $pagination_color . ';';
+			$output .= ' }';
+
+			$output .= ' .universal-pagination-holder > .page-item.active .page-link {';
+			$output .= ' background-color: ' . $pagination_bg_color_active . ';';
+			$output .= ' border-color: ' . $pagination_border_color_active . ';';
+			$output .= ' color: ' . $pagination_color . ';';
+			$output .= ' }';
+
+			$output .= ' .universal-pagination-holder > .page-item > .page-link {';
+			$output .= ' color: ' . $pagination_color . ';';
+			$output .= ' }';
+
+			$output .= ' .universal-pagination-holder > .page-item > .page-link:hover, ';
+			$output .= ' .universal-pagination-holder > .page-item > .page-link:focus {';
+			$output .= ' background-color: ' . $pagination_bg_color_hover . ';';
+			$output .= ' border-color: ' . $pagination_border_color_hover . ';';
+			$output .= ' color: ' . $pagination_color_hover . ';';
 			$output .= ' }';
 		}
 
