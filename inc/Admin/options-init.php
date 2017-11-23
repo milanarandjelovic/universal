@@ -583,7 +583,8 @@ Redux::setSection( $opt_name, array(
 		array(
 			'id'       => 'universal__opt-blog-sp-title-position',
 			'title'    => esc_html__( 'Position For Single Post Title', 'universal' ),
-			'subtitle' => esc_html__( 'Control position for single post type.', 'universal' ),
+			'subtitle' => esc_html__( 'Controls position post title.', 'universal' ),
+			'desc'     => esc_html__( 'Display post title above or bellow featured image.', 'universal' ),
 			'type'     => 'button_set',
 			'default'  => 'above',
 			'options'  => array(
@@ -608,7 +609,7 @@ Redux::setSection( $opt_name, array(
 		// Show or hide post navigation.
 		array(
 			'id'       => 'universal__opt-blog-sp-navigation',
-			'title'    => esc_html__( 'Show Single Post navigation', 'universal' ),
+			'title'    => esc_html__( 'Show Single Post Navigation', 'universal' ),
 			'subtitle' => esc_html__( 'Turn on to show previous/next post navigation.', 'universal' ),
 			'desc'     => esc_html__( 'Display the previous/next post navigation for single blog post.', 'universal' ),
 			'type'     => 'switch',
@@ -629,6 +630,18 @@ Redux::setSection( $opt_name, array(
 			'off'      => esc_html__( 'No', 'universal' ),
 		),
 
+		// Show or hide meta data.
+		array(
+			'id'       => 'universal__opt-blog-sp-show-meta-data',
+			'title'    => esc_html__( 'Show Meta Data', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show meta data.', 'universal' ),
+			'desc'     => esc_html__( 'Meta data displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
 		// Single post title position.
 		array(
 			'id'       => 'universal__opt-blog-sp-meta-data-position',
@@ -640,6 +653,7 @@ Redux::setSection( $opt_name, array(
 				'above'  => esc_html__( 'Above article', 'universal' ),
 				'bellow' => esc_html__( 'Bellow article', 'universal' ),
 			),
+			'required' => array( 'universal__opt-blog-sp-show-meta-data', '=', '1' ),
 		),
 
 		// Show or hide single post publisher.
@@ -652,6 +666,7 @@ Redux::setSection( $opt_name, array(
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
 			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__opt-blog-sp-show-meta-data', '=', '1' ),
 		),
 
 		// Show or hide single post date.
@@ -664,6 +679,7 @@ Redux::setSection( $opt_name, array(
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
 			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__opt-blog-sp-show-meta-data', '=', '1' ),
 		),
 
 		// Show or hide single post categories.
@@ -676,6 +692,7 @@ Redux::setSection( $opt_name, array(
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
 			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__opt-blog-sp-show-meta-data', '=', '1' ),
 		),
 
 		// Show or hide single post tags.
@@ -688,6 +705,7 @@ Redux::setSection( $opt_name, array(
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
 			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__opt-blog-sp-show-meta-data', '=', '1' ),
 		),
 
 		// Show or hide single post comment number.
@@ -696,6 +714,18 @@ Redux::setSection( $opt_name, array(
 			'title'    => esc_html__( 'Show Single Post Comment Number', 'universal' ),
 			'subtitle' => esc_html__( 'Turn on to show single post comment number.', 'universal' ),
 			'desc'     => esc_html__( 'Single post comment number displayed by default.', 'universal' ),
+			'type'     => 'switch',
+			'default'  => '1',
+			'on'       => esc_html__( 'Yes', 'universal' ),
+			'off'      => esc_html__( 'No', 'universal' ),
+			'required' => array( 'universal__opt-blog-sp-show-meta-data', '=', '1' ),
+		),
+
+		// Show or hide author info (bio).
+		array(
+			'id'       => 'universal__opt-blog-sp-author-info',
+			'title'    => esc_html__( 'Show Author Info Box', 'universal' ),
+			'subtitle' => esc_html__( 'Turn on to show author info box below post.', 'universal' ),
 			'type'     => 'switch',
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
@@ -714,7 +744,7 @@ Redux::setSection( $opt_name, array(
 			'off'      => esc_html__( 'No', 'universal' ),
 		),
 
-		// Show or hide single post footer.
+		// Show or hide single post comments.
 		array(
 			'id'       => 'universal__opt-blog-sp-comments',
 			'title'    => esc_html__( 'Show Single Post Comments', 'universal' ),
@@ -1366,7 +1396,7 @@ Redux::setSection( $opt_name, array(
 			'subtitle' => esc_html__( 'Controls the box radius of the social icon box.', 'universal' ),
 			'type'     => 'text',
 			'default'  => esc_html__( '4px', 'universal' ),
-			'required'    => array( 'universal__opt-sharing-box-styling', '=', '1' ),
+			'required' => array( 'universal__opt-sharing-box-styling', '=', '1' ),
 		),
 
 		// Sharing box icon boxed padding.
@@ -1376,7 +1406,7 @@ Redux::setSection( $opt_name, array(
 			'subtitle' => esc_html__( 'Controls the padding of the social icon box.', 'universal' ),
 			'type'     => 'text',
 			'default'  => esc_html__( '4px', 'universal' ),
-			'required'    => array( 'universal__opt-sharing-box-styling', '=', '1' ),
+			'required' => array( 'universal__opt-sharing-box-styling', '=', '1' ),
 		),
 
 		// Section for social sharing links.

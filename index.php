@@ -81,6 +81,7 @@ $number_of_pages = $wp_query->max_num_pages;
 	<div class="page__section">
 		<div class="container">
 			<div class="row">
+
 				<main id="primary" class="site-main <?php echo esc_attr( $page_layout_content ); ?>">
 
 					<?php

@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts
+ * The template for displaying all single posts.
  *
  * @link       https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
@@ -13,30 +13,76 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'Direct script access denied.' );
 }
 
-get_header(); ?>
+get_header();
+
+$universal_data = get_option( 'universal_data' );
+
+$sp_show_navigation = $universal_data['universal__opt-blog-sp-navigation'];
+$sp_show_comments   = $universal_data['universal__opt-blog-sp-comments'];
+
+$sidebar_position = $universal_data['universal__opt-blog-sidebar'];
+$sidebar_width    = $universal_data['universal__opt-blog-sidebar-width'];
+
+$container_class = 'universal-posts-container ';
+
+if ( '2' === $sidebar_width ) {
+	$sidebar_class = '4';
+	$content_class = '8';
+} else {
+	$sidebar_class = '3';
+	$content_class = '9';
+}
+
+// Right sidebar by default.
+$page_layout_content = 'col-md-' . $content_class;
+$page_layout_sidebar = 'col-md-' . $sidebar_class;
+
+if ( '2' === $sidebar_position ) {
+	// Left sidebar.
+	$page_layout_content = 'col-md-' . $content_class . ' push-md-' . $sidebar_class;
+	$page_layout_sidebar = 'col-md-' . $sidebar_class . ' pull-md-' . $content_class;
+}
+?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<div class="container">
+			<div class="row">
 
-			<?php
-			while ( have_posts() ) :
-				the_post();
+				<main id="main" class="site-main <?php echo esc_attr( $page_layout_content ); ?>">
 
-				get_template_part( 'template-parts/content', get_post_type() );
+					<?php
+					while ( have_posts() ) :
+						the_post();
 
-				the_post_navigation();
+						if ( '1' === $sp_show_navigation ) {
+							universal_render_single_post_navigation();
+						}
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
+						get_template_part( 'template-parts/content', 'single' );
 
-			endwhile; // End of the loop.
-			?>
+						if ( '1' === $sp_show_comments ) {
+							// If comments are open or we have at least one comment, load up the comment template.
+							if ( comments_open() || get_comments_number() ) {
+								comments_template();
+							}
+						}
 
-		</main> <!-- /#main -->
+					endwhile; // End of the loop.
+					?>
+
+				</main> <!-- /#main -->
+
+				<aside id="secondary" class="sidebar <?php echo esc_attr( $page_layout_sidebar ); ?>">
+					<?php
+					if ( is_active_sidebar( 'universal-sidebar' ) ) {
+						dynamic_sidebar( 'universal-sidebar' );
+					}
+					?>
+				</aside> <!-- /#secondary -->
+
+			</div> <!-- /.row -->
+		</div> <!-- /.container -->
 	</div> <!-- /#primary -->
 
 <?php
-get_sidebar();
 get_footer();

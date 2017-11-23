@@ -59,7 +59,7 @@ if ( ! function_exists( 'universal_entry_footer' ) ) {
 	function universal_entry_footer() {
 		if ( 'post' === get_post_type() ) {
 			$author = sprintf(
-			/* translators: %s: post author. */
+				/* translators: %s: post author. */
 				esc_html_x( 'Posted by %s', 'post_author', 'universal' ),
 				'<span class="author"><a href="'
 				. esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
@@ -89,7 +89,7 @@ if ( ! function_exists( 'universal_entry_footer' ) ) {
 }
 
 /*********************************************************************************
- * Custom Universal functions
+ * Custom Universal Functions
  ******************************************************************************** */
 if ( ! function_exists( 'universal_categorized_blog' ) ) {
 	/**
@@ -173,7 +173,7 @@ if ( ! function_exists( 'universal_pagination' ) ) {
 				global $wp_query;
 				$pages = $wp_query->max_num_pages;
 
-				if ( ! pages ) {
+				if ( ! $pages ) {
 					$pages = 1;
 				}
 			} else {
@@ -240,7 +240,7 @@ if ( ! function_exists( 'universal_pagination' ) ) {
 			</div>
 			<?php
 			// Needed for Theme check.
-			ob_start();
+			ob_start(); // Turn on output buffering.
 			posts_nav_link();
 			ob_get_clean();
 			?>
@@ -253,5 +253,50 @@ if ( ! function_exists( 'universal_pagination' ) ) {
 		<?php endif; ?>
 
 		<?php
+	}
+}
+
+if ( ! function_exists( 'universal_render_post_meta_data' ) ) {
+	/**
+	 * Render HTML post meta data.
+	 */
+	function universal_render_post_meta_data() {
+		get_template_part( 'template-parts/post/post-meta-data' );
+	}
+}
+
+if ( ! function_exists( 'universal_render_social_sharing_box' ) ) {
+	/**
+	 * Render HTML for social sharing box.
+	 */
+	function universal_render_social_sharing_box() {
+		get_template_part( 'template-parts/social-share/social-share-box' );
+	}
+}
+
+if ( ! function_exists( 'universal_render_about_author' ) ) {
+	/**
+	 * Render HTML for about author.
+	 */
+	function universal_render_about_author() {
+		get_template_part( 'template-parts/author/author-about' );
+	}
+}
+
+if ( ! function_exists( 'universal_render_related_posts' ) ) {
+	/**
+	 * Render HTML for related posts.
+	 */
+	function universal_render_related_posts() {
+		get_template_part( 'template-parts/post/post-related-posts' );
+	}
+}
+
+if ( ! function_exists( 'universal_render_single_post_navigation' ) ) {
+	/**
+	 * Render HTML for single post navigation.
+	 */
+	function universal_render_single_post_navigation() {
+		get_template_part( 'template-parts/post/post-single-post-navigation' );
 	}
 }
