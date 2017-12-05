@@ -44,6 +44,7 @@ $inline_separator = '<span class="universal-inline-separator">|</span>';
 			);
 			?>
 			<span class="universal__meta-data-author">
+				<i class="fa fa-user" aria-hidden="true"></i>
 				<?php echo $author; // WPCS: XSS ok. ?>
 			</span>
 			<?php echo $inline_separator; // WPCS: XSS ok. ?>
@@ -51,6 +52,7 @@ $inline_separator = '<span class="universal-inline-separator">|</span>';
 
 		<?php if ( '1' === $sp_post_meta_date ) : ?>
 			<span class="universal__meta-data-date">
+				<i class="fa fa-clock-o" aria-hidden="true"></i>
 				<?php echo get_the_time( 'F jS, Y' ); // WPCS: XSS ok. ?>
 			</span>
 			<?php echo $inline_separator; // WPCS: XSS ok. ?>
@@ -75,6 +77,7 @@ $inline_separator = '<span class="universal-inline-separator">|</span>';
 				);
 				?>
 				<span class="universal__meta-data-categories">
+					<i class="fa fa-sitemap" aria-hidden="true"></i>
 					<?php echo $ctgs; // WPCS: XSS ok. ?>
 				</span>
 				<?php echo $inline_separator; // WPCS: XSS ok. ?>
@@ -100,6 +103,7 @@ $inline_separator = '<span class="universal-inline-separator">|</span>';
 				);
 				?>
 				<span class="universal__meta-data-tags">
+					<i class="fa fa-tags" aria-hidden="true"></i>
 					<?php echo $tgs; // WPCS: XSS ok. ?>
 				</span>
 				<?php echo $inline_separator; // WPCS: XSS ok. ?>
@@ -116,6 +120,7 @@ $inline_separator = '<span class="universal-inline-separator">|</span>';
 			);
 			$comments = ob_get_clean(); // Get current buffer contents and delete output buffer.
 			?>
+			<i class="fa fa-comments" aria-hidden="true"></i>
 			<span class="universal__meta-data-comment-num"><?php echo $comments; // WPCS: XSS ok. ?></span>
 		<?php endif; // Check if post meta comments enable. ?>
 
