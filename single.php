@@ -17,8 +17,9 @@ get_header();
 
 $universal_data = get_option( 'universal_data' );
 
-$sp_show_navigation = $universal_data['universal__opt-blog-sp-navigation'];
-$sp_show_comments   = $universal_data['universal__opt-blog-sp-comments'];
+$sp_show_navigation     = $universal_data['universal__opt-blog-sp-navigation'];
+$sp_pagination_position = $universal_data['universal__opt-blog-sp-navigation-position'];
+$sp_show_comments       = $universal_data['universal__opt-blog-sp-comments'];
 
 $sidebar_position = $universal_data['universal__opt-blog-sidebar'];
 $sidebar_width    = $universal_data['universal__opt-blog-sidebar-width'];
@@ -54,11 +55,15 @@ if ( '2' === $sidebar_position ) {
 					while ( have_posts() ) :
 						the_post();
 
-						if ( '1' === $sp_show_navigation ) {
+						if ( '1' === $sp_show_navigation && ( 'above' === $sp_pagination_position ) ) {
 							universal_render_single_post_navigation();
 						}
 
 						get_template_part( 'template-parts/content', 'single' );
+
+						if ( '1' === $sp_show_navigation && ( 'bellow' === $sp_pagination_position ) ) {
+							universal_render_single_post_navigation();
+						}
 
 						if ( '1' === $sp_show_comments ) {
 							// If comments are open or we have at least one comment, load up the comment template.

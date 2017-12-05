@@ -153,7 +153,8 @@ Redux::setSection( $opt_name, array(
 			'id'             => 'universal__opt-custom-logo-width',
 			'title'          => esc_html__( 'Logo With', 'universal' ),
 			'subtitle'       => esc_html__( 'Set your logo width.', 'universal' ),
-			'desc'           => esc_html__( 'Logo width can be set in px. Height will automatically calculated.', 'universal' ),
+			'desc'           => esc_html__( 'Logo width can be set in px. Height will automatically calculated.',
+				'universal' ),
 			'type'           => 'dimensions',
 			'units'          => array( 'px' ),
 			'units_extended' => 'false',
@@ -168,7 +169,8 @@ Redux::setSection( $opt_name, array(
 			'id'             => 'universal__opt-custom-logo-width-mobile',
 			'title'          => esc_html__( 'Logo With', 'universal' ),
 			'subtitle'       => esc_html__( 'Set your logo width on mobile.', 'universal' ),
-			'desc'           => esc_html__( 'Logo width can be set in px. Height will automatically calculated.', 'universal' ),
+			'desc'           => esc_html__( 'Logo width can be set in px. Height will automatically calculated.',
+				'universal' ),
 			'type'           => 'dimensions',
 			'units'          => array( 'px' ),
 			'units_extended' => 'false',
@@ -518,7 +520,8 @@ Redux::setSection( $opt_name, array(
 		array(
 			'id'       => 'universal__opt-blog-pagination-type',
 			'title'    => esc_html__( 'Pagination Type', 'universal' ),
-			'subtitle' => esc_html__( 'Controls the pagination type for the assigned blog page in "settings->reading" or blog archive pages.', 'universal' ),
+			'subtitle' => esc_html__( 'Controls the pagination type for the assigned blog page in "settings->reading" or blog archive pages.',
+				'universal' ),
 			'type'     => 'button_set',
 			'default'  => 'pagination',
 			'options'  => array(
@@ -548,7 +551,8 @@ Redux::setSection( $opt_name, array(
 		array(
 			'id'       => 'universal__opt-blog-load-more-text',
 			'title'    => esc_html__( 'Read More Text', 'universal' ),
-			'desc'     => __( 'Enter text for \'Load More Posts\' post. Example <em>\'Load More Posts\'</em>.', 'universal' ),
+			'desc'     => __( 'Enter text for \'Load More Posts\' post. Example <em>\'Load More Posts\'</em>.',
+				'universal' ),
 			'type'     => 'text',
 			'validate' => 'not_empty',
 			'msg'      => esc_html__( 'Fill read more button text', 'universal' ),
@@ -599,7 +603,8 @@ Redux::setSection( $opt_name, array(
 			'id'       => 'universal__opt-blog-sp-thumbnail',
 			'title'    => esc_html__( 'Show Featured Image', 'universal' ),
 			'subtitle' => esc_html__( 'Turn on to show feature image.', 'universal' ),
-			'desc'     => esc_html__( 'This option enable or disable feature image visibility only on single post page.', 'universal' ),
+			'desc'     => esc_html__( 'This option enable or disable feature image visibility only on single post page.',
+				'universal' ),
 			'type'     => 'switch',
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
@@ -616,6 +621,20 @@ Redux::setSection( $opt_name, array(
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
 			'off'      => esc_html__( 'No', 'universal' ),
+		),
+
+		// Single post navigation position.
+		array(
+			'id'       => 'universal__opt-blog-sp-navigation-position',
+			'title'    => esc_html__( 'Single Post Navigation Position', 'universal' ),
+			'subtitle' => esc_html__( 'Chose where single post navigation is positioned.', 'universal' ),
+			'type'     => 'button_set',
+			'default'  => 'above',
+			'options'  => array(
+				'above'  => esc_html__( 'Above article', 'universal' ),
+				'bellow' => esc_html__( 'Bellow article', 'universal' ),
+			),
+			'required' => array( 'universal__opt-blog-sp-navigation', '=', '1' ),
 		),
 
 		// Show or hide post social share button.
@@ -844,7 +863,8 @@ Redux::setSection( $opt_name, array(
 			'id'       => 'universal__option-blog-styling-post--title-border',
 			'title'    => esc_html__( 'Post Title Border', 'universal' ),
 			'subtitle' => esc_html__( 'Border title options for post.', 'universal' ),
-			'desc'     => esc_html__( 'Options for post title pn blog page. Border bottom is set by default 1px.', 'universal' ),
+			'desc'     => esc_html__( 'Options for post title pn blog page. Border bottom is set by default 1px.',
+				'universal' ),
 			'type'     => 'border',
 			'output'   => array( '.entry-header .title-bordered' ),
 			'all'      => false,
@@ -1296,7 +1316,7 @@ Redux::setSection( $opt_name, array(
 		// Sharing box tag line.
 		array(
 			'id'       => 'universal__opt-sharing-box-tag-line',
-			'title'    => esc_html__( 'Sharing  Box Tagline', 'universal' ),
+			'title'    => esc_html__( 'Sharing Box Tagline', 'universal' ),
 			'subtitle' => esc_html__( 'Insert a tagline for the social sharing boxes.', 'universal' ),
 			'type'     => 'text',
 			'default'  => esc_html__( 'Share Post', 'universal' ),
@@ -1334,7 +1354,8 @@ Redux::setSection( $opt_name, array(
 		array(
 			'id'       => 'universal__opt-sharing-box-icon-size',
 			'title'    => esc_html__( 'Sharing  Box Icon Size', 'universal' ),
-			'subtitle' => esc_html__( 'Controls the font size of the social icons in the social sharing boxes.', 'universal' ),
+			'subtitle' => esc_html__( 'Controls the font size of the social icons in the social sharing boxes.',
+				'universal' ),
 			'type'     => 'text',
 			'default'  => esc_html__( '16px', 'universal' ),
 		),
@@ -1370,7 +1391,8 @@ Redux::setSection( $opt_name, array(
 		array(
 			'id'          => 'universal__opt-sharing-box-icon-color',
 			'title'       => esc_html__( 'Social Box Icon Color', 'universal' ),
-			'subtitle'    => esc_html__( 'Controls the color of the social icon in the social sharing box.', 'universal' ),
+			'subtitle'    => esc_html__( 'Controls the color of the social icon in the social sharing box.',
+				'universal' ),
 			'desc'        => esc_html__( 'This color will be used for all social icon.', 'universal' ),
 			'type'        => 'color',
 			'default'     => '#656269',
@@ -1422,7 +1444,8 @@ Redux::setSection( $opt_name, array(
 			'id'       => 'universal__opt-blog-sharing-box-social-sorter',
 			'title'    => esc_html__( 'Social Sharing Sorter', 'universal' ),
 			'subtitle' => esc_html__( 'Sort social sharing buttons.', 'universal' ),
-			'desc'     => esc_html__( 'Drag and drop social sharing button from \'Disable\' to \'Enable\'.', 'universal' ),
+			'desc'     => esc_html__( 'Drag and drop social sharing button from \'Disable\' to \'Enable\'.',
+				'universal' ),
 			'type'     => 'sorter',
 			'options'  => array(
 				'enabled'  => array(
