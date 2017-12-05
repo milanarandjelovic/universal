@@ -1,6 +1,9 @@
 @import '../../variables/variables';
 @import '../../mixins/mixins';
 
+/*********************************************************************************
+* Infinite scroll button
+******************************************************************************** */
 .universal-loading-container,
 .universal-loading-container-load-message,
 #infscr-loading {
@@ -14,6 +17,9 @@
   background-color: #f1f2f4;
 } // .universal-load-more-button
 
+/*********************************************************************************
+* Posts
+******************************************************************************** */
 article.post {
   position: relative;
   margin-bottom: 40px;
@@ -36,8 +42,7 @@ article.post {
       width: auto;
       max-width: 100%;
     }
-  }
-  // .entry-thumbnail
+  } // .entry-thumbnail
 
   .entry-body {
     padding: 12px 30px 20px;
@@ -80,8 +85,7 @@ article.post {
             line-height: 60px;
             font-size: 24px;
           }
-        }
-        // .entry-day
+        } // .entry-day
 
         .entry-month {
           display: block;
@@ -95,12 +99,9 @@ article.post {
             height: 45px;
             line-height: 45px;
           }
-        }
-        // .entry-month
-      }
-      // .universal__date-box
-    }
-    // .entry-date
+        } // .entry-month
+      } // .universal__date-box
+    } // .entry-date
 
     .entry-header {
       overflow: hidden;
@@ -130,15 +131,13 @@ article.post {
           }
         }
       }
-    }
-    // .entry-header
+    } // .entry-header
 
     .entry-excerpt {
       overflow: hidden;
       color: $blog-excerpt-color;
     }
-  }
-  // .entry-body
+  } // .entry-body
 
   .post-categories {
     list-style: none;
@@ -197,8 +196,7 @@ article.post {
         }
       }
     }
-  }
-  // .post-categories
+  } // .post-categories
 
   .entry-footer {
     clear: both;
@@ -256,11 +254,8 @@ article.post {
         text-decoration: none;
       }
     }
-  }
-  // .entry-footer
-}
-
-// article.post
+  } // .entry-footer
+}  // article.post
 
 article.has-post-thumbnail {
   .entry-date {
@@ -273,8 +268,87 @@ article.has-post-thumbnail {
       left: 20px;
       margin: 0;
     }
-  }
-  // .entry-date
-}
+  } // .entry-date
+} // article.has-post-thumbnail
 
-// article.has-post-thumbnail
+/*********************************************************************************
+* Single post
+******************************************************************************** */
+article.universal-single-post {
+  border: 0;
+  margin-top: 30px;
+
+  figure.entry-thumbnail {
+    margin: 20px 0;
+  }
+
+  .entry-body {
+    clear: both;
+    padding: 30px 0;
+
+    .entry-content {
+      color: $text-color;
+
+      a {
+        color: $link-color;
+        text-decoration: none;
+
+        &:hover {
+          color: $link-hover-color;
+        }
+      }
+    } // .entry-content
+  } // .entry-body
+
+  .universal__post-meta-data {
+    clear: both;
+    color: $text-color;
+    border: 1px solid $sp-navigation-border-color;
+    border-left: 0;
+    border-right: 0;
+    padding: 5px 0;
+
+    a {
+      color: $link-color;
+      text-decoration: none;
+
+      &:hover {
+        color: $link-hover-color;
+      }
+    }
+  } // .universal__post-meta-data
+} // .universal-single-post
+
+/*********************************************************************************
+* Single post navigation
+******************************************************************************** */
+.universal__single-post-navigation {
+  margin: 30px 0;
+  border: 1px solid $sp-navigation-border-color;
+  border-left: 0;
+  border-right: 0;
+
+  .universal__pagination {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: inline-block;
+      padding: 5px 0;
+
+      &.universal__pagination-next {
+        margin-left: 15px;
+      }
+
+      a {
+        color: $link-color;
+        text-decoration: none;
+
+        &:hover {
+          color: $link-hover-color;
+        }
+      }
+    }
+  } // .universal__pagination
+} // .universal__single-post-navigation

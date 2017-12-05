@@ -23,7 +23,7 @@ $sp_post_meta_comments   = $universal_data['universal__opt-blog-sp-comment-num']
 $inline_separator = '<span class="universal-inline-separator">|</span>';
 ?>
 
-<div class="universal-post-meta-data">
+<div class="universal__post-meta-data">
 
 	<?php if ( '1' === $sp_post_meta ) : ?>
 
@@ -43,14 +43,14 @@ $inline_separator = '<span class="universal-inline-separator">|</span>';
 				$author_post_link
 			);
 			?>
-			<span class="meta-data-author">
+			<span class="universal__meta-data-author">
 				<?php echo $author; // WPCS: XSS ok. ?>
 			</span>
 			<?php echo $inline_separator; // WPCS: XSS ok. ?>
 		<?php endif; // Check if author of post enable. ?>
 
 		<?php if ( '1' === $sp_post_meta_date ) : ?>
-			<span class="meta-data-date">
+			<span class="universal__meta-data-date">
 				<?php echo get_the_time( 'F jS, Y' ); // WPCS: XSS ok. ?>
 			</span>
 			<?php echo $inline_separator; // WPCS: XSS ok. ?>
@@ -74,7 +74,7 @@ $inline_separator = '<span class="universal-inline-separator">|</span>';
 					$categories
 				);
 				?>
-				<span class="meta-data-categories">
+				<span class="universal__meta-data-categories">
 					<?php echo $ctgs; // WPCS: XSS ok. ?>
 				</span>
 				<?php echo $inline_separator; // WPCS: XSS ok. ?>
@@ -99,7 +99,7 @@ $inline_separator = '<span class="universal-inline-separator">|</span>';
 					$tags
 				);
 				?>
-				<span class="meta-data-tags">
+				<span class="universal__meta-data-tags">
 					<?php echo $tgs; // WPCS: XSS ok. ?>
 				</span>
 				<?php echo $inline_separator; // WPCS: XSS ok. ?>
@@ -116,7 +116,7 @@ $inline_separator = '<span class="universal-inline-separator">|</span>';
 			);
 			$comments = ob_get_clean(); // Get current buffer contents and delete output buffer.
 			?>
-			<span class="meta-data-comment-num"><?php echo $comments; // WPCS: XSS ok. ?></span>
+			<span class="universal__meta-data-comment-num"><?php echo $comments; // WPCS: XSS ok. ?></span>
 		<?php endif; // Check if post meta comments enable. ?>
 
 	<?php endif; ?>
