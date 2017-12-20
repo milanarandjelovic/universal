@@ -89,7 +89,8 @@ $body_classes = '1' === $sticky_header ? ' sticky-header' : '';
 								'container'      => '',
 								'menu_class'     => 'navbar-nav ml-auto',
 								'depth'          => 3,
-								'walker'         => new Inc\Menu\MenuWalker(),
+								'walker'         => new Universal_Menu_Walker(),
+								'fallback_cb'    => 'Universal_Menu_Walker::fallback',
 							) );
 							?>
 						</div> <!-- /.collapse navbar-collapse -->

@@ -1,31 +1,38 @@
 <?php
 /**
- * Adding scripts for Universal theme.
+ * Enqueue styles and scripts for Universal plugin.
  *
  * @package    Universal
- * @subpackage Inc\Setup
+ * @subpackage Core
  * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
-
-namespace Inc\Setup;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'Direct script access denied.' );
 }
 
-/**
- * Enqueue scripts and styles for Universal theme.
- */
-class Enqueue {
+class Universal_Scripts {
 
 	/**
-	 * Register default hooks and actions for WordPress.
+	 * The theme version.
+	 *
+	 * @static
+	 * @access private
+	 * @var string
+	 */
+	private static $version;
+
+	/**
+	 * Universal_Scripts constructor.
 	 *
 	 * @access public
 	 * @since  1.0.0
 	 */
-	public function register() {
+	public function __construct() {
+		self::$version = Universal::get_theme_version();
+
 		add_action( 'customize_register', array( $this, 'universal_customize_register' ) );
 		add_action( 'customize_preview_init', array( $this, 'universal_customize_preview_js' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'universal_enqueue_scripts' ) );
@@ -81,6 +88,6 @@ class Enqueue {
 	 * @since  1.0.0
 	 */
 	public function universal_customize_preview_js() {
-		wp_enqueue_script( 'phoenix-main-customizer', UNIVERSAL_SCRIPTS_URI . 'customizer.js', array( 'customize-preview' ), '1.0.0', true );
+		wp_enqueue_script( 'universal-main-customizer', UNIVERSAL_SCRIPTS_URI . 'customizer.js', array( 'customize-preview' ), '1.0.0', true );
 	}
 }

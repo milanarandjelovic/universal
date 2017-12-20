@@ -4,11 +4,10 @@
  * in a custom theme using the WordPress built in menu manager.
  *
  * @package    Universal
- * @subpackage Inc\Menu
+ * @subpackage Core
  * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
-
-namespace Inc\Menu;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,16 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Custom WordPress nav walker class
  */
-class MenuWalker extends \Walker_Nav_Menu {
-
-	/**
-	 * Register default hooks and actions for WordPress.
-	 *
-	 * @access public
-	 * @since  1.0.0
-	 */
-	public function register() {
-	}
+class Universal_Menu_Walker extends Walker_Nav_Menu {
 
 	/**
 	 * Starts the list before the elements are added.
@@ -207,7 +197,7 @@ class MenuWalker extends \Walker_Nav_Menu {
 		 * @since 4.1.0 The `$depth` parameter was added.
 		 *
 		 * @param array  $atts   {
-		 * The HTML attributes applied to the menu item's `<a>` element, empty strings are ignored.
+		 *                       The HTML attributes applied to the menu item's `<a>` element, empty strings are ignored.
 		 *
 		 * @type string  $title  Title attribute.
 		 * @type string  $target Target attribute.
@@ -279,6 +269,49 @@ class MenuWalker extends \Walker_Nav_Menu {
 
 		if ( isset( $args->has_children ) && 0 === $depth ) {
 			$output .= "</li>{$n}";
+		}
+	}
+
+	/**
+	 * Menu Fallback
+	 * If this function is assigned to the wp_nav_menu's fallback_cb variable
+	 * and a menu has not been assigned to the theme location in the WordPress
+	 * menu manager the function with display nothing to a non-logged in user,
+	 * and will add a link to the WordPress menu manager if logged in as an admin.
+	 *
+	 * @param array $args passed from the wp_nav_menu function.
+	 */
+	public static function fallback( $args ) {
+		if ( current_user_can( 'edit_theme_options' ) ) {
+			/* Get Arguments. */
+			$container       = $args['container'];
+			$container_id    = $args['container_id'];
+			$container_class = $args['container_class'];
+			$menu_class      = $args['menu_class'];
+			$menu_id         = $args['menu_id'];
+			if ( $container ) {
+				echo '<' . esc_attr( $container );
+				if ( $container_id ) {
+					echo ' id="' . esc_attr( $container_id ) . '"';
+				}
+				if ( $container_class ) {
+					echo ' class="' . sanitize_html_class( $container_class ) . '"';
+				}
+				echo '>';
+			}
+			echo '<ul';
+			if ( $menu_id ) {
+				echo ' id="' . esc_attr( $menu_id ) . '"';
+			}
+			if ( $menu_class ) {
+				echo ' class="' . esc_attr( $menu_class ) . '"';
+			}
+			echo '>';
+			echo '<li><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" title="">' . esc_attr( 'Add a menu', '' ) . '</a></li>';
+			echo '</ul>';
+			if ( $container ) {
+				echo '</' . esc_attr( $container ) . '>';
+			}
 		}
 	}
 }

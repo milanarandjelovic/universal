@@ -15,15 +15,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'UNIVERSAL_VERSION', '1.0.0' );
-define( 'UNIVERSAL_ADMIN_URI', get_template_directory_uri() . '/inc/Admin/' );
-define( 'UNIVERSAL_ADMIN_IMAGES_URI', get_template_directory_uri() . '/inc/Admin/images/' );
-define( 'UNIVERSAL_STYLES_URI', get_template_directory_uri() . '/dist/styles/' );
-define( 'UNIVERSAL_SCRIPTS_URI', get_template_directory_uri() . '/dist/scripts/' );
+define( 'UNIVERSAL_PATH', wp_normalize_path( get_template_directory() ) );
+define( 'UNIVERSAL_URI', get_template_directory_uri() );
+define( 'UNIVERSAL_ADMIN_URI', UNIVERSAL_URI . '/inc/Admin/' );
+define( 'UNIVERSAL_ADMIN_IMAGES_URI', UNIVERSAL_URI . '/inc/admin/images/' );
+define( 'UNIVERSAL_STYLES_URI', UNIVERSAL_URI . '/dist/styles/' );
+define( 'UNIVERSAL_SCRIPTS_URI', UNIVERSAL_URI . '/dist/scripts/' );
 
-if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
-	require_once dirname( __FILE__ ) . '/vendor/autoload.php';
-}
+/**
+ * Include Redux Framework.
+ */
+include_once UNIVERSAL_PATH . '/inc/admin/admin-init.php';
 
-if ( class_exists( 'Inc\\Init' ) ) {
-	Inc\Init::register_services();
-}
+/**
+ * Include Universal functions.
+ */
+include_once UNIVERSAL_PATH . '/inc/universal-functions.php';
+
+/**
+ * Include autoloader for Universal theme.
+ */
+include_once UNIVERSAL_PATH . '/inc/classes/class-universal-autoloader.php';
+
+/**
+ * Instantiate Universal autoloader.
+ */
+new Universal_Autoloader();
+
+/**
+ * Instantiate Init class.
+ */
+new Universal_Init();
+
+/**
+ * Instantiate Universal scripts.
+ */
+new Universal_Scripts();

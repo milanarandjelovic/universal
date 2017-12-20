@@ -3,11 +3,10 @@
  * Adding theme support for Universal theme.
  *
  * @package    Universal
- * @subpackage Inc\Setup
+ * @subpackage Core
  * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
-
-namespace Inc\Setup;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,16 +16,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Setup class for adding theme support.
  */
-class Setup {
+class Universal_Init {
 
 	/**
-	 * Register default hooks and actions for WordPress.
+	 * Universal_Init constructor.
 	 *
 	 * @access public
 	 * @since  1.0.0
 	 */
-	public function register() {
-		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ) );
+	public function __construct() {
+		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ), 10 );
+		add_action( 'after_setup_theme', array( $this, 'register_navigation_menus' ) );
+		add_action( 'widgets_init', array( $this, 'widget_init' ) );
+		add_action( 'after_setup_theme', array( $this, 'load_theme_text_domain' ) );
 		add_action( 'after_setup_theme', array( $this, 'universal_content_width' ), 0 );
 	}
 
@@ -63,16 +65,6 @@ class Setup {
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
-
-		/**
-		 * This theme uses wp_nav_menu() in one location.
-		 *
-		 * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
-		 */
-		register_nav_menus( array(
-			'universal-primary-menu'  => esc_html__( 'Primary Menu', 'universal' ),
-			'universal-one-page-menu' => esc_html__( 'One Page', 'universal' ),
-		) );
 
 		/**
 		 * Switch default core markup for search form, comment form, and comments
@@ -141,6 +133,76 @@ class Setup {
 		 * @link https://developer.wordpress.org/themes/functionality/custom-headers/
 		 */
 		add_theme_support( 'custom-header' );
+	}
+
+	/**
+	 * Register navigation menu for Universal theme.
+	 *
+	 * @access public
+	 */
+	public function register_navigation_menus() {
+		/**
+		 * This theme uses wp_nav_menu() in two location.
+		 *
+		 * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
+		 */
+		register_nav_menus( array(
+			'universal-primary-menu'  => esc_html__( 'Primary Menu', 'universal' ),
+			'universal-one-page-menu' => esc_html__( 'One Page', 'universal' ),
+		) );
+	}
+
+	/**
+	 * Register widget area.
+	 *
+	 * @access public
+	 * @since  1.0.0
+	 */
+	public function widget_init() {
+		/*********************************************************************************
+		 * Main widget area.
+		 ******************************************************************************** */
+		register_sidebar( array(
+			'name'          => esc_html__( 'Main Sidebar', 'universal' ),
+			'id'            => 'universal-sidebar',
+			'description'   => esc_html__( 'Add widgets here.', 'universal' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		) );
+
+		/*********************************************************************************
+		 * Footer widget areas.
+		 ******************************************************************************** */
+		$footer_widget_columns = 4;
+
+		for ( $i = 1; $i <= $footer_widget_columns; $i ++ ) {
+			register_sidebar( array(
+				'name'          => sprintf( 'Footer Widget %s', $i ),
+				'id'            => 'universal-footer-sidebar-' . $i,
+				'description'   => sprintf( 'Add footer widgets %s here.', $i ),
+				'before_widget' => '<section id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h2 class="widget-title">',
+				'after_title'   => '</h2>',
+			) );
+		}
+	}
+
+	/**
+	 * Load theme domain for Codex theme
+	 *
+	 * @access public
+	 */
+	public function load_theme_text_domain() {
+		/*
+		 * Make theme available for translation.
+		 * Translations can be filed in the /languages/ directory.
+		 * If you're building a theme based on Codex, use a find and replace
+		 * to change 'codex' to the name of your theme in all the template files.
+		 */
+		load_theme_textdomain( 'universal', UNIVERSAL_PATH . '/languages' );
 	}
 
 	/**
