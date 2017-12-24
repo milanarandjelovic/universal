@@ -32,7 +32,7 @@ class Universal_Autoloader {
 	 */
 	public function __construct() {
 		// Get path for classes.
-		self::$universal_includes_path = UNIVERSAL_PATH . '/inc/classes/';
+		self::$universal_includes_path = UNIVERSAL_PATH . '/includes/classes/';
 
 		// Register our autoloader.
 		spl_autoload_register( array( $this, 'include_class_file' ) );

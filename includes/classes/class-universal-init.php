@@ -19,12 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Universal_Init {
 
 	/**
-	 * Universal_Init constructor.
+	 * Register default hooks and actions for WordPress.
 	 *
 	 * @access public
 	 * @since  1.0.0
 	 */
-	public function __construct() {
+	public function register() {
 		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'register_navigation_menus' ) );
 		add_action( 'widgets_init', array( $this, 'widget_init' ) );

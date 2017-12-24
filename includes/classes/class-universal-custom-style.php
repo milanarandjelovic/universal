@@ -3,11 +3,10 @@
  * Output Custom Styling from Redux Theme Options.
  *
  * @package    Universal
- * @subpackage Inc\Custom
+ * @subpackage Core
  * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
-
-namespace Inc\Custom;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Custom Styling from Redux Theme Options.
  */
-class CustomStyling {
+class Universal_Custom_Style {
 
 	/**
 	 * Register default hooks and actions for WordPress.

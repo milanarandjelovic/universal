@@ -3,11 +3,10 @@
  * Page Pre-Loader for theme.
  *
  * @package    Universal
- * @subpackage Inc\Custom
+ * @subpackage Core
  * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
-
-namespace Inc\Custom;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adding page Pre-Loader for theme.
  */
-class PageLoader {
+class Universal_Page_Loader {
 
 	/**
 	 * Register default hooks and actions for WordPress.

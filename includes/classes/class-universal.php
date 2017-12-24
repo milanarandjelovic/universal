@@ -1,23 +1,28 @@
 <?php
 /**
- * Initialization Universal class.
+ * Main class for Universal theme.
  *
  * @package    Universal
  * @subpackage Core
  * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
-
-namespace Inc;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'Direct script access denied.' );
 }
 
-/**
- * Initialization class for Universal theme.
- */
-final class Init {
+class Universal {
+
+	/**
+	 * The theme version.
+	 *
+	 * @static
+	 * @access public
+	 * @var string
+	 */
+	public static $version = UNIVERSAL_VERSION;
 
 	/**
 	 * Store all classes inside in array.
@@ -29,13 +34,10 @@ final class Init {
 	 */
 	public static function get_services() {
 		return [
-			Core\Sidebar::class,
-			Custom\CustomStyling::class,
-			Custom\Extras::class,
-			Custom\PageLoader::class,
-			Plugins\UniversalJetpack::class,
-			Setup\Enqueue::class,
-			Setup\Setup::class,
+			Universal_Init::class,
+			Universal_Scripts::class,
+			Universal_Page_Loader::class,
+			Universal_Custom_Style::class,
 		];
 	}
 
@@ -72,5 +74,17 @@ final class Init {
 		$service = new $class();
 
 		return $service;
+	}
+
+	/**
+	 * Gets the theme version.
+	 *
+	 * @static
+	 * @access public
+	 * @since  1.0.0
+	 * @return string
+	 */
+	public static function get_theme_version() {
+		return self::$version;
 	}
 }

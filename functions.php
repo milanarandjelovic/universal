@@ -17,25 +17,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'UNIVERSAL_VERSION', '1.0.0' );
 define( 'UNIVERSAL_PATH', wp_normalize_path( get_template_directory() ) );
 define( 'UNIVERSAL_URI', get_template_directory_uri() );
-define( 'UNIVERSAL_ADMIN_URI', UNIVERSAL_URI . '/inc/Admin/' );
-define( 'UNIVERSAL_ADMIN_IMAGES_URI', UNIVERSAL_URI . '/inc/admin/images/' );
+define( 'UNIVERSAL_ADMIN_URI', UNIVERSAL_URI . '/includes/admin/' );
+define( 'UNIVERSAL_ADMIN_IMAGES_URI', UNIVERSAL_URI . '/includes/admin/images/' );
 define( 'UNIVERSAL_STYLES_URI', UNIVERSAL_URI . '/dist/styles/' );
 define( 'UNIVERSAL_SCRIPTS_URI', UNIVERSAL_URI . '/dist/scripts/' );
 
 /**
  * Include Redux Framework.
  */
-include_once UNIVERSAL_PATH . '/inc/admin/admin-init.php';
+include_once UNIVERSAL_PATH . '/includes/admin/admin-init.php';
 
 /**
  * Include Universal functions.
  */
-include_once UNIVERSAL_PATH . '/inc/universal-functions.php';
+include_once UNIVERSAL_PATH . '/includes/universal-functions.php';
 
 /**
  * Include autoloader for Universal theme.
  */
-include_once UNIVERSAL_PATH . '/inc/classes/class-universal-autoloader.php';
+include_once UNIVERSAL_PATH . '/includes/classes/class-universal-autoloader.php';
+
+/**
+ * Include main class fo Universal theme.
+ */
+include_once UNIVERSAL_PATH . '/includes/classes/class-universal.php';
 
 /**
  * Instantiate Universal autoloader.
@@ -43,11 +48,6 @@ include_once UNIVERSAL_PATH . '/inc/classes/class-universal-autoloader.php';
 new Universal_Autoloader();
 
 /**
- * Instantiate Init class.
+ * Register class for Universal theme.
  */
-new Universal_Init();
-
-/**
- * Instantiate Universal scripts.
- */
-new Universal_Scripts();
+Universal::register_services();

@@ -10268,8 +10268,8 @@ a.text-gray-dark:hover {
 
 @font-face {
   font-family: 'FontAwesome';
-  src: url(universal/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_674f50d2.eot);
-  src: url(universal/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_674f50d2.eot) format("embedded-opentype"), url(universal/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_af7ae505.woff2) format("woff2"), url(universal/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_fee66e71.woff) format("woff"), url(universal/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_b06871f2.ttf) format("truetype"), url(universal/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_912ec66d.svg) format("svg");
+  src: url(/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_674f50d2.eot);
+  src: url(/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_674f50d2.eot) format("embedded-opentype"), url(/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_af7ae505.woff2) format("woff2"), url(/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_fee66e71.woff) format("woff"), url(/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_b06871f2.ttf) format("truetype"), url(/wp-content/themes/wpuniversal/dist/vendor/fontawesome-webfont_912ec66d.svg) format("svg");
   font-weight: normal;
   font-style: normal;
 }

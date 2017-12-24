@@ -25,12 +25,12 @@ class Universal_Scripts {
 	private static $version;
 
 	/**
-	 * Universal_Scripts constructor.
+	 * Register default hooks and actions for WordPress.
 	 *
 	 * @access public
 	 * @since  1.0.0
 	 */
-	public function __construct() {
+	public function register() {
 		self::$version = Universal::get_theme_version();
 
 		add_action( 'customize_register', array( $this, 'universal_customize_register' ) );
