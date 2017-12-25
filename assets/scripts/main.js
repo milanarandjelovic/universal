@@ -19,6 +19,8 @@ $(window).load(() => {
 });
 
 $(document).ready(() => {
+  $('[data-toggle="tooltip"]').tooltip();
+
   stickyHeader();
   primaryMenu();
   loadMorePosts();

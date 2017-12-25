@@ -5,6 +5,10 @@ $white: #fff;
 $text-color: #656269;
 $link-color: #999;
 $link-hover-color: #a0ce4e;
+$color_333: #333;
+$color_f6: #f6f6f6;
+$color_f1f2: #f1f2f4;
+$color_e8: #e8e8e8;
 
 /*********************************************************************************
 * Pre Loader
@@ -22,9 +26,9 @@ $pagination-link-color: #747474;
 * Navigation
 ******************************************************************************** */
 $navigation-link-color: #999;
-$navigation-link-hover-color: #a0ce4e;
+$navigation-link-hover-color: $link-hover-color;
 $navigation-border-color: #dadada;
-$dropdown-item-color: #333;
+$dropdown-item-color: $color_333;
 $dropdown-item-bg-color: #f9f9f9;
 
 /*********************************************************************************
@@ -36,15 +40,15 @@ $sp-navigation-border-color: #d2d2dd;
 * Top header bar
 ******************************************************************************** */
 $header-top-bar-bg-color: #f6f6f6;
-$header-top-bar-color: #333;
+$header-top-bar-color: $color_333;
 $header-border-bottom-color: #d2d3d4;
 $header-wrapper-color: #747474;
 
 /*********************************************************************************
 * Blog
 ******************************************************************************** */
-$blog-posted-on-bg-color: #a0ce4e;
-$blog-categories-bg-color: #a0ce4e;
+$blog-posted-on-bg-color: $link-hover-color;
+$blog-categories-bg-color: $link-hover-color;
 $blog-article-bg-color: #f8f9fa;
 $blog-article-border-color: #d2d2dd;
 $blog-title-border-color: #d9d9d9;
@@ -58,5 +62,5 @@ $blog-footer-color: #656269;
 $footer-widget-bg-color: #363839;
 $footer-widget-color: #ccc;
 $footer-widget-link-color: #999;
-$footer-widget-link-hover-color: #a0ce4e;
-$footer-copyright-bg-color: #333;
+$footer-widget-link-hover-color: $link-hover-color;
+$footer-copyright-bg-color: $color_333;

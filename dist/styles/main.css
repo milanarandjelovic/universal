@@ -14326,6 +14326,64 @@ article.universal-single-post .universal__post-meta-data a:hover {
 }
 
 /*********************************************************************************
+* Single post social share
+******************************************************************************** */
+
+.universal-sharing-box {
+  background-color: #f1f2f4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 5px;
+  margin: 25px 0;
+}
+
+.universal-sharing-box__title {
+  color: #333;
+  font-size: 20px;
+  line-height: 20px;
+  margin: 0;
+  padding: 27px 10px;
+}
+
+.universal-sharing-box__wrapper {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 10px;
+  padding: 10px;
+}
+
+.universal-sharing-box__link {
+  background-color: #e8e8e8;
+  padding: 5px;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.universal-sharing-box__link a {
+  color: #999;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.universal-sharing-box__link a:hover {
+  color: #a0ce4e;
+}
+
+/*********************************************************************************
 * General
 ******************************************************************************** */
 

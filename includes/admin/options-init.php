@@ -1338,7 +1338,7 @@ Redux::setSection( $opt_name, array(
 			'title'       => esc_html__( 'Text Color For Social Sharing Box', 'universal' ),
 			'subtitle'    => esc_html__( 'Choose text color for social sharing box.', 'universal' ),
 			'type'        => 'color',
-			'default'     => '#656269',
+			'default'     => '#e8e8e8',
 			'transparent' => false,
 		),
 

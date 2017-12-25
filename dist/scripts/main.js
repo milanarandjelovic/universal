@@ -1936,6 +1936,8 @@ $(window).load(function () {
 });
 
 $(document).ready(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+
   Object(__WEBPACK_IMPORTED_MODULE_4__custom_sticky_header__["a" /* default */])();
   Object(__WEBPACK_IMPORTED_MODULE_5__custom_primary_menu__["a" /* default */])();
   Object(__WEBPACK_IMPORTED_MODULE_6__custom_load_more_posts__["a" /* default */])();
