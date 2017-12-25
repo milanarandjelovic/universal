@@ -13976,7 +13976,7 @@ a.text-gray-dark:hover {
 article.post {
   position: relative;
   margin-bottom: 40px;
-  background-color: #f8f9fa;
+  background-color: #fff;
   border: 1px solid #d2d2dd;
 }
 
@@ -14381,6 +14381,54 @@ article.universal-single-post .universal__post-meta-data a:hover {
 
 .universal-sharing-box__link a:hover {
   color: #a0ce4e;
+}
+
+/*********************************************************************************
+* Single post about author
+******************************************************************************** */
+
+.universal-about-author {
+  margin: 25px 0;
+  padding: 15px;
+  border: 1px solid #d2d2dd;
+  border-right: 0;
+  border-left: 0;
+  background-color: #fff;
+}
+
+.universal-about-author__title h3 {
+  font-size: 22px;
+}
+
+.universal-about-author__title h3 a {
+  color: #999;
+}
+
+.universal-about-author__title h3 a:hover {
+  color: #a0ce4e;
+}
+
+.universal-about-author__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.universal-about-author__avatar img {
+  border-radius: 50%;
+}
+
+.universal-about-author__description {
+  color: #656269;
+  width: 100%;
+  max-width: 700px;
 }
 
 /*********************************************************************************

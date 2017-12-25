@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <section class="universal-about-author">
 
-	<div class="about-author-title">
+	<div class="universal-about-author__title">
 		<h3>
 			<?php
 			ob_start(); // Turn on output buffering.
@@ -31,13 +31,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</h3>
 	</div><!-- /.about-author-title -->
 
-	<div class="about-author-content">
+	<div class="universal-about-author__content">
 
-		<div class="about-author-avatar">
+		<div class="universal-about-author__avatar">
 			<?php echo get_avatar( get_the_author_meta( 'email' ), '72' ); ?>
 		</div> <!-- /.about-author-avatar -->
 
-		<div class="about-author-description">
+		<div class="universal-about-author__description">
 			<?php echo get_the_author_meta( 'description' ); // WPCS: XSS ok. ?>
 		</div> <!-- /.about-author-content -->
 
