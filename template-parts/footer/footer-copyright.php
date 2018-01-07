@@ -4,6 +4,8 @@
  *
  * @package    Universal
  * @subpackage Templates
+ * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
 
 $universal_option = get_option( 'universal_data' );
@@ -25,7 +27,7 @@ if ( '1' === $footer_copyright_col_num ) {
 ?>
 
 <?php if ( '1' === $footer_copyright ) : ?>
-	<div class="footer__copyright">
+	<div class="universal__footer-copyright">
 		<div class="container">
 			<div class="row">
 
@@ -47,5 +49,5 @@ if ( '1' === $footer_copyright_col_num ) {
 
 			</div> <!-- /.row -->
 		</div> <!-- /.container -->
-	</div> <!-- /.footer__copyright -->
+	</div> <!-- /.universal__footer-copyright -->
 <?php endif; ?>

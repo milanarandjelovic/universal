@@ -4,6 +4,8 @@
  *
  * @package    Universal
  * @subpackage Templates
+ * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
 
 // Do not allow directly accessing this file.
@@ -12,6 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<section class="universal-related-posts">
+<section class="universal__related-posts">
 	<h1>Related Posts</h1>
 </section> <!-- /.universal-related-posts -->

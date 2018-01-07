@@ -328,6 +328,8 @@ article.universal-single-post {
   border-left: 0;
   border-right: 0;
 
+  @include clearfix();
+
   .universal__pagination {
     list-style: none;
     padding: 0;
@@ -356,7 +358,7 @@ article.universal-single-post {
 /*********************************************************************************
 * Single post social share
 ******************************************************************************** */
-.universal-sharing-box {
+.universal__sharing-box {
   background-color: $color_f1f2;
   display: flex;
   flex-flow: row wrap;
@@ -364,7 +366,7 @@ article.universal-single-post {
   border-radius: 5px;
   margin: 25px 0;
 
-  &__title {
+  .universal__sharing-box__title {
     color: $color_333;
     font-size: 20px;
     line-height: 20px;
@@ -372,15 +374,15 @@ article.universal-single-post {
     padding: 27px 10px;
   } // .universal-sharing-box__title
 
-  &__wrapper {
+  .universal__sharing-box-wrapper {
     list-style: none;
     display: flex;
     flex-direction: row;
     margin: 10px;
     padding: 10px;
-  }
+  } // .universal__sharing-box-wrapper
 
-  &__link {
+  .universal__sharing-box-link {
     background-color: $color_e8;
     padding: 5px;
     margin: 0 5px;
@@ -395,13 +397,13 @@ article.universal-single-post {
         color: $link-hover-color;
       }
     }
-  } // .universal-sharing-box__title
-} // .universal-sharing-box
+  } // .universal__sharing-box-link
+} // .universal__sharing-box
 
 /*********************************************************************************
 * Single post about author
 ******************************************************************************** */
-.universal-about-author {
+.universal__about-author {
   margin: 25px 0;
   padding: 15px;
   border: 1px solid $border_color;
@@ -409,7 +411,7 @@ article.universal-single-post {
   border-left: 0;
   background-color: $white;
 
-  &__title {
+  .universal__about-author-title {
     h3 {
       font-size: 22px;
 
@@ -421,23 +423,23 @@ article.universal-single-post {
         }
       }
     }
-  } // universal-about-author__title
+  } // universal__about-author-title
 
-  &__content {
+  .universal__about-author-content {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-  } // universal-about-author__content
+  } // universal__about-author-content
 
-  &__avatar {
+  .universal__about-author-avatar {
     img {
       border-radius: 50%;
     }
-  } // universal-about-author__avatar
+  } // universal__about-author-avatar
 
-  &__description {
+  .universal__about-author-description {
     color: $text-color;
     width: 100%;
     max-width: 700px;
-  } // universal-about-author__description
-} // universal-about-author
+  } // universal__about-author-description
+} // universal__about-author

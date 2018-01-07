@@ -11,6 +11,8 @@
  *
  * @package    Universal
  * @subpackage Templates
+ * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
 
 // Do not allow directly accessing this file.

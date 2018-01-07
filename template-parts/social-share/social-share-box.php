@@ -4,6 +4,8 @@
  *
  * @package    Universal
  * @subpackage Templates
+ * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
 
 // Do not allow directly accessing this file.
@@ -19,17 +21,17 @@ $single_post_url         = get_the_permalink( get_the_ID() );
 $single_post_title       = esc_html( get_the_title() );
 ?>
 
-<div class="universal-sharing-box">
-	<h1 class="universal-sharing-box__title"><?php echo esc_html( $social_share_tag_line ); ?></h1>
-	<ul class="universal-sharing-box__wrapper">
+<div class="universal__sharing-box">
+	<h1 class="universal__sharing-box__title"><?php echo esc_html( $social_share_tag_line ); ?></h1>
+	<ul class="universal__sharing-box-wrapper">
 	<?php
 	foreach ( $social_share_icons as $key => $social_icon ) {
 		switch ( $key ) {
 			case 'social_facebook':
-				echo '<li class="universal-sharing-box__link">
+				echo '<li class="universal__sharing-box-link">
 						<a href="https://m.facebook.com/sharer.php?u=' . rawurlencode( $single_post_url ) . '&t=' .
-				            rawurlencode( $single_post_title ) . '" target="_blank" data-toggle="tooltip" 
-				            title="'. $social_icon . '" data-placement="' . esc_html( $social_tooltip_position ) . '"
+							rawurlencode( $single_post_title ) . '" target="_blank" data-toggle="tooltip" 
+							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
 				            data-animation="false"
 						>
 							<span class="fa fa-facebook"></span>
@@ -38,11 +40,11 @@ $single_post_title       = esc_html( get_the_title() );
 				break;
 
 			case 'social_twitter':
-				echo '<li class="universal-sharing-box__link">
+				echo '<li class="universal__sharing-box-link">
 						<a href="https://twitter.com/share?text=' .
-				            rawurlencode( html_entity_decode( $single_post_title, ENT_COMPAT, 'UTF-8' ) ) .
-					        '&t=' . $single_post_url . '" target="_blank"  data-toggle="tooltip" 
-							title="'. $social_icon . '" data-placement="' . esc_html( $social_tooltip_position ) . '"
+							rawurlencode( html_entity_decode( $single_post_title, ENT_COMPAT, 'UTF-8' ) ) .
+							'&t=' . $single_post_url . ' " target="_blank"  data-toggle="tooltip"
+							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
 							data-animation="false"
 						>
 							<span class="fa fa-twitter"></span>
@@ -51,10 +53,10 @@ $single_post_title       = esc_html( get_the_title() );
 				break;
 
 			case 'social_linkedin':
-				echo '<li class="universal-sharing-box__link">
+				echo '<li class="universal__sharing-box-link">
 						<a href="https://www.linkedin.com/shareArticle?mini=true&url=' . $single_post_url . '&amp;title=' .
-				            rawurldecode( $single_post_title ) . '" target="_blank"  data-toggle="tooltip" 
-							title="'. $social_icon . '" data-placement="' . esc_html( $social_tooltip_position ) . '"
+							rawurldecode( $single_post_title ) . ' " target="_blank"  data-toggle="tooltip" 
+							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
 							data-animation="false"
 						>
 							<span class="fa fa-linkedin"></span>
@@ -63,10 +65,10 @@ $single_post_title       = esc_html( get_the_title() );
 				break;
 
 			case 'social_reddit':
-				echo '<li class="universal-sharing-box__link">
+				echo '<li class="universal__sharing-box-link">
 						<a href="http://reddit.com/submit?url=' . $single_post_url . '&amp;title=' .
-				            rawurldecode( $single_post_title ) . '" target="_blank"  data-toggle="tooltip" 
-							title="'. $social_icon . '" data-placement="' . esc_html( $social_tooltip_position ) . '"
+							rawurldecode( $single_post_title ) . '" target="_blank"  data-toggle="tooltip" 
+							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
 							data-animation="false"
 						>
 							<span class="fa fa-reddit"></span>
@@ -75,9 +77,9 @@ $single_post_title       = esc_html( get_the_title() );
 				break;
 
 			case 'social_google_plus':
-				echo '<li class="universal-sharing-box__link">
+				echo '<li class="universal__sharing-box-link">
 						<a href="https://plus.google.com/share?url=' . rawurlencode( $single_post_url ) . '" target="_blank"  data-toggle="tooltip" 
-							title="'. $social_icon . '" data-placement="' . esc_html( $social_tooltip_position ) . '"
+							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
 							data-animation="false"
 						>
 							<span class="fa fa-google-plus"></span>
@@ -86,10 +88,10 @@ $single_post_title       = esc_html( get_the_title() );
 				break;
 
 			case 'social_vk':
-				echo '<li class="universal-sharing-box__link">
+				echo '<li class="universal__sharing-box-link">
 						<a href="http://vkontakte.ru/share.php?url' . rawurlencode( $single_post_url ) . '&amp;title=' .
-				            rawurlencode( $single_post_title ) . '" target="_blank"  data-toggle="tooltip" 
-							title="'. $social_icon . '" data-placement="' . esc_html( $social_tooltip_position ) . '"
+							rawurlencode( $single_post_title ) . ' " target="_blank"  data-toggle="tooltip" 
+							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
 							data-animation="false"
 						>
 							<span class="fa fa-vk"></span>
@@ -98,10 +100,10 @@ $single_post_title       = esc_html( get_the_title() );
 				break;
 
 			case 'social_email':
-				echo '<li class="universal-sharing-box__link">
+				echo '<li class="universal__sharing-box-link">
 						<a href="mailto:?subject=' . $single_post_url . '&body=' .
-					        rawurlencode( $single_post_title ) . '" target="_blank"  data-toggle="tooltip" 
-							title="'. $social_icon . '" data-placement="' . esc_html( $social_tooltip_position ) . '"
+							rawurlencode( $single_post_title ) . ' " target="_blank"  data-toggle="tooltip" 
+							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
 							data-animation="false"
 						>
 							<span class="fa fa-envelope"></span>
@@ -112,4 +114,4 @@ $single_post_title       = esc_html( get_the_title() );
 	}
 	?>
 	</ul>
-</div> <!-- /.universal-sharing-box -->
+</div> <!-- /.universal__sharing-box -->

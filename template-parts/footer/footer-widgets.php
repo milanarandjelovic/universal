@@ -4,6 +4,8 @@
  *
  * @package    Universal
  * @subpackage Templates
+ * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
 
 $universal_option = get_option( 'universal_data' );
@@ -41,7 +43,7 @@ switch ( $footer_widgets_layout ) {
 }
 ?>
 <?php if ( '1' === $footer_widgets ) : ?>
-	<div class="footer__widget">
+	<div class="universal__footer-widget">
 		<div class="container">
 			<div class="row">
 
@@ -67,5 +69,5 @@ switch ( $footer_widgets_layout ) {
 
 			</div> <!-- /.row -->
 		</div> <!-- /.container -->
-	</div> <!-- /.footer__widget -->
+	</div> <!-- /.universal__footer-widget -->
 <?php endif; ?>

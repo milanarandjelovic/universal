@@ -2,7 +2,7 @@
 @import '../mixins/mixins';
 
 .footer {
-  &__widget {
+  .universal__footer-widget {
     background-color: $footer-widget-bg-color;
     padding: 50px 0;
 
@@ -38,10 +38,10 @@
     }
   } // .footer__widget
 
-  &__social {
+  .universal__footer-social {
     background-color: $footer-widget-bg-color;
 
-    &-links {
+    .universal__footer-social-links {
       list-style: none;
       padding: 24px 0;
 
@@ -90,10 +90,10 @@
           }
         }
       }
-    } // .footer__social-links
-  } // .footer__social
+    } // .universal__footer-social-links
+  } // .universal__footer-social
 
-  &__copyright {
+  .universal__footer-copyright {
     background-color: $footer-copyright-bg-color;
     color: $footer-widget-color;
     font-size: 12px;
@@ -112,5 +112,5 @@
     @media (max-width: $screen-md-min) {
       text-align: center;
     }
-  } // .footer__copyright
+  } // .universal__footer-copyright
 } // .footer

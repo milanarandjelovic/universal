@@ -4,6 +4,8 @@
  *
  * @package    Universal
  * @subpackage Templates
+ * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
 
 // Do not allow directly accessing this file.
@@ -19,7 +21,7 @@ $sp_next     = get_permalink( get_adjacent_post( false, '', false ) );
 ?>
 
 <?php if ( '1' === $sp_navigation ) : ?>
-	<nav class="universal__single-post-navigation clearfix">
+	<nav class="universal__single-post-navigation">
 		<ul class="universal__pagination pull-right">
 
 			<?php if ( get_permalink() !== $sp_previous ) : ?>

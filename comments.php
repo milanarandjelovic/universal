@@ -9,6 +9,8 @@
  *
  * @package    Universal
  * @subpackage Templates
+ * @since      1.0.0
+ * @author     Milan Arandjelovic
  */
 
 // Do not allow directly accessing this file.
@@ -85,8 +87,8 @@ $sp_display_comments = $universal_data['universal__opt-blog-sp-comments'];
 		if ( comments_open() ) :
 			$commenter = wp_get_current_commenter();
 			$req       = get_option( 'require_name_email' );
-			$aria_req  = ( $req ) ? " aria-required='true'" : '';
-			$html_req  = ( $req ) ? " required='required'" : '';
+			$aria_req  = ( $req ) ? ' aria-required=true' : '';
+			$html_req  = ( $req ) ? ' required=required' : '';
 			$html5     = ( 'html5' === current_theme_supports( 'html5', 'comment-form' ) ) ? 'html5' : 'xhtml';
 
 			$comment_field = '<div class="universal-comments__form-comment form-group">
@@ -95,7 +97,7 @@ $sp_display_comments = $universal_data['universal__opt-blog-sp-comments'];
 							  				<i class="fa fa-pencil"></i>
 							  			</div> <!-- /.input-group-addon -->
 							  			<textarea id="comment" name="comment" cols="30" rows="7" class="form-control" 
-							  				placeholder="' . esc_attr__('Your Comment', 'universal') . '" 
+							  				placeholder=" ' . esc_attr__( 'Your Comment', 'universal' ) . ' " 
 							  				aria-required="true"
 							  			></textarea>
 							  		</div> <!-- /.input-group -->
@@ -138,6 +140,7 @@ $sp_display_comments = $universal_data['universal__opt-blog-sp-comments'];
 			$must_log_in = '<div class="alert alert-warning">' .
 								sprintf(
 									wp_kses(
+										/* translators: 1: link. */
 										__( 'You must be <a href="%s">logged in</a> to post a comment.', 'universal' ),
 										array(
 											'a' => array(
@@ -147,7 +150,7 @@ $sp_display_comments = $universal_data['universal__opt-blog-sp-comments'];
 									),
 									wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
 								) .
-								'</div>';
+							'</div><!-- /.alert -->';
 
 			$comments_args = array(
 				'id_form'              => 'comment-form',
@@ -155,7 +158,7 @@ $sp_display_comments = $universal_data['universal__opt-blog-sp-comments'];
 				'class_form'           => '',
 				'class_submit'         => 'btn btn-primary btn-block',
 				'title_reply'          => esc_html__( 'Leave a Reply', 'universal' ),
-				'title_reply_to'       => esc_html__( 'Leave a Reply to %s', 'universal' ),
+				'title_reply_to'       => esc_html__( 'Leave a Reply', 'universal' ),
 				'cancel_reply_link'    => esc_html__( 'Cancel Reply', 'universal' ),
 				'label_submit'         => esc_html__( 'Post Comment', 'universal' ),
 				'comment_field'        => $comment_field,
