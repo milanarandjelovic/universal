@@ -141,6 +141,11 @@ class Universal_Menu_Walker extends Walker_Nav_Menu {
 			$class_names .= ' active';
 		}
 
+		// If current page is parent add active class to li element.
+		if ( in_array( 'current_page_parent', $classes, true ) ) {
+			$class_names .= ' active';
+		}
+
 		// Add active call on li element.
 		if ( is_home() ) {
 			$class_names .= ' active';
@@ -188,6 +193,11 @@ class Universal_Menu_Walker extends Walker_Nav_Menu {
 
 		if ( in_array( 'current-menu-item', $item->classes, true ) ) {
 			$atts['class'] .= ' active';
+		}
+
+		// If current page is parent add active class to a element.
+		if ( in_array( 'current_page_parent', $classes, true ) ) {
+			$atts['class']       .= ' active';
 		}
 
 		/**
