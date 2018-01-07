@@ -6,17 +6,19 @@
 # Import Modules
 # Typography
 # Elements
+  ## Page pre loader
 # Forms
 # Navigation
-	## Links
 	## Menus
+	## Pagination
+	## Single post navigation
+	## Comment navigation
 # Accessibility
 # Alignments
 # Clearings
 # Widgets
 # Content
-	## Posts and pages
-	## Comments
+	## Site
 # Infinite scroll
 # Media
 	## Captions
@@ -13687,35 +13689,219 @@ a.text-gray-dark:hover {
 * different screen size.
 ******************************************************************************** */
 
-.universal-pagination-holder .page-item {
+.universal__pagination-holder .page-item {
   padding: 0 5px;
 }
 
-.universal-pagination-holder .page-item.active .page-link {
+.universal__pagination-holder .page-item.active .page-link {
   background-color: #99c24d;
   border-color: #99c24d;
   color: #fff;
 }
 
-.universal-pagination-holder .page-item .page-link {
+.universal__pagination-holder .page-item .page-link {
   color: #747474;
 }
 
-.universal-pagination-holder .page-item .page-link:focus,
-.universal-pagination-holder .page-item .page-link:hover {
+.universal__pagination-holder .page-item .page-link:focus,
+.universal__pagination-holder .page-item .page-link:hover {
   background-color: #99c24d;
   border-color: #99c24d;
   color: #fff;
 }
 
-.universal-pagination-holder .page-item:first-child .page-link {
+.universal__pagination-holder .page-item:first-child .page-link {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
 
-.universal-pagination-holder .page-item:last-child .page-link {
+.universal__pagination-holder .page-item:last-child .page-link {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
+}
+
+/*********************************************************************************
+* Infinite scroll button
+******************************************************************************** */
+
+.universal__loading-container,
+.universal__loading-container-load-message,
+#infscr-loading {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.universal__load-more-button {
+  color: #656269;
+  background-color: #f1f2f4;
+}
+
+/*********************************************************************************
+* General
+******************************************************************************** */
+
+/*********************************************************************************
+* Pre Loader
+******************************************************************************** */
+
+/*********************************************************************************
+* Pagination
+******************************************************************************** */
+
+/*********************************************************************************
+* Navigation
+******************************************************************************** */
+
+/*********************************************************************************
+* Single post navigation
+******************************************************************************** */
+
+/*********************************************************************************
+* Top header bar
+******************************************************************************** */
+
+/*********************************************************************************
+* Blog
+******************************************************************************** */
+
+/*********************************************************************************
+* Footer
+******************************************************************************** */
+
+/*********************************************************************************
+* Media queries breakpoints.
+* Define the breakpoints at which your layout will change, adapting to
+* different screen size.
+******************************************************************************** */
+
+/*********************************************************************************
+* Single post navigation
+******************************************************************************** */
+
+.universal__single-post-navigation {
+  margin: 30px 0;
+  border: 1px solid #d2d2dd;
+  border-left: 0;
+  border-right: 0;
+}
+
+.universal__single-post-navigation::before,
+.universal__single-post-navigation::after {
+  content: ' ';
+  display: table;
+}
+
+.universal__single-post-navigation::after {
+  clear: both;
+}
+
+.universal__single-post-navigation .universal__pagination {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.universal__single-post-navigation .universal__pagination li {
+  display: inline-block;
+  padding: 5px 0;
+}
+
+.universal__single-post-navigation .universal__pagination li.universal__pagination-next {
+  margin-left: 15px;
+}
+
+.universal__single-post-navigation .universal__pagination li a {
+  color: #999;
+  text-decoration: none;
+}
+
+.universal__single-post-navigation .universal__pagination li a:hover {
+  color: #a0ce4e;
+}
+
+/*********************************************************************************
+* General
+******************************************************************************** */
+
+/*********************************************************************************
+* Pre Loader
+******************************************************************************** */
+
+/*********************************************************************************
+* Pagination
+******************************************************************************** */
+
+/*********************************************************************************
+* Navigation
+******************************************************************************** */
+
+/*********************************************************************************
+* Single post navigation
+******************************************************************************** */
+
+/*********************************************************************************
+* Top header bar
+******************************************************************************** */
+
+/*********************************************************************************
+* Blog
+******************************************************************************** */
+
+/*********************************************************************************
+* Footer
+******************************************************************************** */
+
+/*********************************************************************************
+* Media queries breakpoints.
+* Define the breakpoints at which your layout will change, adapting to
+* different screen size.
+******************************************************************************** */
+
+/*********************************************************************************
+* Single post navigation
+******************************************************************************** */
+
+.universal__comment-navigation {
+  margin: 30px 0;
+  border: 1px solid #d2d2dd;
+  border-left: 0;
+  border-right: 0;
+}
+
+.universal__comment-navigation::before,
+.universal__comment-navigation::after {
+  content: ' ';
+  display: table;
+}
+
+.universal__comment-navigation::after {
+  clear: both;
+}
+
+.universal__comment-navigation .universal__nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: right;
+}
+
+.universal__comment-navigation .universal__nav-links li {
+  display: inline-block;
+  padding: 5px 0;
+}
+
+.universal__comment-navigation .universal__nav-links li.universal__nav-next {
+  margin-left: 15px;
+}
+
+.universal__comment-navigation .universal__nav-links li a {
+  color: #999;
+  text-decoration: none;
+}
+
+.universal__comment-navigation .universal__nav-links li a:hover {
+  color: #a0ce4e;
 }
 
 /*********************************************************************************
@@ -13819,23 +14005,6 @@ a.text-gray-dark:hover {
 /*********************************************************************************
 * Clearfix
 ******************************************************************************** */
-
-/*********************************************************************************
-* Infinite scroll button
-******************************************************************************** */
-
-.universal-loading-container,
-.universal-loading-container-load-message,
-#infscr-loading {
-  display: block;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.universal-load-more-button {
-  color: #656269;
-  background-color: #f1f2f4;
-}
 
 /*********************************************************************************
 * Posts
@@ -14155,51 +14324,6 @@ article.universal-single-post .universal__post-meta-data a {
 }
 
 article.universal-single-post .universal__post-meta-data a:hover {
-  color: #a0ce4e;
-}
-
-/*********************************************************************************
-* Single post navigation
-******************************************************************************** */
-
-.universal__single-post-navigation {
-  margin: 30px 0;
-  border: 1px solid #d2d2dd;
-  border-left: 0;
-  border-right: 0;
-}
-
-.universal__single-post-navigation::before,
-.universal__single-post-navigation::after {
-  content: ' ';
-  display: table;
-}
-
-.universal__single-post-navigation::after {
-  clear: both;
-}
-
-.universal__single-post-navigation .universal__pagination {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.universal__single-post-navigation .universal__pagination li {
-  display: inline-block;
-  padding: 5px 0;
-}
-
-.universal__single-post-navigation .universal__pagination li.universal__pagination-next {
-  margin-left: 15px;
-}
-
-.universal__single-post-navigation .universal__pagination li a {
-  color: #999;
-  text-decoration: none;
-}
-
-.universal__single-post-navigation .universal__pagination li a:hover {
   color: #a0ce4e;
 }
 

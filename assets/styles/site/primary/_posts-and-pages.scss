@@ -2,22 +2,6 @@
 @import '../../mixins/mixins';
 
 /*********************************************************************************
-* Infinite scroll button
-******************************************************************************** */
-.universal-loading-container,
-.universal-loading-container-load-message,
-#infscr-loading {
-  display: block;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.universal-load-more-button {
-  color: #656269;
-  background-color: #f1f2f4;
-} // .universal-load-more-button
-
-/*********************************************************************************
 * Posts
 ******************************************************************************** */
 article.post {
@@ -318,42 +302,6 @@ article.universal-single-post {
     }
   } // .universal__post-meta-data
 } // .universal-single-post
-
-/*********************************************************************************
-* Single post navigation
-******************************************************************************** */
-.universal__single-post-navigation {
-  margin: 30px 0;
-  border: 1px solid $sp-navigation-border-color;
-  border-left: 0;
-  border-right: 0;
-
-  @include clearfix();
-
-  .universal__pagination {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    li {
-      display: inline-block;
-      padding: 5px 0;
-
-      &.universal__pagination-next {
-        margin-left: 15px;
-      }
-
-      a {
-        color: $link-color;
-        text-decoration: none;
-
-        &:hover {
-          color: $link-hover-color;
-        }
-      }
-    }
-  } // .universal__pagination
-} // .universal__single-post-navigation
 
 /*********************************************************************************
 * Single post social share

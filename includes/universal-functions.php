@@ -186,15 +186,15 @@ if ( ! function_exists( 'universal_pagination' ) ) {
 		<?php if ( 1 !== $pages ) : ?>
 
 			<?php if ( $infinite_scroll || ( 'pagination' !== $blog_pagination_type && ( is_home() || is_search() || ( 'post' === get_post_type() && ( is_author() || is_archive() ) ) ) ) ) : ?>
-				<div class="universal-infinite-scroll-trigger"></div>
+				<div class="universal__infinite-scroll-trigger"></div>
 				<div class='pagination infinite-scroll clearfix' style="display:none;">
 			<?php else : ?>
-				<div class='pagination universal-pagination-holder justify-content-<?php echo esc_attr( $pagination_position ); ?> clearfix'>
+				<div class='pagination universal__pagination-holder justify-content-<?php echo esc_attr( $pagination_position ); ?> clearfix'>
 			<?php endif; ?>
 
 			<?php if ( 1 < $paged ) : ?>
 				<li class="page-item">
-					<a class="page-link universal-pagination-previous"
+					<a class="page-link universal-pagination__previous"
 					   href="<?php echo esc_url_raw( get_pagenum_link( $paged - 1 ) ); ?>"
 					   aria-label="Previous"
 					>
@@ -229,7 +229,7 @@ if ( ! function_exists( 'universal_pagination' ) ) {
 
 			<?php if ( $paged < $pages ) : ?>
 				<li class="page-item">
-					<a class="page-link universal-pagination-next"
+					<a class="page-link universal__pagination-next"
 					   href="<?php echo esc_url_raw( get_pagenum_link( $paged + 1 ) ); ?>"
 					>
 						<span>
@@ -248,7 +248,7 @@ if ( ! function_exists( 'universal_pagination' ) ) {
 		<?php endif; ?>
 
 		<?php if ( 'load_more_button' === $blog_pagination_type && 1 < $number_of_pages ) : ?>
-			<button class="btn btn-block universal-load-more-button">
+			<button class="btn btn-block universal__load-more-button">
 				<?php echo esc_html( $blog_load_more_txt ); ?>
 			</button> <!-- /#universal-load-more-button -->
 		<?php endif; ?>

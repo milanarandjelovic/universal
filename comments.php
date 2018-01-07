@@ -58,7 +58,16 @@ $sp_display_comments = $universal_data['universal__opt-blog-sp-comments'];
 				?>
 			</h2> <!-- /.comments-title -->
 
-			<?php the_comments_navigation(); ?>
+			<nav id="comment-nav-above" class="universal__comment-navigation" role="navigation">
+				<ul class="universal__nav-links">
+					<li class="universal__nav-previous">
+						<?php previous_comments_link( esc_html__( 'Older Comments', 'universal' ) ); ?>
+					</li> <!-- /.universal__nav-previous -->
+					<li class="universal__nav-next">
+						<?php next_comments_link( esc_html__( 'Newer Comments', 'universal' ) ); ?>
+					</li> <!-- /.universal__nav-next -->
+				</ul> <!-- /.universal__nav-links -->
+			</nav> <!-- /.universal__comment-navigation -->
 
 			<ol class="universal-comments__list">
 				<?php
@@ -69,9 +78,18 @@ $sp_display_comments = $universal_data['universal__opt-blog-sp-comments'];
 				?>
 			</ol> <!-- /.comment-list -->
 
-			<?php
-			the_comments_navigation();
+			<nav id="comment-nav-belov" class="universal__comment-navigation" role="navigation">
+				<ul class="universal__nav-links">
+					<li class="universal__nav-previous">
+						<?php previous_comments_link( esc_html__( 'Older Comments', 'universal' ) ); ?>
+					</li> <!-- /.universal__nav-previous -->
+					<li class="universal__nav-next">
+						<?php next_comments_link( esc_html__( 'Newer Comments', 'universal' ) ); ?>
+					</li> <!-- /.universal__nav-next -->
+				</ul> <!-- /.universal__nav-links -->
+			</nav> <!-- /.universal__comment-navigation -->
 
+			<?php
 			// If comments are closed and there are comments, let's leave a little note, shall we?
 			if ( ! comments_open() ) :
 				?>

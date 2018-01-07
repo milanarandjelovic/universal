@@ -1,0 +1,38 @@
+@import '../variables/variables';
+
+/*********************************************************************************
+* Single post navigation
+******************************************************************************** */
+.universal__comment-navigation {
+  margin: 30px 0;
+  border: 1px solid $sp-navigation-border-color;
+  border-left: 0;
+  border-right: 0;
+
+  @include clearfix();
+
+  .universal__nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    float: right;
+
+    li {
+      display: inline-block;
+      padding: 5px 0;
+
+      &.universal__nav-next {
+        margin-left: 15px;
+      } // .universal__nav-next
+
+      a {
+        color: $link-color;
+        text-decoration: none;
+
+        &:hover {
+          color: $link-hover-color;
+        }
+      }
+    }
+  } // .universal__nav-links
+} // .universal__comment-navigation

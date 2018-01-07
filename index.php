@@ -30,7 +30,7 @@ $blog_pagination_type = $universal_data['universal__opt-blog-pagination-type'];
 $sidebar_position = $universal_data['universal__opt-blog-sidebar'];
 $sidebar_width    = $universal_data['universal__opt-blog-sidebar-width'];
 
-$container_class = 'universal-posts-container ';
+$container_class = 'universal__posts-container ';
 
 if ( '2' === $sidebar_width ) {
 	$sidebar_class = '4';
@@ -51,12 +51,12 @@ if ( '2' === $sidebar_position ) {
 }
 
 if ( 'load_more_button' === $blog_pagination_type ) {
-	$container_class .= 'universal-posts-container-infinite-scroll universal-posts-container-load-more ';
+	$container_class .= 'universal__posts-container-infinite-scroll universal__posts-container-load-more ';
 } elseif ( 'infinite_scroll' === $blog_pagination_type ) {
-	// Add universal-posts-container-infinite to posts container.
-	$container_class .= 'universal-posts-container-infinite-scroll ';
+	// Add universal__posts-container-infinite to posts container.
+	$container_class .= 'universal__posts-container-infinite-scroll ';
 } else {
-	$container_class .= 'universal-posts-container-pagination ';
+	$container_class .= 'universal__posts-container-pagination ';
 }
 
 $number_of_pages = $wp_query->max_num_pages;
@@ -109,7 +109,7 @@ $number_of_pages = $wp_query->max_num_pages;
 						endwhile;
 
 						?>
-						</div> <!-- /.universal-posts-container-infinite-scroll universal-posts-container-load-more -->
+						</div> <!-- /.universal__posts-container-infinite-scroll universal__posts-container-load-more -->
 						<?php
 
 						universal_pagination();
