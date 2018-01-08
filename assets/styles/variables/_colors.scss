@@ -9,6 +9,11 @@ $color_333: #333;
 $color_f6: #f6f6f6;
 $color_f1f2: #f1f2f4;
 $color_e8: #e8e8e8;
+$color-d9: #d9d9d9;
+$color-ccc: #ccc;
+$color-cacad8: #cacad8;
+$color-e4e5ea: #e4e5ea;
+
 $border_color: #d2d2dd;
 
 /*********************************************************************************
@@ -26,7 +31,7 @@ $pagination-link-color: #747474;
 /*********************************************************************************
 * Navigation
 ******************************************************************************** */
-$navigation-link-color: #999;
+$navigation-link-color: $link-color;
 $navigation-link-hover-color: $link-hover-color;
 $navigation-border-color: #dadada;
 $dropdown-item-color: $color_333;
@@ -51,16 +56,21 @@ $header-wrapper-color: #747474;
 $blog-posted-on-bg-color: $link-hover-color;
 $blog-categories-bg-color: $link-hover-color;
 $blog-article-border-color: $border_color;
-$blog-title-border-color: #d9d9d9;
+$blog-title-border-color: $color-d9;
 $blog-excerpt-color: $text-color;
-$blog-article-footer-bg-color: #f1f2f4;
+$blog-article-footer-bg-color: $color_f1f2;
 $blog-footer-color: $text-color;
+
+/*********************************************************************************
+* Comments
+******************************************************************************** */
+$avatar-border-color: #e5e2e0;
 
 /*********************************************************************************
 * Footer
 ******************************************************************************** */
 $footer-widget-bg-color: #363839;
-$footer-widget-color: #ccc;
-$footer-widget-link-color: #999;
+$footer-widget-color: $color-ccc;
+$footer-widget-link-color: $link-color;
 $footer-widget-link-hover-color: $link-hover-color;
 $footer-copyright-bg-color: $color_333;

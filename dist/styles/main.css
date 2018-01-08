@@ -13373,6 +13373,10 @@ a.text-gray-dark:hover {
 ******************************************************************************** */
 
 /*********************************************************************************
+* Comments
+******************************************************************************** */
+
+/*********************************************************************************
 * Footer
 ******************************************************************************** */
 
@@ -13545,6 +13549,10 @@ a.text-gray-dark:hover {
 ******************************************************************************** */
 
 /*********************************************************************************
+* Comments
+******************************************************************************** */
+
+/*********************************************************************************
 * Footer
 ******************************************************************************** */
 
@@ -13680,6 +13688,10 @@ a.text-gray-dark:hover {
 ******************************************************************************** */
 
 /*********************************************************************************
+* Comments
+******************************************************************************** */
+
+/*********************************************************************************
 * Footer
 ******************************************************************************** */
 
@@ -13766,6 +13778,10 @@ a.text-gray-dark:hover {
 ******************************************************************************** */
 
 /*********************************************************************************
+* Comments
+******************************************************************************** */
+
+/*********************************************************************************
 * Footer
 ******************************************************************************** */
 
@@ -13846,6 +13862,10 @@ a.text-gray-dark:hover {
 
 /*********************************************************************************
 * Blog
+******************************************************************************** */
+
+/*********************************************************************************
+* Comments
 ******************************************************************************** */
 
 /*********************************************************************************
@@ -13980,6 +14000,10 @@ a.text-gray-dark:hover {
 
 /*********************************************************************************
 * Blog
+******************************************************************************** */
+
+/*********************************************************************************
+* Comments
 ******************************************************************************** */
 
 /*********************************************************************************
@@ -14434,6 +14458,304 @@ article.universal-single-post .universal__post-meta-data a:hover {
 }
 
 /*********************************************************************************
+* General
+******************************************************************************** */
+
+/*********************************************************************************
+* Pre Loader
+******************************************************************************** */
+
+/*********************************************************************************
+* Pagination
+******************************************************************************** */
+
+/*********************************************************************************
+* Navigation
+******************************************************************************** */
+
+/*********************************************************************************
+* Single post navigation
+******************************************************************************** */
+
+/*********************************************************************************
+* Top header bar
+******************************************************************************** */
+
+/*********************************************************************************
+* Blog
+******************************************************************************** */
+
+/*********************************************************************************
+* Comments
+******************************************************************************** */
+
+/*********************************************************************************
+* Footer
+******************************************************************************** */
+
+/*********************************************************************************
+* Media queries breakpoints.
+* Define the breakpoints at which your layout will change, adapting to
+* different screen size.
+******************************************************************************** */
+
+/*********************************************************************************
+* Comments
+******************************************************************************** */
+
+.universal-comments__container .universal-comments__title {
+  font-size: 28px;
+}
+
+.universal-comments__container .universal-comments__list {
+  border: 1px solid #d2d2dd;
+  margin: 0 0 40px;
+  padding: 0;
+  background: #f1f2f4;
+}
+
+.universal-comments__container .universal-comments__list li.comment,
+.universal-comments__container .universal-comments__list li.pingback {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.universal-comments__container .universal-comments__list li.comment + li.comment,
+.universal-comments__container .universal-comments__list li.comment + li.pingback,
+.universal-comments__container .universal-comments__list li.pingback + li.comment,
+.universal-comments__container .universal-comments__list li.pingback + li.pingback {
+  border-top: 1px dashed #d2d2dd;
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-wrapper,
+.universal-comments__container .universal-comments__list li.pingback .comment-wrapper {
+  padding: 20px;
+  position: relative;
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-wrapper::before,
+.universal-comments__container .universal-comments__list li.comment .comment-wrapper::after,
+.universal-comments__container .universal-comments__list li.pingback .comment-wrapper::before,
+.universal-comments__container .universal-comments__list li.pingback .comment-wrapper::after {
+  content: ' ';
+  display: table;
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-wrapper::after,
+.universal-comments__container .universal-comments__list li.pingback .comment-wrapper::after {
+  clear: both;
+}
+
+@media (min-width: 768px) {
+  .universal-comments__container .universal-comments__list li.comment .comment-wrapper,
+  .universal-comments__container .universal-comments__list li.pingback .comment-wrapper {
+    padding: 40px 30px;
+  }
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-wrapper .avatar,
+.universal-comments__container .universal-comments__list li.pingback .comment-wrapper .avatar {
+  float: left;
+  margin-right: 15px;
+  border: 4px solid #e5e2e0;
+  border-radius: 50%;
+  width: 60px;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .universal-comments__container .universal-comments__list li.comment .comment-wrapper .avatar,
+  .universal-comments__container .universal-comments__list li.pingback .comment-wrapper .avatar {
+    width: 100px;
+    margin-right: 25px;
+  }
+}
+
+@media (min-width: 768px) {
+  .universal-comments__container .universal-comments__list li.comment .comment-body,
+  .universal-comments__container .universal-comments__list li.pingback .comment-body {
+    overflow: hidden;
+  }
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-meta,
+.universal-comments__container .universal-comments__list li.pingback .comment-meta {
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-meta .comment-author,
+.universal-comments__container .universal-comments__list li.pingback .comment-meta .comment-author {
+  margin-bottom: 5px;
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-meta .comment-author a,
+.universal-comments__container .universal-comments__list li.pingback .comment-meta .comment-author a {
+  color: #999;
+  text-decoration: none;
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-meta .comment-author a:hover,
+.universal-comments__container .universal-comments__list li.pingback .comment-meta .comment-author a:hover {
+  color: #a0ce4e;
+}
+
+@media (min-width: 768px) {
+  .universal-comments__container .universal-comments__list li.comment .comment-meta .comment-author,
+  .universal-comments__container .universal-comments__list li.pingback .comment-meta .comment-author {
+    margin-bottom: 0;
+    display: inline-block;
+  }
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-meta .comment-date,
+.universal-comments__container .universal-comments__list li.pingback .comment-meta .comment-date {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .universal-comments__container .universal-comments__list li.comment .comment-meta .comment-date,
+  .universal-comments__container .universal-comments__list li.pingback .comment-meta .comment-date {
+    display: inline-block;
+    padding: 0 10px;
+  }
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-meta .comment-date a,
+.universal-comments__container .universal-comments__list li.pingback .comment-meta .comment-date a {
+  color: #999;
+  text-decoration: none;
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-meta .comment-date a:hover,
+.universal-comments__container .universal-comments__list li.pingback .comment-meta .comment-date a:hover {
+  color: #a0ce4e;
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-meta .comment-date .fa,
+.universal-comments__container .universal-comments__list li.pingback .comment-meta .comment-date .fa {
+  color: #656269;
+  margin-right: 6px;
+}
+
+@media (min-width: 768px) {
+  .universal-comments__container .universal-comments__list li.comment .comment-reply,
+  .universal-comments__container .universal-comments__list li.pingback .comment-reply {
+    float: right;
+    border-left: 1px dashed #d2d2dd;
+    padding-left: 18px;
+  }
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-reply .comment-reply-link,
+.universal-comments__container .universal-comments__list li.pingback .comment-reply .comment-reply-link {
+  text-decoration: none;
+  color: #999;
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-reply .comment-reply-link:hover,
+.universal-comments__container .universal-comments__list li.pingback .comment-reply .comment-reply-link:hover {
+  color: #a0ce4e;
+}
+
+.universal-comments__container .universal-comments__list li.comment .comment-reply .comment-reply-link > span,
+.universal-comments__container .universal-comments__list li.pingback .comment-reply .comment-reply-link > span {
+  display: inline-block;
+  margin: 0 6px;
+  border-bottom: 1px dotted #d2d2dd;
+}
+
+@media (min-width: 768px) {
+  .universal-comments__container .universal-comments__list li.pingback .comment-wrapper {
+    padding: 20px 30px;
+  }
+}
+
+.universal-comments__container .universal-comments__list .children {
+  padding: 0;
+  border-top: 1px dashed #d2d2dd;
+  position: relative;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .universal-comments__container .universal-comments__list .children::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 80px;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    border-left: 1px dashed #cacad8;
+  }
+}
+
+.universal-comments__container .universal-comments__list .children .comment {
+  border-top: none;
+}
+
+.universal-comments__container .universal-comments__list .children .comment .comment-wrapper {
+  background: #edeef1;
+}
+
+@media (min-width: 768px) {
+  .universal-comments__container .universal-comments__list .children .comment .comment-wrapper {
+    padding-left: 150px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .universal-comments__container .universal-comments__list .children .comment .comment-wrapper::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 87px;
+    width: 63px;
+    top: 80px;
+    border-top: 1px dashed #cacad8;
+  }
+
+  .universal-comments__container .universal-comments__list .children .comment .comment-wrapper::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 77px;
+    top: 77px;
+    border-radius: 50%;
+    width: 7px;
+    height: 7px;
+    background: #cacad8;
+  }
+}
+
+.universal-comments__container .universal-comments__list .children .comment .comment-wrapper .avatar {
+  border-color: #cacad8;
+}
+
+.universal-comments__container .universal-comments__list .children .comment:nth-child(even) .comment-wrapper {
+  background: #e4e5ea;
+}
+
+.universal-comments__container .universal-comments__list .children .children {
+  border-top: none;
+}
+
+.universal-comments__container .universal-comments__list .bypostauthor > .comment-wrapper {
+  border-left-color: #d2d2dd;
+}
+
+.universal-comments__container #comment-form .logged-in-as a {
+  color: #999;
+  text-decoration: none;
+}
+
+.universal-comments__container #comment-form .logged-in-as a:hover {
+  color: #a0ce4e;
+}
+
+/*********************************************************************************
 * Animations
 ******************************************************************************** */
 
@@ -14473,6 +14795,10 @@ article.universal-single-post .universal__post-meta-data a:hover {
 
 /*********************************************************************************
 * Blog
+******************************************************************************** */
+
+/*********************************************************************************
+* Comments
 ******************************************************************************** */
 
 /*********************************************************************************
@@ -14643,6 +14969,10 @@ article.universal-single-post .universal__post-meta-data a:hover {
 
 /*********************************************************************************
 * Blog
+******************************************************************************** */
+
+/*********************************************************************************
+* Comments
 ******************************************************************************** */
 
 /*********************************************************************************

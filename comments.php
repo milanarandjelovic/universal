@@ -74,6 +74,7 @@ $sp_display_comments = $universal_data['universal__opt-blog-sp-comments'];
 				wp_list_comments( array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'callback'   => 'universal_comments',
 				) );
 				?>
 			</ol> <!-- /.comment-list -->

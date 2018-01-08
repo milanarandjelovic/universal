@@ -257,6 +257,84 @@ if ( ! function_exists( 'universal_pagination' ) ) {
 	}
 }
 
+if ( ! function_exists( 'universal_comments' ) ) {
+	/**
+	 * Prints universal comments.
+	 *
+	 * @param object $comment Comments object.
+	 * @param array  $args    Arguments for comments.
+	 * @param int    $depth   Comments depth.
+	 */
+	function universal_comments( $comment, $args, $depth ) {
+		$GLOBALS['comment'] = $comment;
+		extract($args, EXTR_SKIP);
+
+		if ( 'div' === $args['style'] ) {
+			$tag       = 'div';
+			$add_below = 'comment';
+		} else {
+			$tag       = 'li';
+			$add_below = 'div-comment';
+		}
+	?>
+		<<?php echo esc_attr( $tag ); ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?> id="comment-<?php comment_ID(); ?>">
+		<?php if ( 'div' !== $args['style'] ) : ?>
+		<div id="div-comment-<?php comment_ID(); ?>" class="comment-wrapper">
+		<?php endif; ?>
+		<?php if ( 0 !== $args['avatar_size'] ) echo get_avatar( $comment, 100 ); ?>
+		<div class="comment-body">
+			<div class="comment-meta vcard">
+				<?php
+				printf(
+					/* translators: comment author link */
+					__( '<h5 class="comment-author">%s</h5>', 'universal' ), get_comment_author_link()
+				);
+				?>
+				<div class="comment-date commentmetadata">
+					<i class="fa fa-clock-o"></i>
+					<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
+						<?php
+						printf(
+							/* translators: comment date */
+							__( '%1$s', 'universal' ), get_comment_date()
+						);
+						?>
+					</a>
+					<?php
+					edit_comment_link( esc_html__( '(Edit)', 'universal' ),'  ','' );
+					?>
+				</div>
+				<div class="comment-reply">
+					<?php
+					comment_reply_link( array_merge( $args, array(
+						'add_below'   => $add_below,
+						'depth'       => $depth,
+						'reply_text'  => '<i class="fa fa-reply"></i> <span>' . esc_html__( 'Reply', 'universal' ) . '</span>',
+						'max_depth'   => $args['max_depth'],
+					)));
+					?>
+				</div>
+			</div>
+
+			<?php if ( '0' === $comment->comment_approved ) : ?>
+			<div class="comment-awaiting-moderation alert alert-warning">
+				<?php esc_attr_e( 'Your comment is awaiting moderation.', 'universal' ); ?>
+			</div>
+			<br />
+			<?php endif; ?>
+
+			<div class="comment-txt">
+				<?php comment_text(); ?>
+			</div>
+		</div>
+
+		<?php if ( 'div' !== $args['style'] ) : ?>
+		</div>
+		<?php endif; ?>
+	<?php
+	}
+}
+
 if ( ! function_exists( 'universal_render_post_meta_data' ) ) {
 	/**
 	 * Render HTML post meta data.
