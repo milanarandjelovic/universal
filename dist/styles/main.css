@@ -14241,16 +14241,20 @@ article.post .entry-footer {
   color: #656269;
 }
 
-article.post .entry-footer .author-link {
+article.post .entry-footer .universal__posted-by {
+  padding-top: 8px;
+}
+
+article.post .entry-footer .universal__posted-by .author-link {
   color: #999;
 }
 
-article.post .entry-footer .author-link:hover {
+article.post .entry-footer .universal__posted-by .author-link:hover {
   color: #a0ce4e;
   text-decoration: none;
 }
 
-article.post .entry-footer .author-link:focus {
+article.post .entry-footer .universal__posted-by .author-link:focus {
   color: #a0ce4e;
   text-decoration: none;
 }
@@ -14308,34 +14312,39 @@ article.has-post-thumbnail .entry-date {
 * Single post
 ******************************************************************************** */
 
-article.universal-single-post {
+article.universal__single-post {
   border: 0;
   margin-top: 30px;
 }
 
-article.universal-single-post figure.entry-thumbnail {
+article.universal__single-post figure.entry-thumbnail {
   margin: 20px 0;
 }
 
-article.universal-single-post .entry-body {
+article.universal__single-post figure.entry-thumbnail img {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+article.universal__single-post .entry-body {
   clear: both;
   padding: 30px 0;
 }
 
-article.universal-single-post .entry-body .entry-content {
+article.universal__single-post .entry-body .entry-content {
   color: #656269;
 }
 
-article.universal-single-post .entry-body .entry-content a {
+article.universal__single-post .entry-body .entry-content a {
   color: #999;
   text-decoration: none;
 }
 
-article.universal-single-post .entry-body .entry-content a:hover {
+article.universal__single-post .entry-body .entry-content a:hover {
   color: #a0ce4e;
 }
 
-article.universal-single-post .universal__post-meta-data {
+article.universal__single-post .universal__post-meta-data {
   clear: both;
   color: #656269;
   border: 1px solid #d2d2dd;
@@ -14344,12 +14353,12 @@ article.universal-single-post .universal__post-meta-data {
   padding: 5px 0;
 }
 
-article.universal-single-post .universal__post-meta-data a {
+article.universal__single-post .universal__post-meta-data a {
   color: #999;
   text-decoration: none;
 }
 
-article.universal-single-post .universal__post-meta-data a:hover {
+article.universal__single-post .universal__post-meta-data a:hover {
   color: #a0ce4e;
 }
 

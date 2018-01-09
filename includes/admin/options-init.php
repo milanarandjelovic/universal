@@ -788,7 +788,7 @@ Redux::setSection( $opt_name, array(
 
 		// Enable or disable advanced post styling.
 		array(
-			'id'       => 'universal__option-blog-styling',
+			'id'       => 'universal__opt-blog-styling',
 			'title'    => esc_html__( 'Enable advanced post styling', 'universal' ),
 			'subtitle' => esc_html__( 'Turn on to change appearance for post.', 'universal' ),
 			'type'     => 'switch',
@@ -804,12 +804,12 @@ Redux::setSection( $opt_name, array(
 			'title'    => esc_html__( 'Blog Page Styling', 'universal' ),
 			'subtitle' => esc_html__( 'All styling for blog page.', 'universal' ),
 			'indent'   => true,
-			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+			'required' => array( 'universal__opt-blog-styling', '=', '1' ),
 		),
 
 		// Custom color for link regular, hover and active.
 		array(
-			'id'       => 'universal__option-blog-footer-link-color',
+			'id'       => 'universal__opt-blog-footer-link-color',
 			'title'    => esc_html__( 'Link Color', 'universal' ),
 			'subtitle' => esc_html__( 'Color option for link.', 'universal' ),
 			'type'     => 'link_color',
@@ -818,12 +818,12 @@ Redux::setSection( $opt_name, array(
 				'hover'   => '#a0ce4e',
 				'active'  => '#a0ce4e',
 			),
-			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+			'required' => array( 'universal__opt-blog-styling', '=', '1' ),
 		),
 
 		// Custom background color for post.
 		array(
-			'id'                    => 'universal__option-blog-styling-post-bg',
+			'id'                    => 'universal__opt-blog-styling-post-bg',
 			'title'                 => esc_html__( 'Post Background Color', 'universal' ),
 			'subtitle'              => esc_html__( 'Background color for post.', 'universal' ),
 			'type'                  => 'background',
@@ -837,12 +837,12 @@ Redux::setSection( $opt_name, array(
 			'default'               => array(
 				'background-color' => '#f8f9fa',
 			),
-			'required'              => array( 'universal__option-blog-styling', '=', '1' ),
+			'required'              => array( 'universal__opt-blog-styling', '=', '1' ),
 		),
 
 		// Custom color for blog border.
 		array(
-			'id'       => 'universal__option-blog-styling-post-border',
+			'id'       => 'universal__opt-blog-styling-post-border',
 			'title'    => esc_html__( 'Post Border', 'universal' ),
 			'subtitle' => esc_html__( 'Border options for post.', 'universal' ),
 			'type'     => 'border',
@@ -855,12 +855,12 @@ Redux::setSection( $opt_name, array(
 				'border-right'  => '1px',
 				'border-bottom' => '1px',
 			),
-			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+			'required' => array( 'universal__opt-blog-styling', '=', '1' ),
 		),
 
 		// Custom color for blog title border.
 		array(
-			'id'       => 'universal__option-blog-styling-post--title-border',
+			'id'       => 'universal__opt-blog-styling-post--title-border',
 			'title'    => esc_html__( 'Post Title Border', 'universal' ),
 			'subtitle' => esc_html__( 'Border title options for post.', 'universal' ),
 			'desc'     => esc_html__( 'Options for post title pn blog page. Border bottom is set by default 1px.',
@@ -876,12 +876,12 @@ Redux::setSection( $opt_name, array(
 				'border-style'  => 'solid',
 				'border-bottom' => '1px',
 			),
-			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+			'required' => array( 'universal__opt-blog-styling', '=', '1' ),
 		),
 
 		// Show or hide post date.
 		array(
-			'id'       => 'universal__option-blog-post-date',
+			'id'       => 'universal__opt-blog-post-date',
 			'title'    => esc_html__( 'Show Post Date', 'universal' ),
 			'subtitle' => esc_html__( 'Turn on to show or hide post date.', 'universal' ),
 			'desc'     => esc_html__( 'Post date disabled by default.', 'universal' ),
@@ -889,12 +889,12 @@ Redux::setSection( $opt_name, array(
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
 			'off'      => esc_html__( 'No', 'universal' ),
-			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+			'required' => array( 'universal__opt-blog-styling', '=', '1' ),
 		),
 
 		// Custom background color for post date.
 		array(
-			'id'                    => 'universal__option-blog-post-date-bg-color',
+			'id'                    => 'universal__opt-blog-post-date-bg-color',
 			'title'                 => esc_html__( 'Post Date Background Color', 'universal' ),
 			'subtitle'              => esc_html__( 'Background color for post date.', 'universal' ),
 			'type'                  => 'background',
@@ -909,14 +909,14 @@ Redux::setSection( $opt_name, array(
 				'background-color' => '#a0ce4e',
 			),
 			'required'              => array(
-				array( 'universal__option-blog-styling', '=', '1' ),
-				array( 'universal__option-blog-post-date', '=', '1' ),
+				array( 'universal__opt-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-post-date', '=', '1' ),
 			),
 		),
 
 		// Custom color for post date.
 		array(
-			'id'          => 'universal__option-blog-post-date-color',
+			'id'          => 'universal__opt-blog-post-date-color',
 			'title'       => esc_html__( 'Post Date Text Color', 'universal' ),
 			'subtitle'    => esc_html__( 'Color for post date (day and month).', 'universal' ),
 			'type'        => 'color',
@@ -924,38 +924,38 @@ Redux::setSection( $opt_name, array(
 			'default'     => '#fff',
 			'transparent' => false,
 			'required'    => array(
-				array( 'universal__option-blog-styling', '=', '1' ),
-				array( 'universal__option-blog-post-date', '=', '1' ),
+				array( 'universal__opt-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-post-date', '=', '1' ),
 			),
 		),
 
 		// Custom color excerpt.
 		array(
-			'id'          => 'universal__option-blog-post-excerpt-color',
+			'id'          => 'universal__opt-blog-post-excerpt-color',
 			'title'       => esc_html__( 'Excerpt Text Color', 'universal' ),
 			'subtitle'    => esc_html__( 'Color for excerpt.', 'universal' ),
 			'type'        => 'color',
 			'output'      => array( 'article.post .entry-body .entry-excerpt' ),
 			'default'     => '#656269',
 			'transparent' => false,
-			'required'    => array( 'universal__option-blog-styling', '=', '1' ),
+			'required'    => array( 'universal__opt-blog-styling', '=', '1' ),
 		),
 
 		// Show or hide post footer.
 		array(
-			'id'       => 'universal__option-blog-footer',
+			'id'       => 'universal__opt-blog-footer',
 			'title'    => esc_html__( 'Show Post Footer', 'universal' ),
 			'subtitle' => esc_html__( 'Turn on to show post footer.', 'universal' ),
 			'type'     => 'switch',
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
 			'off'      => esc_html__( 'No', 'universal' ),
-			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+			'required' => array( 'universal__opt-blog-styling', '=', '1' ),
 		),
 
 		// Custom background color for post footer.
 		array(
-			'id'                    => 'universal__option-blog-footer-bg',
+			'id'                    => 'universal__opt-blog-footer-bg',
 			'title'                 => esc_html__( 'Post Footer Background Color', 'universal' ),
 			'subtitle'              => esc_html__( 'Background color for post footer.', 'universal' ),
 			'type'                  => 'background',
@@ -970,28 +970,28 @@ Redux::setSection( $opt_name, array(
 				'background-color' => '#f1f2f4',
 			),
 			'required'              => array(
-				array( 'universal__option-blog-styling', '=', '1' ),
-				array( 'universal__option-blog-footer', '=', '1' ),
+				array( 'universal__opt-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-footer', '=', '1' ),
 			),
 		),
 
 		// Custom color for post footer.
 		array(
-			'id'          => 'universal__option-blog-footer-color',
+			'id'          => 'universal__opt-blog-footer-color',
 			'title'       => esc_html__( 'Post Footer Color', 'universal' ),
 			'subtitle'    => esc_html__( 'Color for post footer.', 'universal' ),
 			'type'        => 'color',
 			'transparent' => false,
 			'default'     => '#656269',
 			'required'    => array(
-				array( 'universal__option-blog-styling', '=', '1' ),
-				array( 'universal__option-blog-footer', '=', '1' ),
+				array( 'universal__opt-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-footer', '=', '1' ),
 			),
 		),
 
 		// Custom top border color for post footer.
 		array(
-			'id'       => 'universal__option-blog-footer-border-color',
+			'id'       => 'universal__opt-blog-footer-border-color',
 			'title'    => esc_html__( 'Post Footer Top Border Color', 'universal' ),
 			'subtitle' => esc_html__( 'Top border options for post footer.', 'universal' ),
 			'desc'     => esc_html__( 'Top border is set by default 1px.', 'universal' ),
@@ -1007,14 +1007,14 @@ Redux::setSection( $opt_name, array(
 				'border-top'   => '1px',
 			),
 			'required' => array(
-				array( 'universal__option-blog-styling', '=', '1' ),
-				array( 'universal__option-blog-footer', '=', '1' ),
+				array( 'universal__opt-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-footer', '=', '1' ),
 			),
 		),
 
 		// Show or hide author in post footer.
 		array(
-			'id'       => 'universal__option-blog-footer-author',
+			'id'       => 'universal__opt-blog-footer-author',
 			'title'    => esc_html__( 'Show Author Name?', 'universal' ),
 			'subtitle' => esc_html__( 'Turn on to show author name.', 'universal' ),
 			'desc'     => __( '<em>\'Posted by author\'</em> text displayed by default in post footer.', 'universal' ),
@@ -1023,14 +1023,14 @@ Redux::setSection( $opt_name, array(
 			'on'       => esc_html__( 'Yes', 'universal' ),
 			'off'      => esc_html__( 'No', 'universal' ),
 			'required' => array(
-				array( 'universal__option-blog-styling', '=', '1' ),
-				array( 'universal__option-blog-footer', '=', '1' ),
+				array( 'universal__opt-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-footer', '=', '1' ),
 			),
 		),
 
 		// Custom color for read more link.
 		array(
-			'id'       => 'universal__option-blog-footer-read-more',
+			'id'       => 'universal__opt-blog-footer-read-more',
 			'title'    => esc_html__( 'Read More Color', 'universal' ),
 			'subtitle' => esc_html__( 'Color option for read more link.', 'universal' ),
 			'type'     => 'link_color',
@@ -1040,26 +1040,26 @@ Redux::setSection( $opt_name, array(
 				'active'  => '#a0ce4e',
 			),
 			'required' => array(
-				array( 'universal__option-blog-styling', '=', '1' ),
-				array( 'universal__option-blog-footer', '=', '1' ),
+				array( 'universal__opt-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-footer', '=', '1' ),
 			),
 		),
 
 		// Show or hide post footer.
 		array(
-			'id'       => 'universal__option-blog-categories',
+			'id'       => 'universal__opt-blog-categories',
 			'title'    => esc_html__( 'Show Post Categories?', 'universal' ),
 			'subtitle' => esc_html__( 'Turn on to show post categories.', 'universal' ),
 			'type'     => 'switch',
 			'default'  => '1',
 			'on'       => esc_html__( 'Yes', 'universal' ),
 			'off'      => esc_html__( 'No', 'universal' ),
-			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+			'required' => array( 'universal__opt-blog-styling', '=', '1' ),
 		),
 
 		// Custom background color for categories.
 		array(
-			'id'                    => 'universal__option-blog-categories-bg-color',
+			'id'                    => 'universal__opt-blog-categories-bg-color',
 			'title'                 => esc_html__( 'Background Color For Post Categories', 'universal' ),
 			'type'                  => 'background',
 			'preview'               => false,
@@ -1072,49 +1072,49 @@ Redux::setSection( $opt_name, array(
 				'background-color' => '#a0ce4e',
 			),
 			'required'              => array(
-				array( 'universal__option-blog-styling', '=', '1' ),
-				array( 'universal__option-blog-categories', '=', '1' ),
+				array( 'universal__opt-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-categories', '=', '1' ),
 			),
 		),
 
 		// Custom color for categories.
 		array(
-			'id'          => 'universal__option-blog-categories-color',
+			'id'          => 'universal__opt-blog-categories-color',
 			'title'       => esc_html__( 'Color For Post Categories', 'universal' ),
 			'subtitle'    => esc_html__( 'Link color for post categories', 'universal' ),
 			'type'        => 'color',
 			'default'     => '#fff',
 			'transparent' => false,
 			'required'    => array(
-				array( 'universal__option-blog-styling', '=', '1' ),
-				array( 'universal__option-blog-categories', '=', '1' ),
+				array( 'universal__opt-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-categories', '=', '1' ),
 			),
 		),
 
 		// Custom background color for infinite scroll load more button.
 		array(
-			'id'          => 'universal__option-blog-load-more-button-bg-color',
+			'id'          => 'universal__opt-blog-load-more-button-bg-color',
 			'title'       => esc_html__( 'Background Color For Load More Button', 'universal' ),
 			'subtitle'    => esc_html__( 'Background color for infinite scroll load more button.', 'universal' ),
 			'type'        => 'color',
 			'default'     => '#f1f2f4',
 			'transparent' => false,
 			'required'    => array(
-				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-styling', '=', '1' ),
 				array( 'universal__opt-blog-pagination-type', '=', 'load_more_button' ),
 			),
 		),
 
 		// Custom color for infinite scroll load more button.
 		array(
-			'id'          => 'universal__option-blog-load-more-button-color',
+			'id'          => 'universal__opt-blog-load-more-button-color',
 			'title'       => esc_html__( 'Color For Load More Button', 'universal' ),
 			'subtitle'    => esc_html__( 'Color for infinite scroll load more button.', 'universal' ),
 			'type'        => 'color',
 			'default'     => '#656269',
 			'transparent' => false,
 			'required'    => array(
-				array( 'universal__option-blog-styling', '=', '1' ),
+				array( 'universal__opt-blog-styling', '=', '1' ),
 				array( 'universal__opt-blog-pagination-type', '=', 'load_more_button' ),
 			),
 		),
@@ -1126,7 +1126,7 @@ Redux::setSection( $opt_name, array(
 			'title'    => esc_html__( 'Single Post Styling', 'universal' ),
 			'subtitle' => esc_html__( 'All styling for single post.', 'universal' ),
 			'indent'   => true,
-			'required' => array( 'universal__option-blog-styling', '=', '1' ),
+			'required' => array( 'universal__opt-blog-styling', '=', '1' ),
 		),
 	),
 ) );

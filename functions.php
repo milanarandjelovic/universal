@@ -26,7 +26,7 @@ define( 'UNIVERSAL_SCRIPTS_URI', UNIVERSAL_URI . '/dist/scripts/' );
 /**
  * Include Redux Framework.
  */
-include_once UNIVERSAL_PATH . '/includes/admin/admin-init.php';
+include_once UNIVERSAL_PATH . '/includes/admin/options-init.php';
 
 /**
  * Include Universal functions.

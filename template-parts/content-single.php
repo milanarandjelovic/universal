@@ -19,7 +19,7 @@ $universal_data = get_option( 'universal_data' );
 
 $has_single_post_thumbnail = $universal_data['universal__opt-blog-sp-thumbnail'];
 
-$single_post_class = 'universal-single-post';
+$single_post_class = 'universal__single-post';
 
 $sp_show_title              = $universal_data['universal__opt-blog-sp-title'];
 $sp_title_position          = $universal_data['universal__opt-blog-sp-title-position'];

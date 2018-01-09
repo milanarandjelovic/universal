@@ -41,21 +41,21 @@ class Universal_Custom_Style {
 		/*********************************************************************************
 		 * Blog Styling.
 		 ******************************************************************************** */
-		$post_styling         = $universal_data['universal__option-blog-styling'];
-		$post_footer          = $universal_data['universal__option-blog-footer'];
+		$post_styling         = $universal_data['universal__opt-blog-styling'];
+		$post_footer          = $universal_data['universal__opt-blog-footer'];
 		$blog_pagination_type = $universal_data['universal__opt-blog-pagination-type'];
 
 		if ( $post_styling ) {
-			$post_border          = $universal_data['universal__option-blog-styling-post-border'];
-			$post_title_border    = $universal_data['universal__option-blog-styling-post--title-border'];
-			$blog_post_date       = $universal_data['universal__option-blog-post-date'];
-			$blog_excerpt_color   = $universal_data['universal__option-blog-post-excerpt-color'];
-			$blog_post_categories = $universal_data['universal__option-blog-categories'];
-			$blog_link_color      = $universal_data['universal__option-blog-footer-link-color'];
+			$post_border          = $universal_data['universal__opt-blog-styling-post-border'];
+			$post_title_border    = $universal_data['universal__opt-blog-styling-post--title-border'];
+			$blog_post_date       = $universal_data['universal__opt-blog-post-date'];
+			$blog_excerpt_color   = $universal_data['universal__opt-blog-post-excerpt-color'];
+			$blog_post_categories = $universal_data['universal__opt-blog-categories'];
+			$blog_link_color      = $universal_data['universal__opt-blog-footer-link-color'];
 
 			// Border for post article.
 			$output .= ' article.post {';
-			$output .= ' background-color: ' . $universal_data['universal__option-blog-styling-post-bg']['background-color'] . ';';
+			$output .= ' background-color: ' . $universal_data['universal__opt-blog-styling-post-bg']['background-color'] . ';';
 			$output .= ' border-top-width: ' . $post_border['border-top'] . ';';
 			$output .= ' border-right-width: ' . $post_border['border-right'] . ';';
 			$output .= ' border-bottom-width: ' . $post_border['border-bottom'] . ';';
@@ -73,8 +73,8 @@ class Universal_Custom_Style {
 
 			// Blog post date color and background color.
 			if ( $blog_post_date ) {
-				$blog_post_date_bg_color = $universal_data['universal__option-blog-post-date-bg-color']['background-color'];
-				$blog_post_date_color    = $universal_data['universal__option-blog-post-date-color'];
+				$blog_post_date_bg_color = $universal_data['universal__opt-blog-post-date-bg-color']['background-color'];
+				$blog_post_date_color    = $universal_data['universal__opt-blog-post-date-color'];
 
 				$output .= ' article.post .entry-body .entry-date {';
 				$output .= ' background-color: ' . $blog_post_date_bg_color . ';';
@@ -91,8 +91,8 @@ class Universal_Custom_Style {
 
 			// Blog post categories styling.
 			if ( $blog_post_categories ) {
-				$blog_post_categories_bg_color = $universal_data['universal__option-blog-categories-bg-color']['background-color'];
-				$blog_post_categories_color    = $universal_data['universal__option-blog-categories-color'];
+				$blog_post_categories_bg_color = $universal_data['universal__opt-blog-categories-bg-color']['background-color'];
+				$blog_post_categories_color    = $universal_data['universal__opt-blog-categories-color'];
 
 				$output .= ' article.post .entry-body .post-categories li a {';
 				$output .= ' background-color: ' . $blog_post_categories_bg_color . ';';
@@ -130,10 +130,10 @@ class Universal_Custom_Style {
 
 		// Blog footer read more link color.
 		if ( '1' === $post_footer && '1' === $post_styling ) {
-			$post_footer_read_more_link = $universal_data['universal__option-blog-footer-read-more'];
-			$post_footer_bg_color       = $universal_data['universal__option-blog-footer-bg']['background-color'];
-			$post_footer_color          = $universal_data['universal__option-blog-footer-color'];
-			$post_footer_border         = $universal_data['universal__option-blog-footer-border-color'];
+			$post_footer_read_more_link = $universal_data['universal__opt-blog-footer-read-more'];
+			$post_footer_bg_color       = $universal_data['universal__opt-blog-footer-bg']['background-color'];
+			$post_footer_color          = $universal_data['universal__opt-blog-footer-color'];
+			$post_footer_border         = $universal_data['universal__opt-blog-footer-border-color'];
 
 			// Post footer color, background color and border.
 			$output .= ' article.post .entry-footer {';
@@ -163,8 +163,8 @@ class Universal_Custom_Style {
 		// Infinite scroll load more button.
 		if ( 'load_more_button' === $blog_pagination_type ) {
 			$output .= ' .universal-load-more-button {';
-			$output .= ' color: ' . $universal_data['universal__option-blog-load-more-button-color'] . ';';
-			$output .= ' background-color: ' . $universal_data['universal__option-blog-load-more-button-bg-color'] . ';';
+			$output .= ' color: ' . $universal_data['universal__opt-blog-load-more-button-color'] . ';';
+			$output .= ' background-color: ' . $universal_data['universal__opt-blog-load-more-button-bg-color'] . ';';
 			$output .= ' }';
 		}
 
@@ -211,33 +211,33 @@ class Universal_Custom_Style {
 
 		// Pagination styling.
 		if ( '1' === $pagination_styling_enable ) {
-			$pagination_bg_color            = $universal_data['universal__option-pagination-bg-color'];
-			$pagination_bg_color_active     = $universal_data['universal__option-pagination-bg-color-active'];
-			$pagination_bg_color_hover      = $universal_data['universal__option-pagination-bg-color-hover'];
-			$pagination_color_hover         = $universal_data['universal__option-pagination-color-hover'];
-			$pagination_color               = $universal_data['universal__option-pagination-color'];
-			$pagination_border_color        = $universal_data['universal__option-pagination-border-color'];
-			$pagination_border_color_hover  = $universal_data['universal__option-pagination-border-color-hover'];
-			$pagination_border_color_active = $universal_data['universal__option-pagination-border-color-active'];
+			$pagination_bg_color            = $universal_data['universal__opt-pagination-bg-color'];
+			$pagination_bg_color_active     = $universal_data['universal__opt-pagination-bg-color-active'];
+			$pagination_bg_color_hover      = $universal_data['universal__opt-pagination-bg-color-hover'];
+			$pagination_color_hover         = $universal_data['universal__opt-pagination-color-hover'];
+			$pagination_color               = $universal_data['universal__opt-pagination-color'];
+			$pagination_border_color        = $universal_data['universal__opt-pagination-border-color'];
+			$pagination_border_color_hover  = $universal_data['universal__opt-pagination-border-color-hover'];
+			$pagination_border_color_active = $universal_data['universal__opt-pagination-border-color-active'];
 
-			$output .= ' .universal-pagination-holder > .page-item .page-link {';
+			$output .= ' .universal__pagination-holder > .page-item .page-link {';
 			$output .= ' background-color: ' . $pagination_bg_color . ';';
 			$output .= ' border-color: ' . $pagination_border_color . ';';
 			$output .= ' color: ' . $pagination_color . ';';
 			$output .= ' }';
 
-			$output .= ' .universal-pagination-holder > .page-item.active .page-link {';
+			$output .= ' .universal__pagination-holder > .page-item.active .page-link {';
 			$output .= ' background-color: ' . $pagination_bg_color_active . ';';
 			$output .= ' border-color: ' . $pagination_border_color_active . ';';
 			$output .= ' color: ' . $pagination_color . ';';
 			$output .= ' }';
 
-			$output .= ' .universal-pagination-holder > .page-item > .page-link {';
+			$output .= ' .universal__pagination-holder > .page-item > .page-link {';
 			$output .= ' color: ' . $pagination_color . ';';
 			$output .= ' }';
 
-			$output .= ' .universal-pagination-holder > .page-item > .page-link:hover, ';
-			$output .= ' .universal-pagination-holder > .page-item > .page-link:focus {';
+			$output .= ' .universal__pagination-holder > .page-item > .page-link:hover, ';
+			$output .= ' .universal__pagination-holder > .page-item > .page-link:focus {';
 			$output .= ' background-color: ' . $pagination_bg_color_hover . ';';
 			$output .= ' border-color: ' . $pagination_border_color_hover . ';';
 			$output .= ' color: ' . $pagination_color_hover . ';';

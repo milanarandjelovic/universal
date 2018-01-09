@@ -192,19 +192,23 @@ article.post {
     border-top: 1px dashed $blog-article-border-color;
     color: $blog-footer-color;
 
-    .author-link {
-      color: $link-color;
+    .universal__posted-by {
+      padding-top: 8px;
 
-      &:hover {
-        color: $link-hover-color;
-        text-decoration: none;
-      }
+      .author-link {
+        color: $link-color;
 
-      &:focus {
-        color: $link-hover-color;
-        text-decoration: none;
+        &:hover {
+          color: $link-hover-color;
+          text-decoration: none;
+        }
+
+        &:focus {
+          color: $link-hover-color;
+          text-decoration: none;
+        }
       }
-    }
+    } // .universal__posted-by
 
     .edit-link {
       display: inline-block;
@@ -260,12 +264,17 @@ article.has-post-thumbnail {
 /*********************************************************************************
 * Single post
 ******************************************************************************** */
-article.universal-single-post {
+article.universal__single-post {
   border: 0;
   margin-top: 30px;
 
   figure.entry-thumbnail {
     margin: 20px 0;
+
+    img {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
   }
 
   .entry-body {

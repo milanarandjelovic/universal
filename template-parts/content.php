@@ -76,12 +76,12 @@ $post_read_more_txt = $universal_data['universal__opt-blog-read-more-text'];
 		<footer class="entry-footer">
 
 			<?php if ( '1' === $post_author ) : ?>
-				<div class="pull-left">
+				<div class="pull-left universal__posted-by">
 					<?php universal_entry_footer(); ?>
 				</div>
 			<?php endif; ?>
 
-			<div class="pull-right">
+			<div class="pull-right universal__read-more">
 				<a href="<?php the_permalink(); ?>" class="read-more">
 				<span>
 					<?php echo esc_html( $post_read_more_txt ); ?>
