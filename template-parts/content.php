@@ -18,9 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 $universal_data = get_option( 'universal_data' );
 $post_format    = get_post_format();
 
-$post_date   = $universal_data['universal__option-blog-post-date'];
-$post_footer = $universal_data['universal__option-blog-footer'];
-$post_author = $universal_data['universal__option-blog-footer-author'];
+$post_date   = $universal_data['universal__opt-blog-post-date'];
+$post_footer = $universal_data['universal__opt-blog-footer'];
+$post_author = $universal_data['universal__opt-blog-footer-author'];
 $post_read_more_txt = $universal_data['universal__opt-blog-read-more-text'];
 ?>
 
