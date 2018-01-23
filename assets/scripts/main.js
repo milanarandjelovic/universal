@@ -8,6 +8,7 @@ require('./plugins/jquery.infinitescroll');
 import stickyHeader from './custom/sticky-header';
 import primaryMenu from './custom/primary-menu';
 import loadMorePosts from './custom/load-more-posts';
+import relatedPostsSlider from './custom/related-posts-slider';
 
 window.Tether = tether;
 window.affix = affix;
@@ -24,4 +25,5 @@ $(document).ready(() => {
   stickyHeader();
   primaryMenu();
   loadMorePosts();
+  relatedPostsSlider();
 });

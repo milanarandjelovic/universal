@@ -335,6 +335,77 @@ if ( ! function_exists( 'universal_comments' ) ) {
 	}
 }
 
+if ( ! function_exists( 'universal_get_related_posts' ) ) {
+	/**
+	 * Return related post by post category.
+	 *
+	 * @param integer $post_id                  Current post ID.
+	 * @param integer $number_of_related_posts  Number of related post to fetch.
+	 *
+	 * @return object $query                    Object with posts info.
+	 */
+	function universal_get_related_posts( $post_id, $number_of_related_posts ) {
+		$args = array(
+			'category__in'        => wp_get_post_categories( $post_id ),
+			'ignore_sticky_posts' => 0,
+			'posts_per_page'      => $number_of_related_posts,
+			'post__not_in'        => array( $post_id ),
+		);
+		$query = new WP_Query( $args );
+
+		return $query;
+	}
+}
+
+if ( ! function_exists( 'universal_get_cpt_related_posts' ) ) {
+	/**
+	 * Return related posts by custom post type category taxonomy.
+	 *
+	 * @param integer $post_id                  Current post ID.
+	 * @param int     $number_of_related_posts  Number of related post to fetch.
+	 * @param string  $post_type                The custom post type.
+	 *
+	 * @return object $query                     Object with posts info.
+	 */
+	function universal_get_cpt_related_posts( $post_id, $number_of_related_posts, $post_type ) {
+		$post_type = str_replace( 'universal_', '', $post_type );
+		$item_categories = get_the_terms( $post_id, $post_type . '_category' );
+		$query = new WP_Query();
+
+		if ( 0 === $number_of_related_posts ) {
+			return $query;
+		}
+
+		$item_array = array();
+
+		if ( $item_categories ) {
+			foreach ( $item_categories as $item_category ) {
+				$item_array[] = $item_category->term_id;
+			}
+		}
+
+		if ( ! empty( $item_array ) ) {
+			$args = array(
+				'ignore_sticky_posts' => 0,
+				'posts_per_page'      => $number_of_related_posts,
+				'post__not_in'        => array( $post_id ),
+				'post_type'           => 'universal_' . $post_type,
+				'tax_query'           => array(
+					array(
+						'field'    => 'id',
+						'taxonomy' => $post_type . '_category',
+						'terms'    => $item_array,
+					),
+				),
+			);
+
+			$query = new WP_Query( $args );
+		}
+
+		return $query;
+	}
+}
+
 if ( ! function_exists( 'universal_render_post_meta_data' ) ) {
 	/**
 	 * Render HTML post meta data.
@@ -365,9 +436,27 @@ if ( ! function_exists( 'universal_render_about_author' ) ) {
 if ( ! function_exists( 'universal_render_related_posts' ) ) {
 	/**
 	 * Render HTML for related posts.
+	 *
+	 * @param string $post_type Post type for rendering.
 	 */
-	function universal_render_related_posts() {
-		get_template_part( 'template-parts/post/post-related-posts' );
+	function universal_render_related_posts( $post_type = 'post' ) {
+		if ( 'post' === $post_type ) {
+			$heading = esc_html__( 'Related Posts', 'universal' );
+		} elseif ( 'universal_project' === $post_type ) {
+			$heading = esc_html__( 'Related Project', 'universal' );
+		}
+
+		$number_related_of_posts = '-1';
+
+		if ( 'post' === $post_type ) {
+			$related_posts = universal_get_related_posts( get_the_ID(), $number_related_of_posts );
+		} else {
+			$related_posts = universal_get_cpt_related_posts( get_the_ID(), $number_related_of_posts, $post_type );
+		}
+
+		if ( isset( $related_posts ) && $related_posts->have_posts() ) {
+			include wp_normalize_path( locate_template( 'template-parts/post/post-related-posts.php' ) );
+		}
 	}
 }
 

@@ -74,7 +74,7 @@ $sp_show_related_posts      = $universal_data['universal__opt-blog-sp-related-po
 	<?php endif; ?>
 
 	<?php if ( '1' === $sp_show_related_posts ) : ?>
-		<?php universal_render_related_posts(); ?>
+		<?php universal_render_related_posts( get_post_type() ); ?>
 	<?php endif; ?>
 
 </article> <!-- /#post-<?php the_ID(); ?> -->

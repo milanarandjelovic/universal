@@ -31,7 +31,7 @@ $single_post_title       = esc_html( get_the_title() );
 				echo '<li class="universal__sharing-box-link">
 						<a href="https://m.facebook.com/sharer.php?u=' . rawurlencode( $single_post_url ) . '&t=' .
 							rawurlencode( $single_post_title ) . '" target="_blank" data-toggle="tooltip" 
-							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
+							title=" ' . $social_icon . ' " data-placement="' . esc_html( $social_tooltip_position ) . '"
 				            data-animation="false"
 						>
 							<span class="fa fa-facebook"></span>
@@ -44,7 +44,7 @@ $single_post_title       = esc_html( get_the_title() );
 						<a href="https://twitter.com/share?text=' .
 							rawurlencode( html_entity_decode( $single_post_title, ENT_COMPAT, 'UTF-8' ) ) .
 							'&t=' . $single_post_url . ' " target="_blank"  data-toggle="tooltip"
-							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
+							title=" ' . $social_icon . ' " data-placement="' . esc_html( $social_tooltip_position ) . '"
 							data-animation="false"
 						>
 							<span class="fa fa-twitter"></span>
@@ -56,7 +56,7 @@ $single_post_title       = esc_html( get_the_title() );
 				echo '<li class="universal__sharing-box-link">
 						<a href="https://www.linkedin.com/shareArticle?mini=true&url=' . $single_post_url . '&amp;title=' .
 							rawurldecode( $single_post_title ) . ' " target="_blank"  data-toggle="tooltip" 
-							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
+							title=" ' . $social_icon . ' " data-placement="' . esc_html( $social_tooltip_position ) . '"
 							data-animation="false"
 						>
 							<span class="fa fa-linkedin"></span>
@@ -68,7 +68,7 @@ $single_post_title       = esc_html( get_the_title() );
 				echo '<li class="universal__sharing-box-link">
 						<a href="http://reddit.com/submit?url=' . $single_post_url . '&amp;title=' .
 							rawurldecode( $single_post_title ) . '" target="_blank"  data-toggle="tooltip" 
-							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
+							title=" ' . $social_icon . ' " data-placement="' . esc_html( $social_tooltip_position ) . '"
 							data-animation="false"
 						>
 							<span class="fa fa-reddit"></span>
@@ -79,7 +79,7 @@ $single_post_title       = esc_html( get_the_title() );
 			case 'social_google_plus':
 				echo '<li class="universal__sharing-box-link">
 						<a href="https://plus.google.com/share?url=' . rawurlencode( $single_post_url ) . '" target="_blank"  data-toggle="tooltip" 
-							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
+							title=" ' . $social_icon . ' " data-placement="' . esc_html( $social_tooltip_position ) . '"
 							data-animation="false"
 						>
 							<span class="fa fa-google-plus"></span>
@@ -91,7 +91,7 @@ $single_post_title       = esc_html( get_the_title() );
 				echo '<li class="universal__sharing-box-link">
 						<a href="http://vkontakte.ru/share.php?url' . rawurlencode( $single_post_url ) . '&amp;title=' .
 							rawurlencode( $single_post_title ) . ' " target="_blank"  data-toggle="tooltip" 
-							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
+							title=" ' . $social_icon . ' " data-placement="' . esc_html( $social_tooltip_position ) . '"
 							data-animation="false"
 						>
 							<span class="fa fa-vk"></span>
@@ -103,7 +103,7 @@ $single_post_title       = esc_html( get_the_title() );
 				echo '<li class="universal__sharing-box-link">
 						<a href="mailto:?subject=' . $single_post_url . '&body=' .
 							rawurlencode( $single_post_title ) . ' " target="_blank"  data-toggle="tooltip" 
-							title=" ' . $social_icon . ' " data-placement=" ' . esc_html( $social_tooltip_position ) . ' "
+							title=" ' . $social_icon . ' " data-placement="' . esc_html( $social_tooltip_position ) . '"
 							data-animation="false"
 						>
 							<span class="fa fa-envelope"></span>
